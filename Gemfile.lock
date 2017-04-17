@@ -71,13 +71,6 @@ GEM
     childprocess (0.6.3)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.1)
-    coffee-rails (4.2.1)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.2.x)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     erubi (1.6.0)
     execjs (2.7.0)
@@ -226,7 +219,6 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha6)
   byebug
   capybara (~> 2.13.0)
-  coffee-rails (~> 4.2)
   guard
   guard-minitest
   jbuilder (~> 2.5)
