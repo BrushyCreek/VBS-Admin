@@ -19,7 +19,7 @@ gem 'sass-rails', github: "rails/sass-rails"
 gem 'bootstrap', '~> 4.0.0.alpha6'
 
 # Use Sprockets, a dependencie for Bootstrap
-gem 'sprocket-rails', '~> 3.2.0'
+gem 'sprockets-rails', '~> 3.2.0'
 
 
 # Use Uglifier as compressor for JavaScript assets
@@ -31,7 +31,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.3', '>=4.3.1'
 
 # Add Tether for bootstrap
-source 'https://rails-asets.org' do
+source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>=1.3.3'
 end
 
