@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419201012) do
+ActiveRecord::Schema.define(version: 20170420190819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20170419201012) do
     t.text "medical_notes"
     t.string "buddy_request"
     t.text "notes"
+    t.string "pickupper_1_name"
+    t.integer "pickupper_1_phone"
+    t.string "pickupper_2_name"
+    t.integer "pickupper_2_phone"
+    t.string "pickupper_3_name"
+    t.integer "pickupper_3_phone"
+    t.boolean "highlight", default: false
   end
 
 end
