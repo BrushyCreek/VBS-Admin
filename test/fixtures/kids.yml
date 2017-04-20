@@ -4,10 +4,10 @@ one:
   first_name: MyString
   last_name: MyString
   birthdate: 2017-04-19
-  last_grade: 1
+  last_grade_id: 1
 
 two:
   first_name: MyString
   last_name: MyString
   birthdate: 2017-04-19
-  last_grade: 1
+  last_grade_id: 1
