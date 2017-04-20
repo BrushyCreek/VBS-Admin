@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420190819) do
+ActiveRecord::Schema.define(version: 20170420193227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,18 +26,18 @@ ActiveRecord::Schema.define(version: 20170420190819) do
     t.string "address"
     t.string "city"
     t.string "state"
-    t.string "zipcode"
+    t.integer "zipcode"
     t.string "parent_first_name"
     t.string "parent_last_name"
     t.string "parent_email"
-    t.string "parent_phone"
+    t.integer "parent_phone"
     t.boolean "church_member"
     t.string "invited_by"
     t.integer "tshirt_size_id"
     t.boolean "allergies"
     t.text "allergies_notes"
     t.boolean "midical_issues"
-    t.text "medical_notes"
+    t.text "medical_issues_notes"
     t.string "buddy_request"
     t.text "notes"
     t.string "pickupper_1_name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170420190819) do
     t.string "pickupper_3_name"
     t.integer "pickupper_3_phone"
     t.boolean "highlight", default: false
+    t.boolean "can_photograph"
   end
 
 end

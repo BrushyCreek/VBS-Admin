@@ -7,7 +7,7 @@ class AddKidDetails < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :city
       t.string :state
-      t.string :zipcode
+      t.integer :zipcode
       t.string :parent_first_name
       t.string :parent_last_name
       t.string :parent_email
