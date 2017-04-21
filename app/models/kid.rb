@@ -9,10 +9,10 @@ class Kid < ApplicationRecord
   
   validates :address, :city, :zipcode, presence: true
   validates :state, presence: true, length: { is: 2 }
-  validates :parents_first_name, :parents_last_name, presence: true
+  validates :parent_first_name, :parent_last_name, presence: true
   
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
+  validates :parent_email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
 
   #TODO: we will need to make sure this is a valid phone number
   validates :parent_phone, presence: true

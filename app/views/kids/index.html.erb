@@ -1,0 +1,29 @@
+<% content_for :title do %>
+Kids Inbox
+<% end %>
+<div class="container">
+<h1>All Registered Kids</h1>
+
+<table class="table table-sm table-hover">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Grade</th>
+    <th></th> <!-- this is for the notes icon which will have a pop over on hover -->
+    <th></th> <!-- this is for themeidal alerts icons -->
+  </tr>
+  </thead>
+  <tbody>
+  <% @kids.each do |kid| %>
+  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
+    <td><%= kid.first_name + " " + kid.last_name%></td>
+    <th><%= find_age(kid.birthdate) %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <%  end %>
+  </tbody>
+</table>
+</div>
