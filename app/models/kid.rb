@@ -1,4 +1,6 @@
 class Kid < ApplicationRecord
+  scope :sort_by_last_name, -> { order( last_name: :asc ) }
+  
   validates :first_name, :last_name, presence: true
 
   #TODO: we will need to make sure this is a valid date
