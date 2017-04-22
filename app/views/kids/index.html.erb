@@ -1,29 +1,64 @@
 <% content_for :title do %>
 Kids Inbox
 <% end %>
-<div class="container">
-<h1>All Registered Kids</h1>
 
-<table class="table table-sm table-hover">
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Grade</th>
-    <th></th> <!-- this is for the notes icon which will have a pop over on hover -->
-    <th></th> <!-- this is for themeidal alerts icons -->
-  </tr>
-  </thead>
-  <tbody>
-  <% @kids.each do |kid| %>
-  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
-    <td><%= kid.first_name + " " + kid.last_name%></td>
-    <th><%= find_age(kid.birthdate) %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <%  end %>
-  </tbody>
-</table>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+	<button type="button" class="btn btn-primary btn-lg btn-block">New Registration</button>
+      </div>
+      <div class="col-md-4">
+	<button type="button" class="btn btn-secondary btn-lg btn-block">Copy Regestration</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <div class="row justify-content-center">
+    <div class="col">
+      <h2>Registrations</h2>
+    </div>
+    <div class="col">
+      <div class="input-group align-middle">
+	<input type="text" class="form-control" placeholder="Search for...">
+	<span class="input-group-btn">
+          <button class="btn btn-secondary" type="button">Go!</button>
+	</span>
+      </div>
+     </div>
+  </div>
+  
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <table class="table table-sm table-hover">
+	<thead>
+	  <tr>
+	    <th>Name</th>
+	    <th>Age</th>
+	    <th>Grade</th>
+	    <th></th> <!-- this is for the notes icon which will have a pop over on hover -->
+	    <th>Medical</th> <!-- this is for themeidal alerts icons -->
+	  </tr>
+	</thead>
+	<tbody>
+	  <% @kids.sort_by_last_name.each do |kid| %>
+	  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
+	    <td><%= kid.first_name + " " + kid.last_name%></td>
+	    <th><%= find_age(kid.birthdate) %></th>
+	    <th></th>
+	    <th></th>
+	    <% if kid.allergies %>
+	    <th><span class="badge badge-warning">Allergies</span></th>
+	    <% else %>
+	    <th></th>
+	    <% end %>
+	  </tr>
+	  <% end %>
+	</tbody>
+      </table>
+    </div>
+  </div>
 </div>
