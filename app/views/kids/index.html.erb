@@ -6,10 +6,13 @@ Kids Inbox
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-	<button type="button" class="btn btn-primary btn-lg btn-block">New Registration</button>
+	<button type="button" class="btn btn-secondary btn-lg btn-block">New In-Person Registration</button>
+	<small class="text-muted"> This is for begining a new f2f registration.</small>
       </div>
       <div class="col-md-4">
-	<button type="button" class="btn btn-secondary btn-lg btn-block">Copy Regestration</button>
+	<button type="button" class="btn btn-secondary btn-lg btn-block">Copy Previous Regestration</button>
+	<small class="text-muted">This will allow you to begin a new f2f registration with
+	some of the information pre-filled. This is useful for siblings.</small>
       </div>
     </div>
   </div>
@@ -19,7 +22,7 @@ Kids Inbox
   
   <div class="row justify-content-center">
     <div class="col">
-      <h2>Registrations</h2>
+      <h1>Registrations</h1>
     </div>
     <div class="col">
       <div class="input-group align-middle">
@@ -39,7 +42,7 @@ Kids Inbox
 	    <th>Name</th>
 	    <th>Age</th>
 	    <th>Grade</th>
-	    <th></th> <!-- this is for the notes icon which will have a pop over on hover -->
+	    <th>Notes</th> <!-- this is for the notes icon which will have a pop over on hover -->
 	    <th>Medical</th> <!-- this is for themeidal alerts icons -->
 	  </tr>
 	</thead>
@@ -47,13 +50,16 @@ Kids Inbox
 	  <% @kids.sort_by_last_name.each do |kid| %>
 	  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
 	    <td><%= kid.first_name + " " + kid.last_name%></td>
-	    <th><%= find_age(kid.birthdate) %></th>
-	    <th></th>
-	    <th></th>
+	    <td><%= find_age(kid.birthdate) %></td>
+	    <td>4</td>
+	    <td></td>
 	    <% if kid.allergies %>
-	    <th><span class="badge badge-warning">Allergies</span></th>
+	    <td>
+	      <span class="badge badge-warning">Allergies</span>
+	      <span class="badge badge-info">Other</span>
+	    </td>
 	    <% else %>
-	    <th></th>
+	    <td>Nope</td>
 	    <% end %>
 	  </tr>
 	  <% end %>
@@ -61,4 +67,5 @@ Kids Inbox
       </table>
     </div>
   </div>
+  
 </div>
