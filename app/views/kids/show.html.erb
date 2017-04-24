@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3><%= @kid.first_name %> <%= @kid.last_name %></h3>
+    </div>
+    <div class="card-block">
+      <h6>Born: <%= pretty_print_date(@kid.birthdate) %></h6>
+      <h6>Current Grade: <%= current_grade(@kid.last_grade_id) %></h6>
+      <h6>Regular Attendee: </h6>
+      <address>
+	<%= @kid.address %><br>
+	<%= @kid.state %><%= @kid.zipcode %><br>
+      </address>
+    </div>
+  </div>
+</div>
