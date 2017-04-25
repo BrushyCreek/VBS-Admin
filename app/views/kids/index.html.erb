@@ -10,7 +10,7 @@ Kids Inbox
 	<small class="text-muted"> This is for begining a new f2f registration.</small>
       </div>
       <div class="col-md-4">
-	<button type="button" class="btn btn-secondary btn-lg btn-block">Copy Previous Regestration</button>
+	<a class="btn btn-secondary btn-lg btn-block" href="" >Copy Previous Regestration</a>
 	<small class="text-muted">This will allow you to begin a new f2f registration with
 	some of the information pre-filled. This is useful for siblings.</small>
       </div>
@@ -28,30 +28,47 @@ Kids Inbox
       <div class="input-group align-middle">
 	<input type="text" class="form-control" placeholder="Search for...">
 	<span class="input-group-btn">
-          <button class="btn btn-secondary" type="button">Go!</button>
+          <button class="btn btn-secondary" type="button">Search</button>
 	</span>
       </div>
      </div>
   </div>
   
-  <div class="row justify-content-center">
-    <div class="col-md-12">
+  <div class="row justify-content-center mt-4">
+    
+    <div class="col-lg-12 mb-3 ml-4">
+      <a class="btn btn-primary btn-sm" href="<%= new_kid_path %>">Add New</a>
+      |
+      <div class="btn-group">
+	<button class="btn btn-outline-primary btn-sm" type="button">Pre-K</button>
+	<button class="btn btn-outline-primary btn-sm" type="button">4K</button>
+	<button class="btn btn-outline-primary btn-sm" type="button">5K</button>
+	<button class="btn btn-outline-primary btn-sm" type="button">1st</button>
+	<button class="btn btn-outline-primary btn-sm" type="button">2nd</button>
+	<button class="btn btn-outline-primary btn-sm" type="button">3rd</button>
+	<button class="btn btn-outline-primary btn-sm" type="button">4th</button>
+	<button class="btn btn-outline-primary btn-sm" type="button">5th</button>
+      </div>
+      </div>
+    <div class="col-xl-12">
       <table class="table table-sm table-hover">
 	<thead>
 	  <tr>
+	    <th></th>
 	    <th>Name</th>
 	    <th>Age</th>
-	    <th>Grade</th>
+	    <th>Grade</th> <!-- this will deisplay the grade the kid will be going to next year -->
 	    <th>Notes</th> <!-- this is for the notes icon which will have a pop over on hover -->
-	    <th>Medical</th> <!-- this is for themeidal alerts icons -->
+	    <th>Medical</th> <!-- this is for the meidal alerts icons -->
 	  </tr>
 	</thead>
 	<tbody>
 	  <% @kids.sort_by_last_name.each do |kid| %>
 	  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
+	    <td></td>
 	    <td><%= kid.first_name + " " + kid.last_name%></td>
 	    <td><%= find_age(kid.birthdate) %></td>
-	    <td>4</td>
+	    <td><%= current_grade(kid.last_grade_id) %></td>
 	    <td></td>
 	    <% if kid.allergies %>
 	    <td>

@@ -5,6 +5,14 @@ class KidsController < ApplicationController
   def new
     @kid = Kid.new
   end
+  def create
+    @kid = Kid.create(params[:kid])
+    if @kid.save
+      render "Kid"
+    else
+      render "new"
+    end
+  end
   def show
     @kid = Kid.find(params[:id])
 
