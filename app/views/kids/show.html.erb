@@ -1,16 +1,37 @@
-<div class="container">
+<br>
+<div class="container w-75">
   <div class="card">
     <div class="card-header">
-      <h3><%= @kid.first_name %> <%= @kid.last_name %></h3>
+      <nav class="nav nav-pills card-header-pills">
+	<a class="nav-link active" href="<%= edit_kid_path(@kid.id) %>">Edit</a>
+	<a class="nav-link" href="#">View Class</a>
+	<a class="nav-link" href="#">Locate</a>
+      </nav>
     </div>
     <div class="card-block">
-      <h6>Born: <%= pretty_print_date(@kid.birthdate) %></h6>
-      <h6>Current Grade: <%= current_grade(@kid.last_grade_id) %></h6>
-      <h6>Regular Attendee: </h6>
+      <h1 class="card-title"><%= @kid.first_name %> <%= @kid.last_name %> <small class="text-muted"> | <%=find_age(@kid.birthdate) %> years old</small></h1>
+      <hr>
+      <h5>Birthday:</h5>
+      <h4><%= pretty_print_date(@kid.birthdate) %></h4>
+      <h5>Current Grade:</h5>
+      <h4><%= current_grade(@kid.last_grade_id) %></h4>
+      <h4>Regular Attendee: <%= @kid.church_member ? "Yes" : "No" %> </h4>
+      <% if !@kid.church_member %>
+      <h4> Invited By: <%= @kid.invited_by %></h4>
+      <% end %>
+      <h4>Shirt size: <%= find_shirt_size(@kid.tshirt_size_id) %></h4>
+      <h5>Parent Name:</h5>
+      <h4><%= @kid.parent_first_name %> <%= @kid.parent_last_name %></h4>
+      <h5>Address:</h5>
       <address>
 	<%= @kid.address %><br>
-	<%= @kid.state %><%= @kid.zipcode %><br>
+	<%= @kid.city %>, <%= @kid.state %> <%= @kid.zipcode %><br>
       </address>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last Updated <%= @kid.updated_at.to_time.strftime('%B %e at %l:%M %p') %></small>
     </div>
   </div>
 </div>
+
+	       

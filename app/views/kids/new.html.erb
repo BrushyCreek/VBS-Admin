@@ -4,22 +4,31 @@ New Registration
 
 <div class="container">
   <h1>Register New Child </h1>
-
-  <div class="row">
-    <div class="col-md-12">
-      <%= form_for(@kid) do |f| %>
-      <%= f.label :first_Name %>
-      <%= f.text_field :first_name %>
-      <%= f.label :last_Name %>
-      <%= f.text_field :last_name %>
-      <%= f.label :Birthdate %>
-      <%= f.text_field :birthdate %>
-      <%= f.label :Last_Grade_Completed %>
-      <%= select_tag(:last_grade_completed, options_for_select([['Pre-k', 0],['  %>
-      <br>
-      <%= button_tag 'Submit' %>
-      <% end %>
+  <%= form_for(@kid) do |f| %>
+  <div class="form-group">
+    <%= f.label :first_Name%>
+    <%= f.text_field :first_name, class: "form-control" %>
+    <%= f.label :last_Name %>
+    <%= f.text_field :last_name, class: "form-control" %>
     </div>
+  <%= f.label :Birthdate %>
+  <%= f.text_field :birthdate %>
+  <div class="form-group">
+    <%= f.label :Last_Grade_Completed %>
+    <%= f.select :last_grade_id, options_for_select([['Pre-k', 0],
+	['Pre-K', 1],
+	['4K', 2],
+	['5K', 3],
+	['1st', 4],
+	['2nd', 5],
+	['3rd', 6],
+	['4th', 7],
+	['5th', 8],
+	['5th', 9],
+	['6th', 10]]),{}, {class: "form-control"}  %>
   </div>
+  <br>
+  <%= f.button class: "btn btn-primary"%>
+  <% end %>
 </div>
 
