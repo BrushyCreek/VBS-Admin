@@ -2,9 +2,15 @@ class KidsController < ApplicationController
   def index
     @kids = Kid.all
   end
+  
+  #These methods are for working with kids from the volunteer context
   def new
     @kid = Kid.new
   end
+  
+  def edit
+  end
+  
   def create
     @kid = Kid.create(kid_params)
     if @kid.save
@@ -15,11 +21,26 @@ class KidsController < ApplicationController
       render 'new'
     end
   end
+  
   def show
     @kid = Kid.find(params[:id])
 
     respond_to do |format|
       format.html
+    end
+  end
+  #These methods are for working with kids from the registration perspective
+  def register
+    #Call render the fancy registration form
+    @kid=Kid.new
+  end
+  
+  def confirm
+    if @kid.save
+      redirect_to confirm_kids_path
+    else
+      falsh.now[:warning] = "something went wrong"
+      render 'register'
     end
   end
   private
