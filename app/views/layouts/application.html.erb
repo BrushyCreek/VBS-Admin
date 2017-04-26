@@ -41,6 +41,7 @@
 	</ul>
       </div>
     </nav>
+    <%= render partial: "layouts/flash_messages", locals: {flash: flash} %>
     <%= yield %>
   </body>
 </html>
