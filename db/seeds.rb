@@ -8,13 +8,19 @@
 require 'faker'
 
 zipcodes = [29671, 29640, 29642, 29657, 29630]
-genders = ["male", "female"]
+genders = ["Male", "Female"]
 grade_ids = [0,1,2,3,4,5,6,7,8]
 t2 = 12.year.ago
 t1 = 2.year.ago
             
 100.times do
   @lastname = Faker::Name.last_name
+  @alergies = Faker::Boolean.boolean
+  @alergies_notes = Faker::ChuckNorris.fact
+  @medical = Faker::Boolean.boolean
+  @medical_issues_notes = Faker::Friends.quote
+  @invited = Faker::LordOfTheRings.character
+  @church_member = Faker::Boolean.boolean
   Kid.create!(
     first_name: Faker::Name.first_name,
     last_name: @lastname,
@@ -25,12 +31,20 @@ t1 = 2.year.ago
     city: Faker::Address.city,
     state: "SC",
     zipcode: zipcodes.sample,
-    parent_first_name: Faker::Name.first_name,
-    parent_last_name: @lastname,
+    parent_name: "#{Faker::Name.first_name} #{@lastname}",
     parent_phone: [Faker::PhoneNumber.area_code,Faker::PhoneNumber.exchange_code,Faker::PhoneNumber.subscriber_number].join.to_i,
     parent_email: Faker::Internet.email,
     buddy_request: ["","","",Faker::Name.name].sample,
-    allergies: Faker::Boolean.boolean)
+    allergies: @alergies,
+    allergies_notes: @alergies_notes,
+    medical_issues: @medical,
+    medical_issues_notes: @medical_issues_notes,
+    can_photograph: Faker::Boolean.boolean,
+    tshirt_size_id: rand(0..4),
+    church_member: @church_member,
+    invited_by: @invited
+    
+  )
 end
 
     

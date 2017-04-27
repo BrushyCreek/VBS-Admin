@@ -8,8 +8,7 @@ class AddKidDetails < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :state
       t.integer :zipcode
-      t.string :parent_first_name
-      t.string :parent_last_name
+      t.string :parent_name
       t.string :parent_email
       t.integer :parent_phone
       t.boolean :church_member
@@ -17,7 +16,7 @@ class AddKidDetails < ActiveRecord::Migration[5.1]
       t.integer :tshirt_size_id
       t.boolean :allergies
       t.text :allergies_notes
-      t.boolean :midical_issues
+      t.boolean :medical_issues
       t.text :medical_issues_notes
       t.string :buddy_request
       t.text :notes
