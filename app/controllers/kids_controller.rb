@@ -9,16 +9,24 @@ class KidsController < ApplicationController
   end
   
   def edit
-    @kid= Kid.find(params[:id])
+    @kid = Kid.find(params[:id])
   end
 
   def update
-    
+    @kid = Kid.find(params[:id])
+    if @kid.update_attributes(kid_params)
+      flash[:success] = "#{@kid.first_name} was successfuly updated"
+      redirect_to kids_path
+    else
+      flash.now[:warning] = "Something went wrong"
+      render 'edit'
+    end
   end
+  
   def create
     @kid = Kid.create(kid_params)
     if @kid.save
-      flash[:success] = "#{@kid.first_name} was successfully regiesterd"
+      flash[:success] = "#{@kid.first_name} was successfully registerd"
       redirect_to kids_path
     else
       flash.now[:warning] = "Something went wrong"
@@ -40,6 +48,7 @@ class KidsController < ApplicationController
   end
   
   def confirm
+    @kid = Kid.create(kid_params)
     if @kid.save
       redirect_to confirm_kids_path
     else
