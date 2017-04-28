@@ -1,4 +1,6 @@
 class KidsController < ApplicationController
+  helper ApplicationHelper
+  
   def index
     @kids = Kid.all
   end

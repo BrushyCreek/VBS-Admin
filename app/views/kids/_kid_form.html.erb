@@ -47,17 +47,7 @@
 
   <div class="form-inline">
     <%= f.label :tshirt_size_id, class: "mt-3" %>
-    <%= f.select :last_grade_id, options_for_select([['Pre-k', 0],
-	['Pre-K', 1],
-	['4K', 2],
-	['5K', 3],
-	['1st', 4],
-	['2nd', 5],
-	['3rd', 6],
-	['4th', 7],
-	['5th', 8],
-	['5th', 9],
-	['6th', 10]]),{}, {class: "custom-select ml-3 mt-3"}  %>
+    <%= f.select :tshirt_size_id, options_for_select(shirt_sizes),{}, {class: "custom-select ml-3 mt-3"}  %>
   </div>
   
   <label class="custom-control custom-checkbox">
