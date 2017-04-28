@@ -70,14 +70,15 @@ Kids Inbox
 	    <td><%= find_age(kid.birthdate) %></td>
 	    <td><%= current_grade(kid.last_grade_id) %></td>
 	    <td></td>
-	    <% if kid.allergies %>
 	    <td>
+	      <% if kid.allergies %>
 	      <span class="badge badge-warning">Allergies</span>
+	      <% end %>
+	      <% if kid.medical_issues %>
 	      <span class="badge badge-info">Other</span>
+	      <% else %>
+	      <% end %>
 	    </td>
-	    <% else %>
-	    <td>Nope</td>
-	    <% end %>
 	  </tr>
 	  <% end %>
 	</tbody>
