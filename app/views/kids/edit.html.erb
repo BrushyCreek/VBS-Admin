@@ -1,0 +1,7 @@
+<%= content_for :title do %>
+Edit <%= @kid.first_name %>'s Registration
+<% end %>
+
+<div class="container">
+  <%= render partial: "kid_form", locals: {kid: @kid, edit: 1} %>
+</div>

@@ -9,12 +9,16 @@ class KidsController < ApplicationController
   end
   
   def edit
+    @kid= Kid.find(params[:id])
   end
-  
+
+  def update
+    
+  end
   def create
     @kid = Kid.create(kid_params)
     if @kid.save
-      flash[:success] = "Child was successfully regiesterd"
+      flash[:success] = "#{@kid.first_name} was successfully regiesterd"
       redirect_to kids_path
     else
       flash.now[:warning] = "Something went wrong"
@@ -55,8 +59,7 @@ class KidsController < ApplicationController
                                 :city,
                                 :state,
                                 :zipcode,
-                                :parent_first_name,
-                                :parent_last_name,
+                                :parent_name,
                                 :parent_email,
                                 :parent_phone,
                                 :church_member,
@@ -64,7 +67,7 @@ class KidsController < ApplicationController
                                 :tshirt_size_id,
                                 :allergies,
                                 :allergies_notes,
-                                :midical_issues,
+                                :medical_issues,
                                 :medical_issues_notes,
                                 :buddy_request,
                                 :notes,
