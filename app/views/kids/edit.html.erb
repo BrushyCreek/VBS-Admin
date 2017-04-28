@@ -3,5 +3,10 @@ Edit <%= @kid.first_name %>'s Registration
 <% end %>
 
 <div class="container">
-  <%= render partial: "kid_form", locals: {kid: @kid, edit: 1} %>
+  <%= render partial: "errors", locals: {kid: @kid} %>
+  <%= form_for @kid do |f| %>
+  <%= render partial: "kid_form", locals: {kid: @kid, edit: 1, f: f} %>
+  <br>
+  <%= f.submit "Save",  class: "btn btn-primary"%>
+  <% end %>
 </div>

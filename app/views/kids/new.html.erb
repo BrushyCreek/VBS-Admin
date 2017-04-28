@@ -4,6 +4,11 @@ New Registration
 
 <div class="container">
   <h1>Register New Child </h1>
-  <%= render partial: "kid_form", locals: {kid: @kid} %>
+  <%= render partial: "errors", locals: {kid: @kid} %>
+  <%= form_for @kid do |f| %>
+  <%= render partial: "kid_form", locals: {kid: @kid, f: f, edit: 1} %>
+  <br>
+  <%= f.submit "Register",  class: "btn btn-primary"%>
+  <% end %>
 </div>
 
