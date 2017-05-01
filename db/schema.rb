@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170428210131) do
     t.integer "zipcode"
     t.string "parent_name"
     t.string "parent_email"
-    t.integer "parent_phone"
+    t.string "parent_phone"
     t.boolean "church_member"
     t.string "invited_by"
     t.integer "tshirt_size_id"
@@ -40,11 +40,11 @@ ActiveRecord::Schema.define(version: 20170428210131) do
     t.string "buddy_request"
     t.text "notes"
     t.string "pickupper_1_name"
-    t.integer "pickupper_1_phone"
+    t.string "pickupper_1_phone"
     t.string "pickupper_2_name"
-    t.integer "pickupper_2_phone"
+    t.string "pickupper_2_phone"
     t.string "pickupper_3_name"
-    t.integer "pickupper_3_phone"
+    t.string "pickupper_3_phone"
     t.boolean "highlight", default: false
     t.boolean "can_photograph"
   end
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170428210131) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.integer "phone"
+    t.string "phone"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

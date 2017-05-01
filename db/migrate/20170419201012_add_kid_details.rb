@@ -10,7 +10,7 @@ class AddKidDetails < ActiveRecord::Migration[5.1]
       t.integer :zipcode
       t.string :parent_name
       t.string :parent_email
-      t.integer :parent_phone
+      t.string :parent_phone
       t.boolean :church_member
       t.string :invited_by
       t.integer :tshirt_size_id

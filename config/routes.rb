@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   resources :kids do
     get 'register', on: :new
-    collection do
-      post 'confirm'
+    member do
+      get 'confirm'
     end
   end
 
