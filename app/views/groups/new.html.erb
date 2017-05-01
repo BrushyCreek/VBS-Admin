@@ -1,2 +1,29 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<%= content_for :title do %>
+Add New Class
+<% end %>
+
+<div class="container">
+  <%= form_for @group do | f | %>
+  <div class="form-inline">
+       <%= f.label :name %>
+       <%= f.text_field :name %>
+  </div>
+
+  <div class="form-inline">
+    <%= f.label :grade_id, class: " form-control-label mt-3" %>
+    <%= f.select :grade_id, options_for_select([['Pre-k', 0],
+	['Pre-K', 1],
+	['4K', 2],
+	['5K', 3],
+	['1st', 4],
+	['2nd', 5],
+	['3rd', 6],
+	['4th', 7],
+	['5th', 8],
+	['5th', 9],
+	['6th', 10]]),{}, {class: "form-control custom-select ml-3 mt-3"}  %>
+  </div>
+    
+  <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+  </div>

@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.create(group_params)
     if @group.save
-      falsh[:success] = "<strong>#{@group.name}</strong> created."
+      flash[:success] = "<strong>#{@group.name}</strong> created."
       redirect_to groups_path
     else
       flash.now[:warning] = "somthing went wrong"

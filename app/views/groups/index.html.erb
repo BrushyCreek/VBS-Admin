@@ -1,9 +1,32 @@
-<div class = "container">
-  <%= grade_types.each do | g | %>
+<div class = "container w-75">
+    <div class="row justify-content-center">
+    <div class="col">
+      <h1>Classes</h1>
+    </div>
+    </div>
+  
+  <div class="row justify-content-center mt-4">
+    
+    <div class="col-lg-12 mb-3 ml-4">
+      <a class="btn btn-primary btn-sm" href="<%= new_group_path %>">Add New</a>
+    </div>
+  </div>
+<br>
+  <% grade_types.each_with_index do | grade, index | %>
       <div class = "row">
-	<h2 class = "col-md-3"><%= g %></h2>
+	<h2 class = "col-md-3"><%= grade %></h2>
 	<h5 class = "col-md-3">Edit</h5>
       </div>
+      <div class="card-group">
+	<% @groups.where("grade_id = ?", index).each do | group | %>
+	<div class="card">
+	  <div class="card-block">
+	    <h4 class="card-title"><%= group.name %></h4>
+	    <%= link_to "Edit", edit_group_path(group), class: "btn btn-primary" %>
+	  </div>
+	</div>
+	<% end %>
+      </div>	
       <% end %>
 </div>
   
