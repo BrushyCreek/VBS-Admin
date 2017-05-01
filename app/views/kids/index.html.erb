@@ -62,6 +62,7 @@ Kids Inbox
 	    <th>Medical</th> <!-- this is for the meidal alerts icons -->
 	  </tr>
 	</thead>
+	
 	<tbody>
 	  <% @kids.sort_by_last_name.each do |kid| %>
 	  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>

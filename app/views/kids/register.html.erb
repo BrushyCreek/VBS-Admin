@@ -4,7 +4,7 @@ Register Child
 <div class="container">
   <h1>Register New Child</h1>
   <%= render partial: "errors", locals: {kid: @kid} %>
-  <%= form_for @kid do |f| %>
+  <%= form_for @kid, url: confirm_kids_path do |f| %>
   <%= render partial: "kid_form", locals: {kid: @kid, f: f, edit: 0} %>
   <br>
   <%= f.submit "Register",  class: "btn btn-primary"%>

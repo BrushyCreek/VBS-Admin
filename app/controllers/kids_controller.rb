@@ -14,6 +14,12 @@ class KidsController < ApplicationController
     @kid = Kid.find(params[:id])
   end
 
+  def destroy
+    Kid.find(params[:id]).destroy
+    flash[:success] = "Kid removed"
+    redirect_to kids_path
+  end
+  
   def update
     @kid = Kid.find(params[:id])
     if @kid.update_attributes(kid_params)
@@ -46,13 +52,14 @@ class KidsController < ApplicationController
   #These methods are for working with kids from the registration perspective
   def register
     #Call render the fancy registration form
-    @kid=Kid.new
+    @kid = Kid.new
+    render layout: "public"
   end
   
   def confirm
     @kid = Kid.create(kid_params)
     if @kid.save
-      redirect_to confirm_kids_path
+      render layout: "public"
     else
       falsh.now[:warning] = "something went wrong"
       render 'register'

@@ -6,6 +6,7 @@
 	<a class="nav-link active" href="<%= edit_kid_path(@kid.id) %>">Edit</a>
 	<a class="nav-link" href="#">View Class</a>
 	<a class="nav-link" href="#">Locate</a>
+	<%= link_to "Delete", @kid, method: :delete, class: "nav-link", data: {confirm: "Are you sure?" } %>
       </nav>
     </div>
     <div class="card-block">
