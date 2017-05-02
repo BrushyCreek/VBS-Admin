@@ -1,6 +1,6 @@
 module ApplicationHelper
   def shirt_sizes
-    [["Youth Small",0], ["Youth Medium",1], ["Youth Large",2], ["Small",3], ["Medium",4], ["Large",5], ["XL",6], ["XXL",7]]
+    ["Youth Small", "Youth Medium", "Youth Large","Small", "Medium","Large","XL", "XXL"]
   end
   
   def find_age(birthdate)

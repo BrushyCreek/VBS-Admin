@@ -60,26 +60,29 @@ Kids Inbox
 	    <th>Grade</th> <!-- this will deisplay the grade the kid will be going to next year -->
 	    <th>Notes</th> <!-- this is for the notes icon which will have a pop over on hover -->
 	    <th>Medical</th> <!-- this is for the meidal alerts icons -->
+	    <th></th>
 	  </tr>
 	</thead>
 	
 	<tbody>
 	  <% @kids.sort_by_last_name.each do |kid| %>
-	  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
-	    <td></td>
-	    <td><%= kid.first_name + " " + kid.last_name%></td>
-	    <td><%= find_age(kid.birthdate) %></td>
-	    <td><%= current_grade(kid.last_grade_id) %></td>
-	    <td></td>
-	    <td>
-	      <% if kid.allergies %>
-	      <span class="badge badge-warning">Allergies</span>
-	      <% end %>
-	      <% if kid.medical_issues %>
-	      <span class="badge badge-info">Other</span>
-	      <% else %>
-	      <% end %>
-	    </td>
+	  <tr>
+	      <td></td>
+	      <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %></td>
+	      <td><%= find_age(kid.birthdate) %></td>
+	      <td><%= current_grade(kid.last_grade_id) %></td>
+	      <td></td>
+	      <td>
+		<% if kid.allergies %>
+		<span class="badge badge-warning">Allergies</span>
+		<% end %>
+		<% if kid.medical_issues %>
+		<span class="badge badge-info">Other</span>
+		<% else %>
+		<% end %>
+	      </td>
+	    </div>
+	    <td><%= link_to "Edit", edit_kid_path(kid) %></td>
 	  </tr>
 	  <% end %>
 	</tbody>

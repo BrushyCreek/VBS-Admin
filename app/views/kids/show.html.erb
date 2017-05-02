@@ -12,17 +12,23 @@
     <div class="card-block">
       <h1 class="card-title"><%= @kid.first_name %> <%= @kid.last_name %> <small class="text-muted"> | <%=find_age(@kid.birthdate) %> years old</small></h1>
       <hr>
+      
       <h5>Birthday:</h5>
       <h4><%= pretty_print_date(@kid.birthdate) %></h4>
+      
       <h5>Current Grade:</h5>
       <h4><%= current_grade(@kid.last_grade_id) %></h4>
+      
       <h4>Regular Attendee: <%= @kid.church_member ? "Yes" : "No" %> </h4>
       <% if !@kid.church_member %>
       <h4> Invited By: <%= @kid.invited_by %></h4>
       <% end %>
+
       <h4>Shirt size: <%= find_shirt_size(@kid.tshirt_size_id) %></h4>
+
       <h5>Parent Name:</h5>
       <h4><%= @kid.parent_name %></h4>
+
       <h5>Address:</h5>
       <address>
 	<%= @kid.address %><br>
