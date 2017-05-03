@@ -4,8 +4,12 @@ module KidsHelper
   end
   
   def current_grade(last_grade_id)
+    last_grade_id ||=0
     lg = last_grade_id
-    ng = grade_types[lg + 1]
-    return ng
+    if lg == 10
+      return "7th"
+    else
+      return grade_types.at(lg + 1)
+    end
   end
 end
