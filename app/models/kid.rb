@@ -1,5 +1,5 @@
 class Kid < ApplicationRecord
-  belongs_to :group
+  belongs_to :group, optional: true
   
   scope :sort_by_last_name, -> { order( last_name: :asc ) }
   
