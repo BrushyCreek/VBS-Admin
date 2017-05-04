@@ -1,4 +1,6 @@
 class Kid < ApplicationRecord
+  belongs_to :group
+  
   scope :sort_by_last_name, -> { order( last_name: :asc ) }
   
   validates :first_name, :last_name, presence: true

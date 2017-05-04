@@ -114,7 +114,6 @@
     <%= f.label :pickupper_3_phone %>
     <%= f.text_field :pickupper_3_phone, class: "form-control" %>    
     
-    <% if @edit == 1 %>
     <label class="custom-control custom-checkbox">
       <%= f.check_box :highlight, class: "custom-control-input" %>
       <span class="custom-control-indicator"></span>
@@ -124,4 +123,5 @@
       <%= f.label :notes %>
       <%= f.text_area :notes, class: "form-control" %>
     </div>
-    <% end %>
+
+    <%= f.collection_select :group_id, Group.all, :id, :name_grade %>

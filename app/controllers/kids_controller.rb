@@ -96,6 +96,7 @@ class KidsController < ApplicationController
                                 :pickupper_3_name,
                                 :pickupper_3_phone,
                                 :highlight,
-                                :can_photograph)
+                                :can_photograph,
+                                :group_id)
   end
 end

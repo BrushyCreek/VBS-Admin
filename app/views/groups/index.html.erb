@@ -19,9 +19,20 @@
       </div>
       <div class="card-group">
 	<% @groups.where("grade_id = ?", index).each do | group | %>
-	<div class="card">
+	<div id=<%=group.id %> class="card">
 	  <div class="card-block">
 	    <h4 class="card-title"><%= group.name %></h4>
+	    <table class="table table-sm">
+	      <tbody>
+		<% group.kids.each do |kid| %>
+		<tr>
+		  <td><%= "#{kid.first_name} #{kid.last_name}" %></td>
+		  <td><%= find_age(kid.birthdate) %></td>
+		</tr>
+		<% end %>
+	      </tbody>
+	    </table>
+	 
 	    <%= link_to "Edit", edit_group_path(group), class: "btn btn-primary" %>
 	  </div>
 	</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501191335) do
+ActiveRecord::Schema.define(version: 20170503205649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 20170501191335) do
     t.string "pickupper_3_phone"
     t.boolean "highlight", default: false
     t.boolean "can_photograph"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_kids_on_group_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "volunteers", force: :cascade do |t|
@@ -64,6 +72,9 @@ ActiveRecord::Schema.define(version: 20170501191335) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "leader_type"
+    t.bigint "leader_id"
+    t.index ["leader_type", "leader_id"], name: "index_volunteers_on_leader_type_and_leader_id"
   end
 
 end
