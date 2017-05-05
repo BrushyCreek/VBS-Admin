@@ -38,6 +38,9 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    Group.find(params[:id]).destroy
+    flash[:success] = "Class removed"
+    redirect_to groups_path
   end
 end
 
