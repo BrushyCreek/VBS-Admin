@@ -1,2 +1,7 @@
-<h1>Groups#edit</h1>
-<p>Find me in app/views/groups/edit.html.erb</p>
+<%= content_for :title do %>
+Edit New Class
+<% end %>
+
+<div class="container">
+  <%= render partial: 'form', locals: {group: @group} %>
+  </div>
