@@ -34,7 +34,7 @@ class KidsController < ApplicationController
   def create
     @kid = Kid.create(kid_params)
     if @kid.save
-      flash[:success] = "<strong>#{@kid.first_name} #{@kid.last_name} was successfully registerd"
+      flash[:success] = "<strong>#{@kid.first_name} #{@kid.last_name}</strong> was successfully registerd"
       redirect_to kids_path
     else
       flash.now[:warning] = "Something went wrong"
