@@ -18,7 +18,7 @@ Kids Inbox
   </div>
 </div>
 
-<div class="container">
+<div class="container w-100">
   
   <div class="row justify-content-center">
     <div class="col">
@@ -58,6 +58,7 @@ Kids Inbox
 	    <th>Name</th>
 	    <th>Age</th>
 	    <th>Grade</th> <!-- this will deisplay the grade the kid will be going to next year -->
+	    <th>Class</th>
 	    <th>Notes</th> <!-- this is for the notes icon which will have a pop over on hover -->
 	    <th>Medical</th> <!-- this is for the meidal alerts icons -->
 	    <th></th>
@@ -71,6 +72,13 @@ Kids Inbox
 	      <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %></td>
 	      <td><%= find_age(kid.birthdate) %></td>
 	      <td><%= current_grade(kid.last_grade_id) %></td>
+	      <td>
+	      <% if kid.group == nil %>
+	      <%= "--" %>
+	      <% else %>
+	      <%= "#{kid.group.name}" %>
+	      <% end %>
+	      </td>
 	      <td></td>
 	      <td>
 		<% if kid.allergies %>

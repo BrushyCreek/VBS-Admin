@@ -1,4 +1,4 @@
-<div class = "container w-75">
+<div class = "container w-100">
     <div class="row justify-content-center">
       <div class="col">
 	<h1>Classes</h1>
@@ -14,11 +14,11 @@
     <% grade_types.each_with_index do | grade, index | %>
     <div
     <div class = "row mt-4">
-      <h2 class = "col-md-3"><%= grade %></h2>
+      <h2 class = "col-md-3 ml-3"><%= grade %></h2>
     </div>
-    <div class="row pt-4  bg-faded rounded">
+    <div class="row pt-4 mx-2 bg-faded rounded">
       <% @groups.where("grade_id = ?", index).each do | group | %>
-      <div class="col-xl-4">
+      <div class="col-xl-3">
 	<div id=<%=group.id %> class="card mb-4">
 	  <div class="card-block">
 	    <h4 class="card-title"><%= group.name %></h4>
@@ -28,6 +28,7 @@
 	    <tbody>
 	      <% group.kids.each do |kid| %>
 	      <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
+		<td></td> <!-- Use this for the buddy request icon -->
 		<td><%= "#{kid.first_name} #{kid.last_name}" %></td>
 		<td><%#= find_age(kid.birthdate) %></td>
 		<td>
