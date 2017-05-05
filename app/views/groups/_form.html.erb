@@ -1,0 +1,13 @@
+  <%= form_for @group do | f | %>
+  <div class="form-inline">
+       <%= f.label :name %>
+       <%= f.text_field :name %>
+  </div>
+
+  <div class="form-inline">
+    <%= f.label :grade_id, class: " form-control-label mt-3" %>
+    <%= f.select :grade_id, grade_types.map.with_index{ |s, i| [s, i]}, {}, {class: "form-control custom-select ml-3 mt-3"}  %>
+  </div>
+    
+  <%= f.submit class: "btn btn-primary"%>
+  <% end %>
