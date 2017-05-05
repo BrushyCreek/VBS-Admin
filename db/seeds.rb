@@ -12,12 +12,12 @@ genders = ["Male", "Female"]
 grade_ids = [0,1,2,3,4,5,6,7,8]
 t2 = 12.year.ago
 t1 = 2.year.ago
-4.times do
-  Group.create!(
-    grade_id: grade_ids.sample,
-    name: ["Red", "Blue", "Yellow", "Green"].sample
-  )
-end
+# 4.times do
+#   Group.create!(
+#     grade_id: grade_ids.sample,
+#     name: ["Red", "Blue", "Yellow", "Green"].sample
+#   )
+# end
 
 100.times do
   @lastname = Faker::Name.last_name
