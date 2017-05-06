@@ -8,7 +8,11 @@ New Registration
   <%= form_for @kid do |f| %>
   <%= render partial: "kid_form", locals: {kid: @kid, f: f, edit: 1} %>
   <br>
-  <%= f.submit "Register",  class: "btn btn-primary"%>
+  <div class="row">
+    <div class="col-sm-6 offset-3">
+      <%= f.submit "Register",  class: "btn btn-primary"%>
+    </div>
+  </div>
   <% end %>
 </div>
 

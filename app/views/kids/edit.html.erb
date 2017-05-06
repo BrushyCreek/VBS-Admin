@@ -7,6 +7,10 @@ Edit <%= @kid.first_name %>'s Registration
   <%= form_for @kid do |f| %>
   <%= render partial: "kid_form", locals: {kid: @kid, edit: 1, f: f} %>
   <br>
-  <%= f.submit "Save",  class: "btn btn-primary"%>
+  <div class="row">
+    <div class="col-sm-6 offset-3">
+      <%= f.submit "Save",  class: "btn btn-primary"%>
+    </div>
+  </div>
   <% end %>
 </div>
