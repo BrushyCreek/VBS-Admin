@@ -9,7 +9,7 @@ require 'faker'
 
 zipcodes = [29671, 29640, 29642, 29657, 29630]
 genders = ["Male", "Female"]
-grade_ids = [0,1,2,3,4,5,6,7,8]
+grade_ids = [0,1,2,3,4,5,6,7]
 t2 = 12.year.ago
 t1 = 2.year.ago
 # 4.times do
@@ -18,15 +18,23 @@ t1 = 2.year.ago
 #     name: ["Red", "Blue", "Yellow", "Green"].sample
 #   )
 # end
-
+User.create!(
+  name: "Allen Hughes",
+  email: "allen@brushycreekchurch.com",
+  admin: true,
+  password: "password",
+  password_confirmation: "password")
 100.times do
+  @invited = ""
   @lastname = Faker::Name.last_name
   @alergies = Faker::Boolean.boolean
-  @alergies_notes = Faker::ChuckNorris.fact
+  #@alergies_notes = Faker::ChuckNorris.fact
   @medical = Faker::Boolean.boolean
-  @medical_issues_notes = Faker::Friends.quote
-  @invited = Faker::LordOfTheRings.character
+  #@medical_issues_notes = Faker::Friends.quote
   @church_member = Faker::Boolean.boolean
+  if not  @church_member
+    @invited = Faker::LordOfTheRings.character
+  end
   Kid.create!(
     first_name: Faker::Name.first_name,
     last_name: @lastname,
@@ -42,9 +50,9 @@ t1 = 2.year.ago
     parent_email: Faker::Internet.email,
     buddy_request: ["","","",Faker::Name.name].sample,
     allergies: @alergies,
-    allergies_notes: @alergies_notes,
+    #allergies_notes: @alergies_notes,
     medical_issues: @medical,
-    medical_issues_notes: @medical_issues_notes,
+    #medical_issues_notes: @medical_issues_notes,
     can_photograph: Faker::Boolean.boolean,
     tshirt_size_id: rand(0..4),
     church_member: @church_member,

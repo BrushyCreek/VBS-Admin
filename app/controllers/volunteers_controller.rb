@@ -16,7 +16,15 @@ class VolunteersController < ApplicationController
     flash[:success] = "Volunteer removed"
     redirect_to volunteers_path
   end
+  
+  def show
+    @volunteer = Volunteer.find(params[:id])
 
+    respond_to do |format|
+      format.html
+    end
+  end
+  
   def create
     @volunteer = Volunteer.create(volunteer_params)
     if @volunteer.save

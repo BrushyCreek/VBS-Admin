@@ -1,0 +1,26 @@
+<br>
+<div class="container w-75">
+  <div class="card">
+    <div class="card-header">
+      <nav class="nav nav-pills card-header-pills">
+	<a class="nav-link active" href="<%= edit_volunteer_path(@volunteer.id) %>">Edit</a>
+	<a class="nav-link" href="#">Print</a>
+	<a class="nav-link" href="#">Locate</a>
+	<%= link_to "Delete", @volunteer, method: :delete, class: "nav-link", data: {confirm: "Are you sure?" } %>
+      </nav>
+    </div>
+    <div class="card-block">
+      <h1 class="card-title"><%= @volunteer.first_name %> <%= @volunteer.last_name %></h1>
+      <hr>
+      <h4><%= @volunteer.phone %></h4>
+      <h4><%= @volunteer.email %></h4>
+      <div class="row">
+	<h5 class="col-md-2">Notes:</h5>
+	<p class="col-md-4"><%= @volunteer.notes %></p>
+      </div>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last Updated <%= @volunteer.updated_at.to_time.strftime('%B %e at %l:%M %p') %></small>
+    </div>
+  </div>
+</div>
