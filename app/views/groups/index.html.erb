@@ -22,7 +22,16 @@
 	<div id=<%=group.id %> class="card mb-4">
 	  <div class="card-block">
 	    <h4 class="card-title"><%= group.name %></h4>
+<<<<<<< Updated upstream
 	    <p>Teacher Name Teacher Name2</p>
+=======
+	    <hr>
+	    <div class="row">
+	      <% group.volunteers.each do |leader| %>
+	      <%= link_to volunteer_path(leader.id) %>
+	      <% end %>
+	    </div>
+>>>>>>> Stashed changes
 	  </div>
 	  <table class="table table-sm table-hover">
 	    <tbody>
