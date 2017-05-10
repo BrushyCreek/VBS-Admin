@@ -12,7 +12,7 @@
 
 <div class="form-group row">
   <!-- <label class="col-sm-2 text-sm-right col-form-label">Gender</label> -->
-  <div class="col-sm-8 offset-3">
+  <div class="col-sm-8 offset-md-3">
     <label class="custom-control custom-radio">
       <%= f.radio_button :gender, :male, class: "custom-control-input" %>
       <span class="custom-control-indicator"></span>
@@ -27,14 +27,14 @@
 </div>
 
 <div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Birthday</label>
+  <label class="col-md-3 text-sm-right col-form-label">Birthday</label>
   <div class="col-sm-8">
     <%= f.date_select :birthdate, { :start_year => 2004, :end_year => 2017, :prompt => { day: 'Day', month: 'Month', year: 'Year' }, :use_short_month => true, :order => [:day, :month, :year]}, class: "custom-select" %>
   </div>
 </div>
 
 <div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Last Grade Completed</label>
+  <label class="col-md-3 text-sm-right col-form-label">Last Grade Completed</label>
   <div class="col-sm-8">
     <%= f.select :last_grade_id, grade_types.map.with_index{ |s, i| [s, i]}, {}, {class: "custom-select"}  %>
   </div>
@@ -189,7 +189,7 @@
 </div>
 
 <div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Contact 3</label>
+  <label class="col-md-3 text-sm-right col-form-label">Contact 3</label>
   <div class="col-sm-4">
     <%= f.text_field :pickupper_3_name, class: "form-control" %>
     <small class="from-text text-muted">Name</small>
@@ -206,7 +206,7 @@
 <hr>
 
 <div class="form-group row">
-  <div class="col-sm-8 offset-3">
+  <div class="col-sm-8 offset-md-3">
     <label class="custom-control custom-checkbox">
       <%= f.check_box :highlight, class: "custom-control-input" %>
       <span class="custom-control-indicator"></span>
