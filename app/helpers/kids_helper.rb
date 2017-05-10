@@ -6,7 +6,7 @@ module KidsHelper
   def current_grade(last_grade_id)
     last_grade_id ||=0
     lg = last_grade_id
-    if lg == 10
+    if lg == 8
       return "7th"
     else
       return grade_types.at(lg + 1)
