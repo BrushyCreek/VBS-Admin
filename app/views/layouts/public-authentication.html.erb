@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,9 +10,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render "layouts/header" %>
-    <%= render partial: "layouts/flash_messages", locals: {flash: flash} %>
-    <%= yield %>
+  <body style="height:100%; background-color: rgba(214,214,214,0.6);">
+    <div class="container d-flex h-100 w-100">
+      <div class="row w-100 my-auto">
+	<div class="col-lg-4 mx-auto">
+	  <div class="card">
+	    <div class="card-block">
+	      <%= yield %>
+	    </div>
+	  </div>
+	</div> 
+      </div>
+    </div>
   </body>
 </html>
