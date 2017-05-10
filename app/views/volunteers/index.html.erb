@@ -38,7 +38,7 @@
 	  <tr>
 	      <td></td>
 	      <td onclick="window.location='<%= volunteer_path(volunteer)%>';" style='cursor: pointer;'><%= "#{volunteer.first_name} #{volunteer.last_name}" %></td>
-	      <td><%= "#{volunteer.leader_type}" %></td>
+	      <td><%= "#{volunteer.leader.name_grade}" %></td>
 	      <td></td>
 	      <td><%= "#{volunteer.phone}" %></td>
 	      <td><%= "#{volunteer.email}" %></td>
