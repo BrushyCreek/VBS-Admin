@@ -37,5 +37,8 @@
       <span class="custom-control-description">Station</span>
     </label>
 </feildset>
+<div class="form-group">
+  <%= f.collection_select :leader_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {}, class: "custom-select"%>
+  </div>
 <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>
