@@ -71,6 +71,8 @@ GEM
       xpath (~> 2.0)
     childprocess (0.6.3)
       ffi (~> 1.0, >= 1.0.11)
+    city-state (0.0.13)
+      rubyzip (~> 1.1)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     devise (4.2.1)
@@ -235,6 +237,7 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha6)
   byebug
   capybara (~> 2.13.0)
+  city-state
   devise (~> 4.2)
   faker
   guard

@@ -142,7 +142,7 @@
       <small class="form-text text-muted">City</small>
     </div>
     <div class="col-2">
-      <%= f.text_field :state, class: "form-control" %>
+      <%= f.select :state, CS.states(:us),{selected: "SC"}, class: "custom-select"%>
       <small class="form-text text-muted">State</small>
     </div>
     <div class="col-3">
@@ -194,31 +194,38 @@
 </div>
 
 <% if edit == 1 %>
-<hr>
-<h3>Admin Only</h3>
-<hr>
+</div>
+<div id="admin-kid-form" class="jumbotron">
+  <div class="container">
+  <hr>
+  <h3>Admin Only</h3>
+  <hr>
 
-<div class="form-group row">
-  <div class="col-sm-8 offset-md-3">
-    <label class="custom-control custom-checkbox">
-      <%= f.check_box :highlight, class: "custom-control-input" %>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Highlight</span>
-    </label>
-    <small class="form-text text-muted">Add a highlight when the kid is displayed on other pages</small>
+  <div class="form-group row">
+    <div class="col-sm-8 offset-md-3">
+      <label class="custom-control custom-checkbox">
+	<%= f.check_box :highlight, class: "custom-control-input" %>
+	<span class="custom-control-indicator"></span>
+	<span class="custom-control-description">Highlight</span>
+      </label>
+      <small class="form-text text-muted">Add a highlight when the kid is displayed on other pages</small>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3 text-sm-right col-form-label">Notes</label>
+    <div class="col-sm-8">
+      <%= f.text_area :notes, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-3 text-sm-right col-form-label">Assign to class</label>
+    <div class="col-sm-8">
+      <%= f.collection_select :group_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {include_blank: 'Unassigned'}, class: "custom-select"%>
+    </div>
+  </div>
   </div>
 </div>
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Notes</label>
-  <div class="col-sm-8">
-    <%= f.text_area :notes, class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Assign to class</label>
-  <div class="col-sm-8">
-    <%= f.collection_select :group_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {include_blank: 'Unassigned'}, class: "custom-select"%>
-  </div>
+</% else %>
 </div>
 <% end %>
