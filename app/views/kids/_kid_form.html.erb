@@ -67,13 +67,6 @@
 </div>
 
 <div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">T-Shirt Size</label>
-  <div class="col-sm-8">
-    <%= f.select :tshirt_size_id, shirt_sizes.map.with_index{ |s, i| [s, i]}, {}, {class: "custom-select"}  %>
-    </div>
-</div>
-
-<div class="form-group row">
   <div class="col-sm-8 offset-md-3">
     <label class="custom-control custom-checkbox">
       <%= f.check_box :can_photograph, checked: true, class: "custom-control-input" %>
