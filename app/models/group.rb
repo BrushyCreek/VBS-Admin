@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   scope :sort_by_grade, -> { order(grade_id: :asc) }
   
   def name_grade
-    grades = ["Pre-K", "4k", "5k", "1st", "2nd", "3rd", "4th", "5th"]
+    grades = ["Pre-K", "4k", "5k", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th"]
 
     "#{grades[grade_id]} - #{name}"
   end
