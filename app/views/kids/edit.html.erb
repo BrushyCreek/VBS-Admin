@@ -9,7 +9,7 @@ Edit <%= @kid.first_name %>'s Registration
   <br>
   <div class="row">
     <div class="col-sm-6 offset-3">
-      <%= f.submit "Save",  class: "btn btn-primary"%>
+      <%= f.submit "Save", data: {"disable_with":"Saving..."}, class: "btn btn-primary"%>
     </div>
   </div>
   <% end %>
