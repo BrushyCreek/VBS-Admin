@@ -1,3 +1,6 @@
+<hr>
+<h3>Child Info</h3>
+<hr>
 <div class="form-group row">
   <label class="col-sm-3 text-sm-right col-form-label">Name</label>
   <div class="col-sm-4">
@@ -52,7 +55,7 @@
 
 <div class="form-group row">
   <label class="col-sm-3 text-sm-right col-form-label">Invited By</label>
-  <div class="col-sm-6">
+  <div class="col-sm-8 ">
   <%= f.text_field :invited_by, class: "form-control" %>
   <small class="form-text text-muted">If you were invited by a member of Brushy Creek please give thier name.</small>
   </div>
@@ -142,7 +145,7 @@
       <small class="form-text text-muted">City</small>
     </div>
     <div class="col-2">
-      <%= f.select :state, CS.states(:us),{selected: "SC"}, class: "custom-select"%>
+      <%= f.select :state, CS.states(:us),{}, class: "custom-select w-100"%>
       <small class="form-text text-muted">State</small>
     </div>
     <div class="col-3">
