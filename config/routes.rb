@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users, skip: [:registrations],
-             controller: {
-               sessions: 'users/sessions',
-               passwords: 'users/passwords',
-               registrations: 'users/registrations'
-             }
+  devise_for :users, skip: [:registrations]
+  
   # Recreates the Devise registrations routes
   # They act on a singular user (the signed in user)
   # Add the actions you want in 'only:'
