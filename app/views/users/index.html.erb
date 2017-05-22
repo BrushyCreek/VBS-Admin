@@ -3,7 +3,13 @@
   <div>
     <%= link_to "Add User", new_user_path, class: "btn btn-primary btn-sm" %>
     <hr>
-    <p><strong>Current User:</strong> <%= current_user.name %> <%= link_to "(Edit)", edit_user_registration_path %></p>
+    <p><strong>Current User:</strong>
+      <%= current_user.name %>
+      <% if current_user.admin.present? %>
+      <span class="badge badge-default">Admin</span>      
+      <% end %>
+      <%= link_to "(Edit)", edit_user_registration_path %>
+    </p>
  </div>
   <% if @users.present?%>
   <table class="table table-sm table-hover">
@@ -25,7 +31,7 @@
 	<td></td>
 	<% end %>
 	<td><%= user.current_sign_in_at %></td>
-	<td><%= link_to "Edit", edit_user_path %></td>
+	<td><%= link_to "Edit", edit_user_path(user) %></td>
       </tr>
       <% end %>
     </tbody>

@@ -8,9 +8,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-    
-  end
   def create
     @user = User.create(user_params)
     if @user.save
@@ -25,10 +22,31 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "<strong>#{@user.name}</strong> was successfully updates"
+      redirect_to users_path
+    else
+      flash.now[:warning] = "somthing went wrong"
+      render 'edit'
+    end                                         
+  end
+
+  def destory
+    User.find(params[:id]).destroy
+    flash[:success] = "User removed"
+    redirect_to user_path
+  end
+  
   private
 
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation)
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :admin)
   end
 end
 
