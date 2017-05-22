@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   scope :all_except, ->(user) { where.not(id: user) }
+  scope :sort_by_name, -> { order(name :asc) }
 end
  

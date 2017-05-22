@@ -1,0 +1,17 @@
+<% content_for :title do %>
+Edit <%= "#{@user.name}" %>
+<% end %>
+
+<div class="container">
+  <h1>Edit User </h1>
+  <%= render partial: "errors", locals: {kid: @kid} %>
+  <%= form_for @user do |f| %>
+  <%= render partial: "user_form", locals: {user: @user, f: f} %>
+  <br>
+  <div class="row">
+    <div class="col-sm-6 offset-3">
+      <%= f.submit "Save",  class: "btn btn-primary"%>
+    </div>
+  </div>
+  <% end %>
+</div>

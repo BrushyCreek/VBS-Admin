@@ -73,10 +73,10 @@ Kids Inbox
 	      <td><%= find_age(kid.birthdate) %></td>
 	      <td><%= current_grade(kid.last_grade_id) %></td>
 	      <td>
-	      <% if kid.group == nil %>
-	      <%= "--" %>
-	      <% else %>
+	      <% if kid.group.present? %>
 	      <%= "#{kid.group.name}" %>
+	      <% else %>
+	      <%= "--" %>
 	      <% end %>
 	      </td>
 	      <td></td>

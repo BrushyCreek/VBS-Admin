@@ -8,10 +8,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    
+  end
   def create
     @user = User.create(user_params)
     if @user.save
-      flash[:success] = "<strong>#{@user.email}</strong> was successfully created"
+      flash[:success] = "<strong>#{@user.name}</strong> was successfully created"
     else
       flash.now[:warning] = "Something went wrong"
       render 'new'

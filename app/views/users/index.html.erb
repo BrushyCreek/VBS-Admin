@@ -1,9 +1,40 @@
-<table>
-  <tbody>
-    <% @users.each do | user | %>
-    <tr>
-      <td><%= user.name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-  </table>
+<div class="container">
+  <h1>User Accounts</h1>
+  <div>
+    <%= link_to "Add User", new_user_path, class: "btn btn-primary btn-sm" %>
+    <hr>
+    <p><strong>Current User:</strong> <%= current_user.name %> <%= link_to "(Edit)", edit_user_registration_path %></p>
+ </div>
+  <% if @users.present?%>
+  <table class="table table-sm table-hover">
+    <thead>
+      <tr>
+	<th>Name</th>
+	<th>Admin?</th>
+	<th>Last Log-In</th>
+	<td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+	<td><%= user.name %></td>
+	<% if user.admin.present? %>
+	<td><span class="badge badge-default">Admin</span></td>
+	<% else %>
+	<td></td>
+	<% end %>
+	<td><%= user.current_sign_in_at %></td>
+	<td><%= link_to "Edit", edit_user_path %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% else %>
+  <div>
+    <hr>
+    <p><strong>No other users found</strong></p>
+    <hr>
+  </div>
+  <% end %>
+</div>
