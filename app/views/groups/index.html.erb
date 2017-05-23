@@ -10,9 +10,9 @@
 	<a class="btn btn-primary btn-sm" href="<%= new_group_path %>">Add New</a>
       </div>
     </div>
+    <hr>
     <br>
       <div class="row">
-
 	<% @groups.sort_by_grade.sort_by_name.each do | group | %>
 	<div class="col-lg-3 col-md-4">
 	  <div id=<%= "group-#{group.id}" %> class="card mb-4">
@@ -24,6 +24,7 @@
 		<li class="nav-item">
 		  <a class="nav-link" href="">Print</a>
 		</li>
+		<%= link_to "Delete", group_path(group.id), method: :delete, class: "nav-link", data: {confirm: "Are you sure?" } %>
 	      </ul>
 	    </div>
 	    <div class="card-block">
