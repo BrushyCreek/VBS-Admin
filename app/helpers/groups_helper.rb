@@ -1,7 +1,5 @@
 module GroupsHelper
-  # def name_grade(group_id)
-  #   grp = Group.find(group_id)
-  #   return "#{grade_types[grp.grade_id]} - #{grp.name}"
-  # end 
-  
+  def group_grades
+    ["Pre-K", "4k", "5k", "1st", "2nd", "3rd", "4th", "5th", "6th & 7th"]
+  end
 end

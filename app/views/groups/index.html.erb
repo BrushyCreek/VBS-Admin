@@ -6,65 +6,61 @@
     </div>
     
     <div class="row justify-content-center mt-4">
-      <div class="col-lg-12 mb-3 ml-4">
+      <div class="col-lg-12 mb-3">
 	<a class="btn btn-primary btn-sm" href="<%= new_group_path %>">Add New</a>
       </div>
     </div>
     <br>
-    <% grade_types.each_with_index do | grade, index | %>
-    <div
-    <div class = "row mt-4">
-      <h2 class = "col-md-3 ml-3"><%= grade %></h2>
-    </div>
-    <div class="row pt-4 mx-2 bg-faded rounded">
-      <% @groups.where("grade_id = ?", index).sort_by_name.each do | group | %>
-      <div class="col-xl-3">
-	<div id=<%=group.id %> class="card mb-4">
-	  <div class="card-header">
-	    <ul class="nav nav-pills card-header-pills">
-	      <li class="nav-item">
-		<a class="nav-link active" href="edit_group_path">Edit</a>
-	      </li>
-	      <li class="nav-item">
-		<a class="nav-link" href="">Print</a>
-	      </li>
-	    </ul>
-	  </div>
-	  <div class="card-block">
-	    <h4 class="card-title"><%= group.name %></h4>
-	    <hr>
-	    <div class="row">
-	      <% group.volunteers.sort_by_last_name.each do |leader| %>
-	      <div class="col-6">
-	      <%= link_to "#{leader.first_name} #{leader.last_name}", volunteer_path(leader) %>
-	      </div>
-	      <% end %>
+      <div class="row">
+
+	<% @groups.sort_by_grade.sort_by_name.each do | group | %>
+	<div class="col-lg-3 col-md-4">
+	  <div id=<%= "group-#{group.id}" %> class="card mb-4">
+	    <div class="card-header">
+	      <ul class="nav nav-pills card-header-pills">
+		<li class="nav-item">
+		  <a class="nav-link active" href="<%= edit_group_path(group.id) %>">Edit</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link" href="">Print</a>
+		</li>
+	      </ul>
 	    </div>
+	    <div class="card-block">
+	      <h4 class="card-title"><%= group.name_grade %></h4>
+	      <hr>
+	      <div class="row">
+		<% group.volunteers.sort_by_last_name.each do |leader| %>
+		<div class="col-6">
+		  <%= link_to "#{leader.first_name} #{leader.last_name}", volunteer_path(leader) %>
+		</div>
+		<% end %>
+	      </div>
+	    </div>
+	    <table class="table table-sm table-hover">
+	      <tbody>
+		<% group.kids.each do |kid| %>
+		<tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
+		  <td></td> <!-- Use this for the buddy request icon -->
+		  <td><%= "#{kid.first_name} #{kid.last_name}" %></td>
+		  <td><%#= find_age(kid.birthdate) %></td>
+		  <td>
+		    <% if kid.allergies %>
+		    <span class="badge badge-warning">Allergies</span>
+		    <% end %>
+		    <% if kid.medical_issues %>
+		    <span class="badge badge-info">Other</span>
+		    <% else %>
+		    <% end %>
+		  </td>
+		</tr>
+		<% end %>
+	      </tbody>
+	    </table>
 	  </div>
-	  <table class="table table-sm table-hover">
-	    <tbody>
-	      <% group.kids.each do |kid| %>
-	      <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
-		<td></td> <!-- Use this for the buddy request icon -->
-		<td><%= "#{kid.first_name} #{kid.last_name}" %></td>
-		<td><%#= find_age(kid.birthdate) %></td>
-		<td>
-		  <% if kid.allergies %>
-		  <span class="badge badge-warning">Allergies</span>
-		  <% end %>
-		  <% if kid.medical_issues %>
-		  <span class="badge badge-info">Other</span>
-		  <% else %>
-		  <% end %>
-		</td>
-	      </tr>
-	      <% end %>
-	    </tbody>
-	  </table>
 	</div>
+	<% end %>
       </div>
-      <% end %>
-    </div>	
-    <% end %>
+    </div>
 </div>
   
