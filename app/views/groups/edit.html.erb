@@ -1,7 +1,14 @@
 <%= content_for :title do %>
-Edit New Class
+Edit: <%= "#{@group.grade_name}" %>
 <% end %>
 
-<div class="container">
-  <%= render partial: 'form', locals: {group: @group} %>
+<div class="container w-50">
+  <h1>Edit: <%= "#{@group.grade_name}" %></h1>
+  <%= form_for @group do |f| %>
+  <%= render partial: 'form', locals: {f: f} %>
+  <div class="form-group row">
+    <div class="col-sm-10 offset-1">
+      <%= f.submit 'Save',  class: "btn btn-primary" %>
+    </div>
+  <% end %>
   </div>

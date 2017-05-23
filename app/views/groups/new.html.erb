@@ -1,7 +1,13 @@
 <%= content_for :title do %>
-Add New Class
+New Class
 <% end %>
 
-<div class="container">
-  <%= render partial: 'form', locals: {group: @group} %>
+<div class="container w-50">
+  <%= form_for @group do |f| %>
+  <%= render partial: 'form', locals: {f: f} %>
+  <div class="form-group row">
+    <div class="col-sm-10 offset-1">
+      <%= f.submit 'Save',  class: "btn btn-primary" %>
+    </div>
+  <% end %>
   </div>
