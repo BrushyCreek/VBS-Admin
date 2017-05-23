@@ -19,7 +19,7 @@
 	    <div class="card-header">
 	      <ul class="nav nav-pills card-header-pills">
 		<li class="nav-item">
-		  <a class="nav-link active" href="<%= edit_group_path(group.id) %>">Edit</a>
+		  <%= link_to "Edit", edit_group_path(group.id), class: "nav-link active" %>
 		</li>
 		<li class="nav-item">
 		  <a class="nav-link" href="">Print</a>
