@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   # Recreates the Devise registrations routes
   # They act on a singular user (the signed in user)
   # Add the actions you want in 'only:'
+  devise_scope :user do
     resource :users,
              only: [:edit, :update, :destroy],
              controller: 'devise/registrations',
              as: :user_registration do
       get 'cancel'
     end
+  end
 
     authenticated :user do   
       # Seting up admin scope for :users
