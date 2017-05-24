@@ -75,7 +75,7 @@ Kids Inbox
 	    <td></td>
 	    <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %></td>
 	    <td><%= find_age(kid.birthdate) %></td>
-	    <td><%= current_grade(kid.last_grade_id) %></td>
+	    <td><%= kid.current_grade %></td>
 	    <td>
 	      <% if kid.group.present? %>
 	      <%= kid.group.name %>

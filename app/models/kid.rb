@@ -2,6 +2,7 @@ class Kid < ApplicationRecord
   belongs_to :group, optional: true
   
   scope :sort_by_last_name, -> { order( last_name: :asc ) }
+  scope :sort_by_grade, -> { order( last_grade_id: :asc ) }
   
   validates :first_name, :last_name, presence: true
 
@@ -22,4 +23,19 @@ class Kid < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def current_grade
+    lg = self.last_grade_id
+    if lg == 8
+      return "7th"
+    else
+      return "#{Kid.grade_types.at(lg + 1)}"
+    end
+  end
+
+  def self.grade_types
+    ["Pre-K", "4k", "5k", "1st", "2nd", "3rd", "4th", "5th", "6th"]
+  end
+    
 end
+

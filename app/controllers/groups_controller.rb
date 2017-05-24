@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
   def index
+    # @unassigned_kids = Kid.where(group_id: nil).find_each
+    @unassigned_kids = Kid.where(group_id: nil).all
     @groups = Group.all
   end
 

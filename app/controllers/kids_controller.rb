@@ -65,6 +65,7 @@ class KidsController < ApplicationController
       render 'register'
     end
   end
+  
   private
   
   def kid_params

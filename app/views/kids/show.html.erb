@@ -19,7 +19,7 @@
       <h4><%= pretty_print_date(@kid.birthdate) %></h4>
       
       <h5>Current Grade:</h5>
-      <h4><%= current_grade(@kid.last_grade_id) %></h4>
+      <h4><%= @kid.current_grade %></h4>
       
       <h4>Regular Attendee: <%= @kid.church_member ? "Yes" : "No" %> </h4>
       <% if !@kid.church_member %>
