@@ -47,7 +47,13 @@
 	      <% end %>
 	    <% elsif volunteer.leader_type == "Location" %>
 	      <% if volunteer.leader_id == nil %>
-	      <td>Area</td>
+	      <td>Station</td>
+	      <% else %>
+	      <td><%= "#{volunteer.leader.name}" %></td>
+	      <% end %>
+	      <% elsif volunteer.leader_type == "Team" %>
+	      <% if volunteer.leader_id == nil %>
+	      <td>Station</td>
 	      <% else %>
 	      <td><%= "#{volunteer.leader.name}" %></td>
 	      <% end %>
