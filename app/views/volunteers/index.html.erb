@@ -40,9 +40,17 @@
 	    <td></td>
 	    <td onclick="window.location='<%= volunteer_path(volunteer)%>';" style='cursor: pointer;'><%= "#{volunteer.first_name} #{volunteer.last_name}" %></td>
 	    <% if volunteer.leader_type == "Group" %>
-	    <td><%= "#{volunteer.leader.name_grade}" %></td>
+	      <% if volunteer.leader_id == nil %>
+	      <td>Class</td>
+	      <% else %>
+	      <td><%= "#{volunteer.leader.name_grade}" %></td>
+	      <% end %>
 	    <% elsif volunteer.leader_type == "Location" %>
-	    <td><%= "#{volunteer.leader.name}" %></td>
+	      <% if volunteer.leader_id == nil %>
+	      <td>Area</td>
+	      <% else %>
+	      <td><%= "#{volunteer.leader.name}" %></td>
+	      <% end %>
 	    <% elsif volunteer.leader_type == "none" %>
 	    <td>--</td>
 	    <% end %>

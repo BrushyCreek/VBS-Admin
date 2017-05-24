@@ -1,9 +1,10 @@
 <%= content_for :title do %>
-Edit: <%= "#{@group.grade_name}" %>
+Edit: <%= "#{@group.name_grade}" %>
 <% end %>
 
 <div class="container w-50">
-  <h1>Edit: <%= "#{@group.grade_name}" %></h1>
+  <h1>Edit: <strong><%= "#{@group.name_grade}" %></strong></h1>
+  </br>
   <%= form_for @group do |f| %>
   <%= render partial: 'form', locals: {f: f} %>
   <div class="form-group row">
