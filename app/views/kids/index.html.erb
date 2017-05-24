@@ -67,34 +67,38 @@ Kids Inbox
 	
 	<tbody>
 	  <% @kids.sort_by_last_name.each do |kid| %>
+	  <% if kid.highlight %>	
+	  <tr class="table-warning">
+	  <% else %>
 	  <tr>
-	      <td></td>
-	      <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %></td>
-	      <td><%= find_age(kid.birthdate) %></td>
-	      <td><%= current_grade(kid.last_grade_id) %></td>
-	      <td>
-	      <% if kid.group.present? %>
-	      <%= "#{kid.group.name}" %>
-	      <% else %>
-	      <%= "--" %>
-	      <% end %>
-	      </td>
-	      <td></td>
-	      <td>
-		<% if kid.allergies %>
-		<span class="badge badge-warning">Allergies</span>
-		<% end %>
-		<% if kid.medical_issues %>
-		<span class="badge badge-info">Other</span>
-		<% else %>
-		<% end %>
-	      </td>
-	    </div>
-	    <td><%= link_to "Edit", edit_kid_path(kid) %></td>
-	  </tr>
 	  <% end %>
-	</tbody>
-      </table>
+	    <td></td>
+	    <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %></td>
+	    <td><%= find_age(kid.birthdate) %></td>
+	    <td><%= current_grade(kid.last_grade_id) %></td>
+	    <td>
+	      <% if kid.group.present? %>
+	      <%= kid.group.name %>
+	      <% else %>
+	      --
+	      <% end %>
+	    </td>
+	    <td></td>
+	    <td>
+	      <% if kid.allergies %>
+	      <span class="badge badge-warning">Allergies</span>
+	      <% end %>
+	      <% if kid.medical_issues %>
+	      <span class="badge badge-info">Other</span>
+	      <% else %>
+	      <% end %>
+	    </td>
+    </div>
+    <td><%= link_to "Edit", edit_kid_path(kid) %></td>
+    </tr>
+    <% end %>
+    </tbody>
+    </table>
     </div>
   </div>
   
