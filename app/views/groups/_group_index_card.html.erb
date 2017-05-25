@@ -1,0 +1,46 @@
+<div class="col-lg-3 col-md-4">
+  <div id=<%= "group-#{group.id}" %> class="card mb-4" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+	<li class="nav-item">
+	  <%= link_to "Edit", edit_group_path(group.id), class: "nav-link active" %>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link" href="">Print</a>
+	</li>
+	<%= link_to "Delete", group_path(group.id), method: :delete, class: "nav-link", data: {confirm: "Are you sure?" } %>
+      </ul>
+    </div>
+    <div class="card-block">
+      <h4 class="card-title"><%= group.name_grade %></h4>
+      <hr>
+      <div class="row">
+	<% group.volunteers.sort_by_last_name.each do |leader| %>
+	<div class="col-6">
+	  <%= link_to "#{leader.first_name} #{leader.last_name}", volunteer_path(leader) %>
+	</div>
+	<% end %>
+      </div>
+    </div>
+    <table class="table table-sm table-hover">
+      <tbody>
+	<% group.kids.each do |kid| %>
+	<tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
+	  <td></td> <!-- Use this for the buddy request icon -->
+	  <td><%= "#{kid.first_name} #{kid.last_name}" %></td>
+	  <td><%#= find_age(kid.birthdate) %></td>
+	  <td>
+	    <% if kid.allergies %>
+	    <span class="badge badge-warning">Allergies</span>
+	    <% end %>
+	    <% if kid.medical_issues %>
+	    <span class="badge badge-info">Other</span>
+	    <% else %>
+	    <% end %>
+	  </td>
+	</tr>
+	<% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,11 +1,19 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-
-function handleDragStart(e) {
-  this.style.opacity = '0.4';  // this / e.target is the source node.
+function dragstart_handler(ev) {
+    console.log("dragstart");
+    ev.dataTransfer.setData("text/html", ev.target.id);
+    ev.dataTransfer.effectAllowed = "move";
 }
 
-var cols = document.querySelectorAll('#kids_div .kid_card');
-[].forEach.call(cols, function(col) {
-  col.addEventListener('dragstart', handleDragStart, false);
-});
+function dragover_handler(ev) {
+    ev.preventDefault();
+    ev.dataTransfer.dropEffect = "move";
+}
+
+function drop_handler(ev) {
+    ev.preventDefault();
+
+    var data = ev.dataTransfer.getData("text/html");
+    console.log("dropped");
+}

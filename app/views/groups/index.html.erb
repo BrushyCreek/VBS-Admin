@@ -1,79 +1,23 @@
 <div class = "container w-100">
-    <div class="row justify-content-center">
-      <div class="col">
-	<h1>Classes</h1>
-      </div>
+  <h1>Classes</h1>
+  
+  <div class="row mt-4">
+    <div class="col-lg-12 mb-3">
+      <a class="btn btn-primary btn-sm" href="<%= new_group_path %>">Add New</a>
     </div>
-    
-    <div class="row justify-content-center mt-4">
-      <div class="col-lg-12 mb-3">
-	<a class="btn btn-primary btn-sm" href="<%= new_group_path %>">Add New</a>
-      </div>
+  </div>
+  <hr>
+  <br>
+  <div class=" bg-faded fixed-bottom h-25 px-2">
+    <h4>Unassigned Kids</h4>
+    <div class="h-100" style="overflow:scroll;">
+      <%= render partial: "unassigned_kid", locals: {kids: @unassigned_kids} %>
     </div>
-    <hr>
-    <br>
-    <div class="bg-faded fixed-bottom h-25 mx-4" style="overflow: scroll;">
-      <div  id="kids_div" class="">
-      <% @unassigned_kids.sort_by_grade.sort_by_last_name.each do | kid | %>
-      <div class=" m-2 bg-primary">
-	<div id="<%= kid.id %>" class="kid_card" draggable="true">
-	  <p><strong><%= kid.full_name %></strong> - <%= kid.current_grade %></p>
-	  <p>Buddy: <%= kid.buddy_request %></p>
-	</div>
-      </div>
-      <% end %>
-      </div>
     </div>
-    <div class="row">
-	<% @groups.sort_by_grade.sort_by_name.each do | group | %>
-	<div class="col-lg-3 col-md-4">
-	  <div id=<%= "group-#{group.id}" %> class="card mb-4">
-	    <div class="card-header">
-	      <ul class="nav nav-pills card-header-pills">
-		<li class="nav-item">
-		  <%= link_to "Edit", edit_group_path(group.id), class: "nav-link active" %>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link" href="">Print</a>
-		</li>
-		<%= link_to "Delete", group_path(group.id), method: :delete, class: "nav-link", data: {confirm: "Are you sure?" } %>
-	      </ul>
-	    </div>
-	    <div class="card-block">
-	      <h4 class="card-title"><%= group.name_grade %></h4>
-	      <hr>
-	      <div class="row">
-		<% group.volunteers.sort_by_last_name.each do |leader| %>
-		<div class="col-6">
-		  <%= link_to "#{leader.first_name} #{leader.last_name}", volunteer_path(leader) %>
-		</div>
-		<% end %>
-	      </div>
-	    </div>
-	    <table class="table table-sm table-hover">
-	      <tbody>
-		<% group.kids.each do |kid| %>
-		<tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
-		  <td></td> <!-- Use this for the buddy request icon -->
-		  <td><%= "#{kid.first_name} #{kid.last_name}" %></td>
-		  <td><%#= find_age(kid.birthdate) %></td>
-		  <td>
-		    <% if kid.allergies %>
-		    <span class="badge badge-warning">Allergies</span>
-		    <% end %>
-		    <% if kid.medical_issues %>
-		    <span class="badge badge-info">Other</span>
-		    <% else %>
-		    <% end %>
-		  </td>
-		</tr>
-		<% end %>
-	      </tbody>
-	    </table>
-	  </div>
-	</div>
-	<% end %>
-      </div>
-    </div>
+  <div class="row">
+    <% @groups.sort_by_grade.sort_by_name.each do | group | %>
+      <%= render partial: "group_index_card", locals: {group: group} %>
+    <% end %>
+  </div>
 </div>
   
