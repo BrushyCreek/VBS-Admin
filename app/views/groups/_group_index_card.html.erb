@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-4">
-  <div id=<%= "group-#{group.id}" %> class="card mb-4" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+  <div id="group_<%= group.id %>" class="groupcard card mb-4" data-group-id="<%= group.id %>">
     <div class="card-header">
       <ul class="nav nav-pills card-header-pills">
 	<li class="nav-item">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <table class="table table-sm table-hover">
-      <tbody>
+      <tbody class="kids_table_boddy">
 	<% group.kids.each do |kid| %>
 	<tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
 	  <td></td> <!-- Use this for the buddy request icon -->
