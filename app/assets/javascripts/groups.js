@@ -26,5 +26,5 @@ document.addEventListener("turbolinks:load", function() {
     console.log('Im stil here');
     var bucketOfKids = document.getElementById('kids-div');
     console.log(bucketOfKids);
-    bucketOfKids.addEventListener("dragstart", dragstart_handler, false);
+    // bucketOfKids.addEventListener("dragstart", dragstart_handler, false); 
 });
