@@ -63,7 +63,7 @@ document.addEventListener("turbolinks:load", function() {
 	    new Dragster(droppableGroup);
 	    droppableGroup.addEventListener("dragster:enter", dragenter_handler, false);
 	    // droppableGroup.addEventListener("dragover", dragover_handler, false);
-	    droppableGroup.addEventListener("drop", drop_handler, false);
+	    droppableGroup.addEventListener("dragend", drop_handler, false);
 	    droppableGroup.addEventListener("dragster:leave", dragleave_handler, false);
 	}
 	
