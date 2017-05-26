@@ -38,7 +38,6 @@ function dragleave_handler(ev) {
 
 function drop_handler(ev) {
     console.log("drop");
-    ev.preventDefault();
     var data = ev.dataTransfer.getData("text/html");
     var draggedElement = document.getElementById(data);
     console.log("Dropped:", draggedElement);
