@@ -9,20 +9,22 @@ function contains(list, value) {
 function dragstart_handler(ev) {
     ev.stopPropagation();
     console.log("dragstart");
+    ev.target.classList.add("draged");
     ev.dataTransfer.setData("text/html", ev.target.id);
     ev.dataTransfer.effectAllowed = "move";
     console.log("Started dragging:", ev.target);
 }
 
 function dragenter_handler(ev) {
-	ev.stopPropagation();
-	console.log("dragenter");
-	ev.target.classList.add("groupcard-dragover", "card-primary");
-	console.log("Dragged Into:", ev.currentTarget);
+    ev.preventDefault();
+    ev.stopPropagation();
+    console.log("dragenter");
+    ev.currentTarget.classList.add("groupcard-dragover");
+    console.log("Dragged Into:", ev.currentTarget);
 }
 
 function dragover_handler(ev) {
-    if (contains(ev.dataTransfer.types, "text/html")) {
+    if (ev.dataTransfer.types.includes("text/html")) {
 	ev.stopPropagation();
 	// console.log("dragging over");
 	ev.preventDefault();
@@ -32,11 +34,12 @@ function dragover_handler(ev) {
 	    
 function dragleave_handler(ev) {
     ev.stopPropagation();
-    ev.target.classList.remove("groupcard-dragover", "card-primary");
+    ev.currentTarget.classList.remove("groupcard-dragover");
     console.log("dragging left:", ev.currentTarget);
 }
 
 function drop_handler(ev) {
+    ev.preventDefault();
     console.log("drop");
     var data = ev.dataTransfer.getData("text/html");
     var draggedElement = document.getElementById(data);
@@ -59,11 +62,14 @@ document.addEventListener("turbolinks:load", function() {
 	var bucketOfDroppableGroups = document.querySelectorAll(".groupcard");
 	console.log(bucketOfDroppableGroups);
 	for (let droppableGroup of bucketOfDroppableGroups) {
-	    new Dragster(droppableGroup);
+	    new Dragster(droppableGroup); // using dragster.js to create custom dragenter and drag leave events beacus the default suck
 	    droppableGroup.addEventListener("dragster:enter", dragenter_handler, false);
-	    // droppableGroup.addEventListener("dragover", dragover_handler, false);
-	    droppableGroup.addEventListener("dragend", drop_handler, false);
 	    droppableGroup.addEventListener("dragster:leave", dragleave_handler, false);
+	    // droppableGroup.addEventListener("dragenter", dragenter_handler, false);
+	    // droppableGroup.addEventListener("dragleave", dragleave_handler, false);
+	    droppableGroup.addEventListener("dragover", dragover_handler, false);
+	    droppableGroup.addEventListener("drop", drop_handler, false);
+	    
 	}
 	
     } // end if statment testing for body class

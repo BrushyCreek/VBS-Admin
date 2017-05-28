@@ -3,5 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .groupcard-dragover {
+    border: 1px solid black;
+}
+.groupcard-dragover * {
+   // pointer-events: none;
+}
 
+    
+.kidcard.draged {
+    opacity: .5;
 }
