@@ -61,7 +61,9 @@ function drop_handler(ev) {
     
     if (draggedElement.hasAttribute("data-kid-id")) {
 	// send AJAX request to add succsefullt draged kid to group
-	//realod the table adding kid to top of it
+	// reload the table adding kid to top of it
+	// we may need to remove the kids card from the bucket here
+	// so that we can wait to make sure the request went through
 	var kidToAdd = draggedElement.getAttribute("data-kid-id");
 	var destGroup = currentTarget.getAttribute("data-group-id");
     }
@@ -69,11 +71,6 @@ function drop_handler(ev) {
     console.log("Dropped:", draggedElement);
     console.log("Dropped on:", ev.currentTarget);
 }
-
-function ancesterWithClass(elm, ancesterClass) {
-    // find the nearest ancestor of element with the attribute of attr
-}
-
 
 document.addEventListener("turbolinks:load", function() {
     if (document.body.classList.contains("groups")) { // this first checks that we are on a page belonging to the correct  rails controller.
