@@ -58,12 +58,14 @@ function drop_handler(ev) {
     console.log("drop");
     var data = ev.dataTransfer.getData("text/html");
     var draggedElement = document.getElementById(data);
+    
     if (draggedElement.hasAttribute("data-kid-id")) {
 	// send AJAX request to add succsefullt draged kid to group
 	//realod the table adding kid to top of it
 	var kidToAdd = draggedElement.getAttribute("data-kid-id");
 	var destGroup = currentTarget.getAttribute("data-group-id");
     }
+    
     console.log("Dropped:", draggedElement);
     console.log("Dropped on:", ev.currentTarget);
 }
