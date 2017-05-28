@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.groupcard-dragover {
-    border: 1px solid black;
+.groupcard.dropable {
+    border: 3px solid black;
 }
-.groupcard-dragover * {
+.groupcard.dropable * {
    // pointer-events: none;
 }
 

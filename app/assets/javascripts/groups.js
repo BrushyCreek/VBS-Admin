@@ -6,6 +6,7 @@ function contains(list, value) {
     }
     return false;
 }
+
 function dragstart_handler(ev) {
     ev.stopPropagation();
     console.log("dragstart");
@@ -19,7 +20,7 @@ function dragenter_handler(ev) {
     ev.preventDefault();
     ev.stopPropagation();
     console.log("dragenter");
-    ev.currentTarget.classList.add("groupcard-dragover");
+    ev.currentTarget.classList.add("dropable");
     console.log("Dragged Into:", ev.currentTarget);
 }
 
@@ -34,15 +35,35 @@ function dragover_handler(ev) {
 	    
 function dragleave_handler(ev) {
     ev.stopPropagation();
-    ev.currentTarget.classList.remove("groupcard-dragover");
+    ev.currentTarget.classList.remove("dropable");
     console.log("dragging left:", ev.currentTarget);
+}
+
+function dragend_handler(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    console.log("dragend");
+    if (ev.dropEffect === 'none') {
+	ev.target.classList.remove("draged");
+    }
+    else {
+	ev.target.closest(".kidcard-col").remove();
+    }
 }
 
 function drop_handler(ev) {
     ev.preventDefault();
+    ev.stopPropagation();
+    ev.currentTarget.classList.remove("dropable");
     console.log("drop");
     var data = ev.dataTransfer.getData("text/html");
     var draggedElement = document.getElementById(data);
+    if (draggedElement.hasAttribute("data-kid-id")) {
+	// send AJAX request to add succsefullt draged kid to group
+	//realod the table adding kid to top of it
+	var kidToAdd = draggedElement.getAttribute("data-kid-id");
+	var destGroup = currentTarget.getAttribute("data-group-id");
+    }
     console.log("Dropped:", draggedElement);
     console.log("Dropped on:", ev.currentTarget);
 }
@@ -58,6 +79,7 @@ document.addEventListener("turbolinks:load", function() {
 	var bucketOfDraggableKids = document.getElementById("kids-div");
 	console.log(bucketOfDraggableKids);
 	bucketOfDraggableKids.addEventListener("dragstart", dragstart_handler, false);
+	bucketOfDraggableKids.addEventListener("dragend", dragend_handler, false);
 
 	var bucketOfDroppableGroups = document.querySelectorAll(".groupcard");
 	console.log(bucketOfDroppableGroups);
