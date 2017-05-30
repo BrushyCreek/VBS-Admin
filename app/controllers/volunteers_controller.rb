@@ -1,6 +1,10 @@
 class VolunteersController < ApplicationController
   def index
-    @volunteers = Volunteer.all
+    if params[:term]
+      @volunteers = Volunteer.search_for(params[:term])
+    else
+      @volunteers = Volunteer.all
+    end
   end
 
   def new
