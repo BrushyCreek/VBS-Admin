@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       flash[:success] = "<strong>#{@user.name}</strong> was successfully created"
+      redirect_to users_path
     else
       flash.now[:warning] = "Something went wrong"
       render 'new'
