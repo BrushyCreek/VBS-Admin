@@ -1,0 +1,18 @@
+<tbody class="kids_table_boddy">
+  <% group.kids.each do |kid| %>
+  <tr onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'>
+    <td></td> <!-- Use this for the buddy request icon -->
+    <td><%= "#{kid.first_name} #{kid.last_name}" %></td>
+    <td><%#= find_age(kid.birthdate) %></td>
+    <td>
+      <% if kid.allergies %>
+      <span class="badge badge-warning">Allergies</span>
+      <% end %>
+      <% if kid.medical_issues %>
+      <span class="badge badge-info">Other</span>
+      <% else %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</tbody>

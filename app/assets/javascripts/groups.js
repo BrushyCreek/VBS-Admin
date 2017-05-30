@@ -14,6 +14,8 @@ function dragstart_handler(ev) {
     ev.dataTransfer.setData("text/html", ev.target.id);
     ev.dataTransfer.effectAllowed = "move";
     console.log("Started dragging:", ev.target);
+    //TODO: set the drag image so that it is the whole element being dragged,
+    // currently it will be cut off if the whoe element isnt visible
 }
 
 function dragenter_handler(ev) {
@@ -30,6 +32,7 @@ function dragover_handler(ev) {
 	// console.log("dragging over");
 	ev.preventDefault();
 	ev.dataTransfer.dropEffect = "move";
+	//console.log(ev.dataTransfer.dropEffect);
     }
 }
 	    
@@ -43,12 +46,14 @@ function dragend_handler(ev) {
     ev.preventDefault();
     ev.stopPropagation();
     console.log("dragend");
-    if (ev.dropEffect === 'none') {
-	ev.target.classList.remove("draged");
+    if (ev.dataTransfer.dropEffect === "move") {
+	ev.target.closest(".kidcard-col").remove();
+	console.log("dropEffect is move");
     }
     else {
-	ev.target.closest(".kidcard-col").remove();
-    }
+	console.log("something else happened");
+	ev.target.classList.remove("draged");
+    } 
 }
 
 function drop_handler(ev) {
@@ -65,11 +70,12 @@ function drop_handler(ev) {
 	// we may need to remove the kids card from the bucket here
 	// so that we can wait to make sure the request went through
 	var kidToAdd = draggedElement.getAttribute("data-kid-id");
-	var destGroup = currentTarget.getAttribute("data-group-id");
+	var destGroup = ev.currentTarget.getAttribute("data-group-id");
     }
     
     console.log("Dropped:", draggedElement);
     console.log("Dropped on:", ev.currentTarget);
+    console.log(ev.dataTransfer.dropEffect);
 }
 
 document.addEventListener("turbolinks:load", function() {

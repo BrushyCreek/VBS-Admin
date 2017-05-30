@@ -19,7 +19,7 @@ class KidsController < ApplicationController
     flash[:success] = "Kid removed"
     redirect_to kids_path
   end
-  
+
   def update
     @kid = Kid.find(params[:id])
     if @kid.update_attributes(kid_params)
@@ -44,10 +44,6 @@ class KidsController < ApplicationController
   
   def show
     @kid = Kid.find(params[:id])
-
-    respond_to do |format|
-      format.html
-    end
   end
   #These methods are for working with kids from the registration perspective
   def register
