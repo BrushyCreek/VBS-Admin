@@ -72,8 +72,16 @@ Kids Inbox
 	  <% else %>
 	  <tr>
 	  <% end %>
-	    <td></td>
-	    <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %></td>
+	  <td class="text-right">
+	    <% unless kid.can_photograph %>
+	      <i class="fa fa-camera text-danger"></i>
+	    <% end %>
+	  </td>
+	  <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %>
+	    <% unless kid.buddy_request.empty? %>
+	    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+	    <% end %>
+	  </td>
 	    <td><%= find_age(kid.birthdate) %></td>
 	    <td><%= current_grade(kid.last_grade_id) %></td>
 	    <td>
