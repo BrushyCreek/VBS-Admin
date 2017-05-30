@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  has_many :kids
+  has_many :kids, dependent: :nullify
   has_many :volunteers, as: :leader, dependent: :nullify
 
   scope :sort_by_name, -> { order(name: :asc) }

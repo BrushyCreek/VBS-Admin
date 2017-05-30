@@ -12,34 +12,179 @@
       </nav>
     </div>
     <div class="card-block">
-      <h1 class="card-title"><%= @kid.first_name %> <%= @kid.last_name %> <small class="text-muted"> | <%=find_age(@kid.birthdate) %> years old</small></h1>
+      <h1 class="card-title"><%= @kid.first_name %> <%= @kid.last_name %> <small class="text-muted"> | <%=find_age(@kid.birthdate) %> years old | <%= @kid.gender %>
+	<% if !@kid.can_photograph %>
+	<span class="fa-stack">
+	  <i class="fa fa-camera fa-stack-1x"></i>
+	  <i class="fa fa-ban fa-stack-2x text-danger"></i>
+	</span>
+	<% end %>
+	</small>
+      </h1>
       <hr>
-      
-      <h5>Birthday:</h5>
-      <h4><%= pretty_print_date(@kid.birthdate) %></h4>
-      
-      <h5>Current Grade:</h5>
-      <h4><%= current_grade(@kid.last_grade_id) %></h4>
-      
-      <h4>Regular Attendee: <%= @kid.church_member ? "Yes" : "No" %> </h4>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Birthday:</h5>
+	</div>
+	<div class="col-4"> 
+	  <p><%= pretty_print_date(@kid.birthdate) %></p>
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Current Grade:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= current_grade(@kid.last_grade_id)  %></p>
+	</div>
+      </div>
+      <% if @kid.group_id %>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Class:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.group.name_grade  %></p>
+	</div>
+      </div>
+      <% end %>
+      <% unless @kid.buddy_request.empty? %>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Friend Request:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.buddy_request  %></p>
+	</div>
+      </div>
+      <% end %>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Regular Attendee:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.church_member ? "Yes" : "No"  %></p>
+	</div>
+      </div>
       <% if !@kid.church_member %>
-      <h4> Invited By: <%= @kid.invited_by %></h4>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Invited By:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.invited_by %></p>
+	</div>
+      </div>
       <% end %>
 
-      <h4>Shirt size: <%= find_shirt_size(@kid.tshirt_size_id) %></h4>
+      <% if @kid.allergies %>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Allergies:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.allergies_notes %></p>
+	</div>
+      </div>
+      <% end %>
+      <% if @kid.medical_issues %>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Medical Issues:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.medical_issues_notes %></p>
+	</div>
+      </div>
+      <% end %>
 
-      <h5>Parent Name:</h5>
-      <h4><%= @kid.parent_name %></h4>
 
-      <h5>Address:</h5>
-      <address>
-	<%= @kid.address %><br>
-	<%= @kid.city %>, <%= @kid.state %> <%= @kid.zipcode %><br>
-      </address>
+      <div class="row">
+	<div class="col-sm-4 offset-sm-2">
+	  <h4>Parent Info</h4>
+	  <hr>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Name:</h5>
+	</div>
+	<div class="col-sm-4">
+	  <p><%= @kid.parent_name %></p>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Phone:</h5>
+	</div>
+	<div class="col-sm-4">
+	  <p><%= @kid.parent_phone %></p>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Email:</h5>
+	</div>
+	<div class="col-sm-4">
+	  <p><%= @kid.parent_email %></p>
+	</div>
+	</div>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Address:</h5>
+	  </div>
+	<address class="col-sm-6">
+	  <%= @kid.address %><br>
+	  <%= @kid.city %>, <%= @kid.state %> <%= @kid.zipcode %><br>
+	</address>
+      </div>
+      <div class="row">
+	<div class="col-sm-4 offset-sm-2">
+	  <h4>Emergency Contacts and Pickup</h4>
+	</div>
+      </div>
+      
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Contact 1:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.pickupper_1_name %> - <%= @kid.pickupper_1_phone %></p>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Contact 2:</h5>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.pickupper_2_name %> - <%= @kid.pickupper_2_phone %></p>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-sm-2 text-right">
+	  <h5>Contact 3:<h5p>
+	</div>
+	<div class="col-4">
+	  <p><%= @kid.pickupper_3_name %> - <%= @kid.pickupper_3_phone %></p>
+	</div>
+      </div>
+      <% unless @kid.notes == nil %>
+      <div class="row">
+	<div class="col-sm-2 offset-sm-2">
+	  <h4>Notes</h4>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-sm-6 offset-sm-2">
+	  <p><%= @kid.notes %></p>
+	</div>
+      </div>
+      <% end %>
     </div>
-    <div class="card-footer">
-      <small class="text-muted">Last Updated <%= @kid.updated_at.to_time.strftime('%B %e at %l:%M %p') %></small>
-    </div>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted">Last Updated <%= @kid.updated_at.to_time.strftime('%B %e at %l:%M %p') %></small>
   </div>
 </div>
 
