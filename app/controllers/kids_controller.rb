@@ -2,7 +2,11 @@ class KidsController < ApplicationController
   helper ApplicationHelper
   
   def index
-    @kids = Kid.all
+    if params[:term]
+      @kids = Kid.search_for(params[:term])
+    else
+      @kids = Kid.all
+    end      
   end
   
   #These methods are for working with kids from the volunteer context
@@ -97,6 +101,7 @@ class KidsController < ApplicationController
                                 :pickupper_3_phone,
                                 :highlight,
                                 :can_photograph,
-                                :group_id)
+                                :group_id,
+                                :term)
   end
 end

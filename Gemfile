@@ -21,6 +21,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 # Use Sprockets, a dependencie for Bootstrap
 gem 'sprockets-rails', '~> 3.2.0'
 
+gem 'pg_search'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
