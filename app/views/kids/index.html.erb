@@ -36,6 +36,8 @@ Kids Inbox
      <div class="row">
      <div class="col-sm-3">
        <h5>Total Kids: <strong><%= @kids.count %></strong></h5>
+       <h5>Regualar Attendees: <strong><%= @kids.where(church_member: true).count %></strong></h5>
+       <h5>Guest: <strong><%= @kids.where(church_member: false).count %></strong></h5>
        </div>
    </div>
   
