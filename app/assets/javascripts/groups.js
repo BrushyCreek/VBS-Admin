@@ -46,14 +46,7 @@ function dragend_handler(ev) {
     ev.preventDefault();
     ev.stopPropagation();
     console.log("dragend");
-    if (ev.dataTransfer.dropEffect === "move") {
-	ev.target.closest(".kidcard-col").remove();
-	console.log("dropEffect is move");
-    }
-    else {
-	console.log("something else happened");
-	ev.target.classList.remove("draged");
-    } 
+    ev.target.classList.remove("draged");
 }
 
 function drop_handler(ev) {
@@ -62,24 +55,57 @@ function drop_handler(ev) {
     ev.currentTarget.classList.remove("dropable");
     console.log("drop");
     var data = ev.dataTransfer.getData("text/html");
-    var draggedElement = document.getElementById(data);
+    var kidToAddElm = document.getElementById(data);
+    var destGroupElm = ev.currentTarget;
     
-    if (draggedElement.hasAttribute("data-kid-id")) {
+    if (kidToAddElm.hasAttribute("data-kid-id")) {
 	// send AJAX request to add succsefullt draged kid to group
 	// reload the table adding kid to top of it
 	// we may need to remove the kids card from the bucket here
 	// so that we can wait to make sure the request went through
-	var kidToAdd = draggedElement.getAttribute("data-kid-id");
-	var destGroup = ev.currentTarget.getAttribute("data-group-id");
+	console.log("IM here");
+	send_kid_group_change(kidToAddElm, switch_group_kids_table, destGroupElm);
     }
     
-    console.log("Dropped:", draggedElement);
+    console.log("Dropped:", kidToAddElm);
     console.log("Dropped on:", ev.currentTarget);
     console.log(ev.dataTransfer.dropEffect);
 }
 
+function send_kid_group_change (kidToAddElm, doOnSuccess, destGroupElm) {
+    var kidToAddId = kidToAddElm.getAttribute("data-kid-id");	
+    var destGroupId = destGroupElm.getAttribute("data-group-id");
+    $.ajax({
+	url:"/groups/update_kid_assignment",
+	method: "POST",
+	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	data:{"id" : destGroupId, "kid_id" : kidToAddId},
+	dataType: "html",
+	success: function(response) {
+	    doOnSuccess(destGroupElm, response);
+	    kidToAddElm.closest(".kidcard-col").remove();
+	}
+    });
+}
+
+function switch_group_kids_table(dest, result) {
+    var table = dest.querySelector("table");
+    table.innerHTML = "";
+    table.innerHTML = result;
+}
+
+function send_alert(text) {
+    alert(text);
+}
+
 document.addEventListener("turbolinks:load", function() {
     if (document.body.classList.contains("groups")) { // this first checks that we are on a page belonging to the correct  rails controller.
+
+	$.ajaxSetup({
+	    headers: {
+		'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+	    }
+	});
 	
 	var bucketOfDraggableKids = document.getElementById("kids-div");
 	console.log(bucketOfDraggableKids);

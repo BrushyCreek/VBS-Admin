@@ -28,6 +28,9 @@ Rails.application.routes.draw do
       end
     
       resources :groups do
+        collection do
+          post 'update_kid_assignment'
+        end
       end
       
       resources :kids do

@@ -36,12 +36,12 @@ class GroupsController < ApplicationController
     end
   end
 
-  def update_kid_assignment #this action is from groups index it should only be calleb ajax request
-    # @kid = Kid.find(params[:id])
+  def update_kid_assignment #this action is from groups index it should only be called by an ajax request
+    #@kid = Kid.find(params[:id])
     # @group = Group.find(params[:group_id])
     @group = Group.find(params[:id])
     
-    if @kid.update(params[:kid_id], group_id: params[:id])
+    if Kid.update(params[:kid_id], group_id: params[:id])
       # this should render the update_kid_assignment.js.erb file
     else
       render 'update_kid_assignment_error'

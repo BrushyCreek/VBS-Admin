@@ -22,7 +22,7 @@
 	<% end %>
       </div>
     </div>
-    <table class="table table-sm table-hover">
+    <table id="group_<%= group.id %>_kids_table" class="table table-sm table-hover">
       <%= render partial: "group_kids_table", locals: {group: group} %>
     </table>
   </div>
