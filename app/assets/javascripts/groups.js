@@ -83,7 +83,7 @@ function send_kid_group_change (kidToAddElm, doOnSuccess, destGroupElm) {
 	dataType: "html",
 	success: function(response) {
 	    doOnSuccess(destGroupElm, response);
-	    kidToAddElm.closest(".kidcard-col").remove();
+	    kidToAddElm.closest(".kidcard").remove();
 	}
     });
 }

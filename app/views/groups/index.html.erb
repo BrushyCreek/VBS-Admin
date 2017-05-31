@@ -1,4 +1,4 @@
-<div class = "container w-100">
+<div class="container h-100 w-100" style="overflow: hidden;">
   <h1>Classes</h1>
   
   <div class="row mt-4">
@@ -8,17 +8,23 @@
   </div>
   <hr>
   <br>
-  <div class=" bg-faded fixed-bottom h-25 px-2">
-    <h4>Unassigned Kids</h4>
-    <div class="h-100" style="overflow:scroll;">
-      <%= render partial: "unassigned_kid", locals: {kids: @unassigned_kids} %>
-      <br>
+  <div class="row">
+    <div class="col-9 h-100" style="overflow:auto; box-sizing:border-box;">
+      <div id="groups-div" class="row">
+	<% @groups.sort_by_grade.sort_by_name.each do | group | %>
+	<%= render partial: "group_index_card", locals: {group: group} %>
+	<% end %>
+      </div>
     </div>
-  </div>
-  <div id="groups-div" class="row">
-    <% @groups.sort_by_grade.sort_by_name.each do | group | %>
-      <%= render partial: "group_index_card", locals: {group: group} %>
-    <% end %>
+    <div class="col-3 h-100" style="overflow:auto; box-sizing:border-box;">
+      <div class=" bg-faded">
+	<h4>Unassigned Kids</h4>
+	<div class="h-100" style="">
+	  <%= render partial: "unassigned_kid", locals: {kids: @unassigned_kids} %>
+	  <br>
+	</div>
+      </div>
+    </div>
   </div>
   <div id="buffer" class="w-100 h-25">
     hello
