@@ -114,8 +114,7 @@ document.addEventListener("turbolinks:load", function() {
 
 	var bucketOfDroppableGroups = document.querySelectorAll(".groupcard");
 	console.log(bucketOfDroppableGroups);
-	var droppableGroup;
-	for (let droppableGroup of bucketOfDroppableGroups) {
+	for (var droppableGroup of bucketOfDroppableGroups) {
 	    new Dragster(droppableGroup); // using dragster.js to create custom dragenter and drag leave events beacus the default suck
 	    droppableGroup.addEventListener("dragster:enter", dragenter_handler, false);
 	    droppableGroup.addEventListener("dragster:leave", dragleave_handler, false);
