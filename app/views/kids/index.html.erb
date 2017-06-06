@@ -24,15 +24,22 @@ Kids Inbox
     <div class="col">
       <h1>Registrations</h1>
     </div>
-    <div class="col">
-      <div class="input-group align-middle">
-	<input type="text" class="form-control" placeholder="Search for...">
-	<span class="input-group-btn">
-          <button class="btn btn-secondary" type="button">Search</button>
-	</span>
-      </div>
-     </div>
+    <div class="col-6">
+      <%= form_tag(kids_path, method: :get, class: "input-group") do %>
+      <%= text_field_tag :term, params[:term], placeholder: "Search for...", class: "form-control" %>
+      <span class="input-group-btn">
+        <%= button_tag 'Search', class: "btn btn-secondary" %>
+      </span>
+      <% end %>
+    </div>
   </div>
+     <div class="row">
+     <div class="col-sm-3">
+       <h5>Total Kids: <strong><%= @kids.count %></strong></h5>
+       <h5>Regualar Attendees: <strong><%= @kids.where(church_member: true).count %></strong></h5>
+       <h5>Guest: <strong><%= @kids.where(church_member: false).count %></strong></h5>
+       </div>
+   </div>
   
   <div class="row justify-content-center mt-4">
     
@@ -72,8 +79,16 @@ Kids Inbox
 	  <% else %>
 	  <tr>
 	  <% end %>
-	    <td></td>
-	    <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %></td>
+	  <td class="text-right">
+	    <% unless kid.can_photograph %>
+	      <i class="fa fa-camera text-danger"></i>
+	    <% end %>
+	  </td>
+	  <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %>
+	    <% unless kid.buddy_request.empty? %>
+	    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+	    <% end %>
+	  </td>
 	    <td><%= find_age(kid.birthdate) %></td>
 	    <td><%= kid.current_grade %></td>
 	    <td>
