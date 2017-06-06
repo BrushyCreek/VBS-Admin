@@ -47,14 +47,18 @@ Kids Inbox
       <a class="btn btn-primary btn-sm" href="<%= new_kid_path %>">Add New</a>
       |
       <div class="btn-group">
-	<button class="btn btn-outline-primary btn-sm" type="button">Pre-K</button>
-	<button class="btn btn-outline-primary btn-sm" type="button">4K</button>
-	<button class="btn btn-outline-primary btn-sm" type="button">5K</button>
-	<button class="btn btn-outline-primary btn-sm" type="button">1st</button>
-	<button class="btn btn-outline-primary btn-sm" type="button">2nd</button>
-	<button class="btn btn-outline-primary btn-sm" type="button">3rd</button>
-	<button class="btn btn-outline-primary btn-sm" type="button">4th</button>
-	<button class="btn btn-outline-primary btn-sm" type="button">5th</button>
+	<%= link_to "Pre-k", kids_path(grade: "0"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "4k", kids_path(grade: "1"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "5k", kids_path(grade: "2"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "1st", kids_path(grade: "3"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "2nd", kids_path(grade: "4"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "3rd", kids_path(grade: "5"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "4th", kids_path(grade: "6"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "5th", kids_path(grade: "7"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "6th", kids_path(grade: "8"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	<%= link_to "7th", kids_path(grade: "9"), type: "button", class: "btn btn-outline-primary btn-sn" %>
+	
+	
       </div>
       </div>
     <div class="col-xl-12">
@@ -90,7 +94,7 @@ Kids Inbox
 	    <% end %>
 	  </td>
 	    <td><%= find_age(kid.birthdate) %></td>
-	    <td><%= kid.current_grade %></td>
+	    <td><%= kid.grade %></td>
 	    <td>
 	      <% if kid.group.present? %>
 	      <%= kid.group.name %>

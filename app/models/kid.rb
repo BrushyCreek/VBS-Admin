@@ -4,6 +4,7 @@ class Kid < ApplicationRecord
   belongs_to :group, optional: true
 
   pg_search_scope :search_for, against: %i(first_name last_name)
+  pg_search_scope :search_grades, against: %i(last_grade_id)
   
   scope :sort_by_last_name, -> { order( last_name: :asc ) }
   scope :sort_by_grade, -> { order( last_grade_id: :asc ) }
@@ -40,6 +41,14 @@ class Kid < ApplicationRecord
   def self.grade_types
     ["Pre-K", "4k", "5k", "1st", "2nd", "3rd", "4th", "5th", "6th"]
   end
-    
+
+  def grade
+    lg = self.last_grade_id
+    return "#{Kid.grade_types.at(lg)}"
+  end
+
+  def self.grade_types
+    ["Pre-K", "4k", "5k", "1st", "2nd", "3rd", "4th", "5th", "6th"]
+  end
 end
 

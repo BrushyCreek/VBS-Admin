@@ -4,6 +4,8 @@ class KidsController < ApplicationController
   def index
     if params[:term]
       @kids = Kid.search_for(params[:term])
+    elsif params[:grade]
+      @kids = Kid.search_grades(params[:grade])
     else
       @kids = Kid.all
     end      
@@ -99,6 +101,7 @@ class KidsController < ApplicationController
                                 :highlight,
                                 :can_photograph,
                                 :group_id,
-                                :term)
+                                :term,
+                                :grade)
   end
 end
