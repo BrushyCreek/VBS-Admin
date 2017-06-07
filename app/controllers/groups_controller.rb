@@ -4,6 +4,12 @@ class GroupsController < ApplicationController
     # @unassigned_kids = Kid.where(group_id: nil).find_each
     @unassigned_kids = Kid.where(group_id: nil).all
     @groups = Group.all
+
+    respond_to do |format|
+      format.html
+      format.pdf
+      format.xls
+    end
   end
 
   def new
@@ -50,6 +56,11 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf
+    end
   end
 
   def destroy
