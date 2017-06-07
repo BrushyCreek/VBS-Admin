@@ -55,21 +55,17 @@ function drop_handler(ev) {
     ev.currentTarget.classList.remove("dropable");
     console.log("drop");
     var data = ev.dataTransfer.getData("text/html");
-    var kidToAddElm = document.getElementById(data);
+    var ElmToAdd = document.getElementById(data);
     var destGroupElm = ev.currentTarget;
     
-    if (kidToAddElm.hasAttribute("data-kid-id")) {
+    if (ElmToAdd.hasAttribute("data-kid-id")) {
 	// send AJAX request to add succsefullt draged kid to group
 	// reload the table adding kid to top of it
 	// we may need to remove the kids card from the bucket here
 	// so that we can wait to make sure the request went through
 	console.log("IM here");
-	send_kid_group_change(kidToAddElm, switch_group_kids_table, destGroupElm);
+	send_kid_group_change(ElmToAdd, switch_group_kids_table, destGroupElm);
     }
-    
-    console.log("Dropped:", kidToAddElm);
-    console.log("Dropped on:", ev.currentTarget);
-    console.log(ev.dataTransfer.dropEffect);
 }
 
 function send_kid_group_change (kidToAddElm, doOnSuccess, destGroupElm) {
@@ -108,7 +104,10 @@ document.addEventListener("turbolinks:load", function() {
 	});
 	
 	var bucketOfDraggableKids = document.getElementById("kids-div");
-	console.log(bucketOfDraggableKids);
+	bucketOfDraggableKids.addEventListener("dragstart", dragstart_handler, false);
+	bucketOfDraggableKids.addEventListener("dragend", dragend_handler, false);
+
+	var bucketOfDraggableKids = document.getElementById("teachers-div");
 	bucketOfDraggableKids.addEventListener("dragstart", dragstart_handler, false);
 	bucketOfDraggableKids.addEventListener("dragend", dragend_handler, false);
 
