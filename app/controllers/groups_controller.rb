@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf
-      format.xls
+      format.xls { response.headers["Content-Disposition"] = "attachment; filename=\"Classes.xml\"" }
     end
   end
 
