@@ -23,7 +23,10 @@ gem 'sprockets-rails', '~> 3.2.0'
 
 gem 'pg_search'
 
-gem 'prawn-rails', '~> 1.0'
+gem 'pdfkit', '~> 0.8.2'
+gem 'render_anywhere', '~> 0.0.12'
+gem 'wkhtmltopdf-binary'
+
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
