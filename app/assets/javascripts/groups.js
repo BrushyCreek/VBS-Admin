@@ -55,21 +55,40 @@ function drop_handler(ev) {
     ev.currentTarget.classList.remove("dropable");
     console.log("drop");
     var data = ev.dataTransfer.getData("text/html");
-    var kidToAddElm = document.getElementById(data);
+    var ElmToAdd = document.getElementById(data);
     var destGroupElm = ev.currentTarget;
     
-    if (kidToAddElm.hasAttribute("data-kid-id")) {
+    if (ElmToAdd.hasAttribute("data-kid-id")) {
 	// send AJAX request to add succsefullt draged kid to group
 	// reload the table adding kid to top of it
 	// we may need to remove the kids card from the bucket here
 	// so that we can wait to make sure the request went through
-	console.log("IM here");
-	send_kid_group_change(kidToAddElm, switch_group_kids_table, destGroupElm);
+	send_kid_group_change(ElmToAdd, switch_group_kids_table, destGroupElm);
+    } else if (ElmToAdd.hasAttribute("data-volunteer-id")) {
+	send_teacher_group_change(ElmToAdd, switch_group_teachers_row, destGroupElm);
     }
+}
+
+function send_teacher_group_change (teacherToAddElm, doOnSuccess, destGroupElm) {
+    var teacherToAddId = teacherToAddElm.getAttribute("data-volunteer-id");	
+    var destGroupId = destGroupElm.getAttribute("data-group-id");
+    $.ajax({
+	url:"/groups/update_volunteer_assignment",
+	method: "POST",
+	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	data:{"id" : destGroupId, "volunteer_id" : teacherToAddId},
+	dataType: "html",
+	success: function(response) {
+	    doOnSuccess(destGroupElm, response);
+	    teacherToAddElm.closest(".teachercard").remove();
+	}
+    });
+}
     
-    console.log("Dropped:", kidToAddElm);
-    console.log("Dropped on:", ev.currentTarget);
-    console.log(ev.dataTransfer.dropEffect);
+function switch_group_teachers_row(dest, result) {
+    var row = dest.querySelector(".teacherrow");
+    row.innerHTML = "";
+    row.innerHTML = result;
 }
 
 function send_kid_group_change (kidToAddElm, doOnSuccess, destGroupElm) {
@@ -108,9 +127,12 @@ document.addEventListener("turbolinks:load", function() {
 	});
 	
 	var bucketOfDraggableKids = document.getElementById("kids-div");
-	console.log(bucketOfDraggableKids);
 	bucketOfDraggableKids.addEventListener("dragstart", dragstart_handler, false);
 	bucketOfDraggableKids.addEventListener("dragend", dragend_handler, false);
+
+	var bucketOfDraggableteachers = document.getElementById("teachers-div");
+	bucketOfDraggableteachers.addEventListener("dragstart", dragstart_handler, false);
+	bucketOfDraggableteachers.addEventListener("dragend", dragend_handler, false);
 
 	var bucketOfDroppableGroups = document.querySelectorAll(".groupcard");
 	console.log(bucketOfDroppableGroups);

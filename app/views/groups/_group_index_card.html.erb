@@ -14,12 +14,8 @@
     <div class="card-block">
       <h4 class="card-title"><%= group.name_grade %></h4>
       <hr>
-      <div class="row">
-	<% group.volunteers.sort_by_last_name.each do |leader| %>
-	<div class="col-6">
-	  <%= link_to "#{leader.first_name} #{leader.last_name}", volunteer_path(leader) %>
-	</div>
-	<% end %>
+      <div class="row teacherrow">
+	<%= render partial: "group_leaders_col", locals: {group:group} %>
       </div>
     </div>
     <table id="group_<%= group.id %>_kids_table" class="table table-sm table-hover">

@@ -1,0 +1,5 @@
+<% group.volunteers.sort_by_last_name.each do |leader| %>
+<div class="col-6">
+  <%= link_to "#{leader.first_name} #{leader.last_name}", volunteer_path(leader) %>
+</div>
+<% end %>

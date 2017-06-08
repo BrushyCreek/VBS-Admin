@@ -1,4 +1,4 @@
-<div  id="kids-div" class="">
+<div  id="kids-div" class="tab-pane active" role="tabpanel1">
   <% @unassigned_kids.sort_by_grade.sort_by_last_name.each do | kid | %>
     <div id="kid_<%= kid.id %>" class="kidcard p-2 m-2 bg-primary rounded" data-kid-id="<%= kid.id %>" draggable="true">
       <p><strong><%= kid.full_name %></strong> - <%= kid.grade %> - <%= find_age(kid.birthdate) %> y/o</p>

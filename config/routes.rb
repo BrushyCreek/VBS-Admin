@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         # end
         collection do
           post 'update_kid_assignment'
+          post 'update_volunteer_assignment'
         end
       end
       

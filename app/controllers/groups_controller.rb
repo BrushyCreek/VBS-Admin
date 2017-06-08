@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
   def index
     # @unassigned_kids = Kid.where(group_id: nil).find_each
     @unassigned_kids = Kid.where(group_id: nil).all
+    @unassigned_leaders = Volunteer.where(leader_type: "Group").where(leader_id: nil).all
     @groups = Group.all
 
     respond_to do |format|
@@ -39,6 +40,16 @@ class GroupsController < ApplicationController
     else
       flash.now[:warning] = "somthing went wrong"
       render 'edit'
+    end
+  end
+
+  def update_volunteer_assignment #this action is from groups index it should only be called by an ajax request
+    @group = Group.find(params[:id])
+    
+    if Volunteer.update(params[:volunteer_id], leader_id: params[:id])
+    # this should render the update_volunter_assignment.js.erb file
+    else
+      render 'update_volunteer_assignment_error'
     end
   end
 
