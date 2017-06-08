@@ -63,9 +63,32 @@ function drop_handler(ev) {
 	// reload the table adding kid to top of it
 	// we may need to remove the kids card from the bucket here
 	// so that we can wait to make sure the request went through
-	console.log("IM here");
 	send_kid_group_change(ElmToAdd, switch_group_kids_table, destGroupElm);
+    } else if (ElmToAdd.hasAttribute("data-volunteer-id")) {
+	send_teacher_group_change(ElmToAdd, switch_group_teachers_row, destGroupElm);
     }
+}
+
+function send_teacher_group_change (teacherToAddElm, doOnSuccess, destGroupElm) {
+    var teacherToAddId = teacherToAddElm.getAttribute("data-volunteer-id");	
+    var destGroupId = destGroupElm.getAttribute("data-group-id");
+    $.ajax({
+	url:"/groups/update_volunteer_assignment",
+	method: "POST",
+	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	data:{"id" : destGroupId, "volunteer_id" : teacherToAddId},
+	dataType: "html",
+	success: function(response) {
+	    doOnSuccess(destGroupElm, response);
+	    teacherToAddElm.closest(".teachercard").remove();
+	}
+    });
+}
+    
+function switch_group_teachers_row(dest, result) {
+    var row = dest.querySelector(".teacherrow");
+    row.innerHTML = "";
+    row.innerHTML = result;
 }
 
 function send_kid_group_change (kidToAddElm, doOnSuccess, destGroupElm) {
@@ -107,9 +130,9 @@ document.addEventListener("turbolinks:load", function() {
 	bucketOfDraggableKids.addEventListener("dragstart", dragstart_handler, false);
 	bucketOfDraggableKids.addEventListener("dragend", dragend_handler, false);
 
-	var bucketOfDraggableKids = document.getElementById("teachers-div");
-	bucketOfDraggableKids.addEventListener("dragstart", dragstart_handler, false);
-	bucketOfDraggableKids.addEventListener("dragend", dragend_handler, false);
+	var bucketOfDraggableteachers = document.getElementById("teachers-div");
+	bucketOfDraggableteachers.addEventListener("dragstart", dragstart_handler, false);
+	bucketOfDraggableteachers.addEventListener("dragend", dragend_handler, false);
 
 	var bucketOfDroppableGroups = document.querySelectorAll(".groupcard");
 	console.log(bucketOfDroppableGroups);

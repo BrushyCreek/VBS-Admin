@@ -43,6 +43,16 @@ class GroupsController < ApplicationController
     end
   end
 
+  def update_volunteer_assignment #this action is from groups index it should only be called by an ajax request
+    @group = Group.find(params[:id])
+    
+    if Volunteer.update(params[:volunteer_id], leader_id: params[:id])
+    # this should render the update_volunter_assignment.js.erb file
+    else
+      render 'update_volunteer_assignment_error'
+    end
+  end
+
   def update_kid_assignment #this action is from groups index it should only be called by an ajax request
     #@kid = Kid.find(params[:id])
     # @group = Group.find(params[:group_id])
