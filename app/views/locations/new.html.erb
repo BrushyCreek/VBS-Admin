@@ -1,0 +1,13 @@
+<%= content_for :title do %>
+New Station
+<% end %>
+
+<div class="container w-50">
+  <%= form_for @location do |f| %>
+  <%= render partial: 'form', locals: {f: f} %>
+  <div class="form-group row">
+    <div class="col-sm-10 offset-1">
+      <%= f.submit 'Save',  class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  </div>

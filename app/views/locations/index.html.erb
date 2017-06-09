@@ -1,18 +1,17 @@
-<div class="container w-100" style="">
-  <h1>Classes</h1>
+<div class="container w-100">
+  <h1>Stations</h1>
   
   <div class="row mt-4">
     <div class="col-lg-3 mb-3">
-      <a class="btn btn-primary btn-sm" href="<%= new_group_path %>">Add New</a>
-      <a class="btn btn-secondary btn-sm" href="<%= groups_path(format: :xls)  %>">Excel</a>
+      <a class="btn btn-primary btn-sm" href="<%= new_location_path %>">Add New</a>
     </div>
   </div>
   <hr>
   <br>
   <div class="w-75 float-left" stlye="height: 80vh; overflow: scroll;">
-    <div id="groups-div" class="row">
-      <% @groups.sort_by_grade.sort_by_name.each do | group | %>
-      <%= render partial: "group_index_card", locals: {group: group} %>
+    <div id="locations-div" class="row">
+      <% @locations.sort_by_name.each do | location | %>
+      <%= render partial: "location_index_card", locals: {location: location} %>
       <% end %>
     </div>
   </div>
@@ -20,9 +19,10 @@
     <div class=" bg-faded">
       <h4>Unassigned Leaders</h4>
       <div class="h-100 tab-content">
-	<%= render partial: "unnassigned_leaders" %>
+	<%= render partial: "unassigned_leaders" %>
 	<br>
       </div>
     </div>
   </div>
 </div>
+

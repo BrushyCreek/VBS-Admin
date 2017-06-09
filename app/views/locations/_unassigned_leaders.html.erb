@@ -1,0 +1,7 @@
+<div  id="leader-div" class="tab-pane" role="tabpanel1">
+  <% @unassigned_leaders.sort_by_last_name.each do | leader | %>
+    <div id="volunteer_<%= leader.id %>" class="leadercard p-2 m-2 bg-info rounded" data-volunteer-id="<%= leader.id %>" draggable="true">
+      <p><strong><%= leader.full_name %></strong></p>
+    </div>
+  <% end %>
+</div>

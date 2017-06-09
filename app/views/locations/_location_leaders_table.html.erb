@@ -1,0 +1,8 @@
+<tbody class="leaders_table_boddy">
+  <% location.volunteers.each do |leader| %>
+  <tr onclick="window.location='<%= volunteer_path(leader)%>';" style='cursor: pointer;'>
+    <td></td> <!-- Use this for the buddy request icon -->
+    <td><%= "#{leader.first_name} #{leader.last_name}" %></td>
+  </tr>
+  <% end %>
+</tbody>

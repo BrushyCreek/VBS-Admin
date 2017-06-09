@@ -1,0 +1,21 @@
+<div class=" col-12 col-sm-6 col-xl-4">
+  <div id="location_<%= location.id %>" class="locationcard card mb-4"  data-location-id="<%= location.id %>">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+	<li class="nav-item">
+	  <%= link_to "Edit", edit_location_path(location.id), class: "nav-link active" %>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link" href="">Print</a>
+	</li>
+	<%= link_to "Delete", location_path(location.id), method: :delete, class: "nav-link", data: {confirm: "Are you sure?" } %>
+      </ul>
+    </div>
+    <div class="card-block">
+      <h4 class="card-title"><%= location.name %></h4>
+    </div>
+    <table id="location_<%= location.id %>location_table" class="table table-sm table-hover">
+      <%= render partial: "location_leaders_table", locals: {location: location} %>
+    </table>
+  </div>
+</div>
