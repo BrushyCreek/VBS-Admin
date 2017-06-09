@@ -1,0 +1,28 @@
+<div class="container w-100" style="">
+  <h1>Classes</h1>
+  
+  <div class="row mt-4">
+    <div class="col-lg-3 mb-3">
+      <a class="btn btn-primary btn-sm" href="<%= new_group_path %>">Add New</a>
+      <a class="btn btn-secondary btn-sm" href="<%= groups_path(format: :xls)  %>">Excel</a>
+    </div>
+  </div>
+  <hr>
+  <br>
+  <div class="w-75 float-left" stlye="height: 80vh; overflow: scroll;">
+    <div id="groups-div" class="row">
+      <% @groups.sort_by_grade.sort_by_name.each do | group | %>
+      <%= render partial: "group_index_card", locals: {group: group} %>
+      <% end %>
+    </div>
+  </div>
+  <div class="w-25" style="height: 80vh; right:0; overflow: scroll; position: fixed;">
+    <div class=" bg-faded">
+      <h4>Unassigned Leaders</h4>
+      <div class="h-100 tab-content">
+	<%= render partial: "unnassigned_leaders" %>
+	<br>
+      </div>
+    </div>
+  </div>
+</div>

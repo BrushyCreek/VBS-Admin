@@ -43,7 +43,10 @@ Rails.application.routes.draw do
           post 'confirm'
         end
       end
-      
+
+      resources :locations do
+      end
+
       root to: 'kids#index', as: :authenticated_root
     end
   
