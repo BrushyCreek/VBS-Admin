@@ -71,7 +71,7 @@ function send_volunteer_location_change (leaderToAddElm, doOnSuccess, destLocati
     var leaderToAddId = leaderToAddElm.getAttribute("data-volunteer-id");	
     var destLocationId = destLocationElm.getAttribute("data-location-id");
     $.ajax({
-	url:"/location/update_volunteer_assignment",
+	url:"/locations/update_volunteer_assignment",
 	method: "POST",
 	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 	data:{"id" : destLocationId, "volunteer_id" : leaderToAddId},

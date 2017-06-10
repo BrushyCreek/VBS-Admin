@@ -45,6 +45,9 @@ Rails.application.routes.draw do
       end
 
       resources :locations do
+        collection do
+          post 'update_volunteer_assignment'
+        end
       end
 
       root to: 'kids#index', as: :authenticated_root
