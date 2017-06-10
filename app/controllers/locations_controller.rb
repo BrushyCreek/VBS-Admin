@@ -34,6 +34,12 @@ class LocationsController < ApplicationController
     end
   end
 
+  def destroy
+    Location.find(params[:id]).destroy
+    flash[:success] = "Class removed"
+    redirect_to locations_path
+  end
+
   def location_params
     params.require(:location).permit(:name)
   end
