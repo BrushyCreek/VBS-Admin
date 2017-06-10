@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
   xmlns:o="urn:schemas-microsoft-com:office:office"
   xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -9,7 +9,7 @@
       <Row>
         <Cell><Data ss:Type="String">Class</Data></Cell>
         <Cell><Data ss:Type="String">Name</Data></Cell>
-        <Cell><Data ss:Type="String">Age</Data></Cell>
+        <Cell><Data ss:Type="String">Allergies/Medical</Data></Cell>
       </Row>
       <% @groups.sort_by_grade.sort_by_name.each do |group| %>
       <Row>
@@ -27,7 +27,14 @@
       <Row>
 	<Cell><Data ss:Type="String"></Data></Cell>
         <Cell><Data ss:Type="String"><%= "#{kid.first_name} #{kid.last_name}" %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= find_age(kid.birthdate) %></Data></Cell>
+	<% if kid.allergies %>
+        <Cell><Data ss:Type="String"><%= "#{kid.allergies_notes}" %></Data></Cell>
+	<% end %>
+	<% if kid.medical_issues %>
+	<Cell><Data ss:Type="String"><%= "#{kid.medical_issues_notes}" %></Data></Cell>
+	<% else %>
+	<Cell><Data ss:Type="String"> </Data></Cell>
+	<% end %>
       </Row>
       <% end %>
       <Row>
