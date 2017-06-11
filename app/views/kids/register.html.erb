@@ -8,7 +8,7 @@ Register Child
   <%= form_for @kid, url: confirm_kids_path do |f| %>
   <%= render partial: "kid_form", locals: {kid: @kid, f: f, edit: 0} %>
   <br>
-    <div class="row">
+  <div class="row">
     <div class="col-sm-6 offset-3">
       <%= f.submit "Register", data: {"disable-with":"Saving..."}, class: "btn btn-primary"%>
     </div>
