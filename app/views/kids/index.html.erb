@@ -93,7 +93,13 @@ Kids Inbox
 	      --
 	      <% end %>
 	    </td>
-	    <td></td>
+	    <td>
+	      <% if kid.notes.present? %>
+	      <a tabindex="0" data-toggle="popover" data-trigger="focus"  data-content="<%= kid.notes %>">
+		<i class="fa fa-comment" aria-hidden="true"></i>
+	      </a>
+	      <% end %>
+	    </td>
 	    <td>
 	      <% if kid.allergies %>
 	      <span class="badge badge-warning">Allergies</span>
