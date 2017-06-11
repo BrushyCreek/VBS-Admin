@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="2017 Classes">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Class</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+      </Row>
+      <% @groups.sort_by_grade.sort_by_name.each do |group| %>
+      <Row>
+	<Cell><Data ss:Type="String"><%=group.name %></Data></Cell>
+	<Cell><Data ss:Type="String"></Data></Cell>
+      </Row>
+      <Row>
+      </Row>
+      <% group.kids.sort_by_last_name.each do |kid| %>
+      <Row>
+	<Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{kid.full_name}" %></Data></Cell>
+      </Row>	    
+      <Row>
+	<Cell><Data ss:Type="String"></Data></Cell>
+	<Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{kid.parent_name}" %></Data></Cell>
+      </Row>
+      <Row>
+	<Cell><Data ss:Type="String"></Data></Cell>
+	<Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{kid.pickupper_1_name}" %></Data></Cell>
+      </Row>
+      <Row>
+	<Cell><Data ss:Type="String"></Data></Cell>
+	<Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{kid.pickupper_2_name}" %></Data></Cell>
+      </Row>
+      <Row>
+	<Cell><Data ss:Type="String"></Data></Cell>
+	<Cell><Data ss:Type="String"></Data></Cell>
+        <Cell><Data ss:Type="String"><%= "#{kid.pickupper_3_name}" %></Data></Cell>
+      </Row>
+      <% end %>
+      <Row>
+      </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -11,6 +11,16 @@ class GroupsController < ApplicationController
     end
   end
 
+  def print_sign_outs
+    @groups = Group.all
+
+    respond_to do |format|
+      format.html
+      format.pdf
+      format.xls { response.headers["Content-Disposition"] = "attachment; filename=\"Sign-out-sheets.xml\"" }
+    end
+  end
+
   def new
     @group = Group.new
   end

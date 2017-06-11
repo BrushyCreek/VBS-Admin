@@ -34,6 +34,7 @@ Rails.application.routes.draw do
         collection do
           post 'update_kid_assignment'
           post 'update_volunteer_assignment'
+          get 'print_sign_outs'
         end
       end
       
