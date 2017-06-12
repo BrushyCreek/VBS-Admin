@@ -23,9 +23,8 @@ gem 'sprockets-rails', '~> 3.2.0'
 
 gem 'pg_search'
 
-gem 'pdfkit', '~> 0.8.2'
-gem 'render_anywhere', '~> 0.0.12'
-gem 'wkhtmltopdf-binary'
+# Use prawn for pdf creation
+gem 'prawn-rails'
 
 
 # Use Uglifier as compressor for JavaScript assets
