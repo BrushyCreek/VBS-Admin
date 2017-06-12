@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
     @unassigned_kids = Kid.where(group_id: nil).all
     @unassigned_leaders = Volunteer.where(leader_type: "Group").where(leader_id: nil).all
     @groups = Group.all
-
+   
     respond_to do |format|
       format.html
       format.pdf
