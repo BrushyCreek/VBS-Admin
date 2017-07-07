@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         get 'register', on: :new
         collection do
           post 'confirm'
+          get 'print_all_kids'
         end
       end
 

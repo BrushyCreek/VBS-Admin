@@ -10,7 +10,18 @@ class KidsController < ApplicationController
       @kids = Kid.all
     end      
   end
-  
+
+  def print_all_kids
+    @kids = Kid.all
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+      end
+      format.xls { response.headers["Content-Disposition"] = "attachment; filename=\"Sign-out-sheets.xml\"" }
+    end
+  end
+
   #These methods are for working with kids from the volunteer context
   def new
     @kid = Kid.new
