@@ -12,7 +12,7 @@ class KidsController < ApplicationController
   end
 
   def print_all_kids
-    @kids = Kid.all
+    @kids = Kid.where(church_member: false)
 
     respond_to do |format|
       format.html
