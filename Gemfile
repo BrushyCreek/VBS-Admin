@@ -16,7 +16,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', github: "rails/sass-rails"
 
 # Use Bootstrap for default styles
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.0.0'
 
 # Use Sprockets, a dependencie for Bootstrap
 gem 'sprockets-rails', '~> 3.2.0'
@@ -33,7 +33,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Add jquery for bootstrap
-gem 'jquery-rails', '~> 4.3', '>=4.3.1'
+gem 'jquery-rails'
 
 # Add Tether for bootstrap
 source 'https://rails-assets.org' do
