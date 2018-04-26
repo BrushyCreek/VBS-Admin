@@ -46,24 +46,24 @@
 	    <td onclick="window.location='<%= volunteer_path(volunteer)%>';" style='cursor: pointer;'><%= "#{volunteer.first_name} #{volunteer.last_name}" %></td>
 	    <% if volunteer.leader_type == "Group" %>
 	      <% if volunteer.leader_id == nil %>
-	      <td>Class</td>
+	          <td>Class</td>
 	      <% else %>
-	      <td><%= "#{volunteer.leader.name_grade}" %></td>
+	          <td><%= "#{volunteer.leader.name_grade}" %></td>
 	      <% end %>
 	    <% elsif volunteer.leader_type == "Location" %>
 	      <% if volunteer.leader_id == nil %>
-	      <td>Station</td>
+	           <td>Station</td>
 	      <% else %>
-	      <td><%= "#{volunteer.leader.name}" %></td>
+	           <td>Station</td>
 	      <% end %>
-	      <% elsif volunteer.leader_type == "Team" %>
-	      <% if volunteer.leader_id == nil %>
-	      <td>Station</td>
-	      <% else %>
-	      <td><%= "#{volunteer.leader.name}" %></td>
+	    <% elsif volunteer.leader_type == "Team" %>
+              <% if volunteer.leader_id == nil %>
+	           <td>Team</td>
+              <% else %>
+                   <td>Team</td>
 	      <% end %>
 	    <% elsif volunteer.leader_type == "none" %>
-	    <td>--</td>
+	        <td>--</td>
 	    <% end %>
 	    <td></td>
 	    <td><%= "#{volunteer.phone}" %></td>
