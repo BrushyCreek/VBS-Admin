@@ -29,7 +29,7 @@
 <div class="form-group row">
   <label class="col-md-3 text-sm-right col-form-label">Birthday</label>
   <div class="col-sm-8">
-    <%= f.date_select :birthdate, { :start_year => 2004, :end_year => 2017, :prompt => { day: 'Day', month: 'Month', year: 'Year' }, :use_short_month => true, :order => [:day, :month, :year]}, class: "custom-select" %>
+    <%= f.date_select :birthdate, { :start_year => 2004, :end_year => 2017, :prompt => { day: 'Day', month: 'Month', year: 'Year' }, :use_short_month => true, :order => [:day, :month, :year]}, class: "custom-select col-sm-3" %>
   </div>
 </div>
 
