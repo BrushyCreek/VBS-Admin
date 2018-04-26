@@ -14,18 +14,15 @@
 </div>
 
 <div class="form-group row">
-  <!-- <label class="col-sm-2 text-sm-right col-form-label">Gender</label> -->
   <div class="col-sm-8 offset-md-3">
-    <label class="custom-control custom-radio">
+    <div class="custom-control custom-radio">
       <%= f.radio_button :gender, :male, class: "custom-control-input" %>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Male</span>
-    </label>
-    <label class="custom-control custom-radio">
+      <label class="custom-control-label" for="kid_gender_male">Male</label>
+    </div>
+    <div class="custom-control custom-radio">
       <%= f.radio_button :gender, :female, class: "custom-control-input" %>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Female</span>
-    </label>
+      <label class="custom-control-label" for="kid_gender_female">Female</label>
+    </div>
   </div>
 </div>
 
@@ -45,11 +42,10 @@
 
 <div class="form-group row">
   <div class="col-sm-3 offset-md-3">
-    <label class="custom-control custom-checkbox">
-      <%= f.check_box :church_member, class: "custom-control-input" %>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Regular Attendee</span>
-    </label>
+      <div class="custom-control custom-checkbox">
+	<%= f.check_box :church_member, class: "custom-control-input" %>
+	<label class="custom-control-label" for="kid_church_member">Regualr Attendee</label>
+      </div>
   </div>
 </div>
 
@@ -70,23 +66,21 @@
 </div>
 
 <div class="form-group row">
-  <div class="col-sm-8 offset-md-3">
-    <label class="custom-control custom-checkbox">
+  <div class="col-sm-8 offset-3">
+    <div class="custom-control custom-checkbox">
       <%= f.check_box :can_photograph, checked: true, class: "custom-control-input" %>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Can be photographed</span>
-    </label>
+      <label class="custom-control-label" for="kid_can_photograph">Can be photographed</label>
+    </div>
     <small class="form-text text-muted">Is your child allowed to be inclueded in photographs or videos relating to VBS.</small>
-  </div>
+    </div>
 </div>
 
 <div class="form-group row">
-  <div class="col-sm-8 offset-md-3">
-    <label class="custom-control custom-checkbox">
+  <div class="col-sm-8 offset-md-3">  
+    <div class="custom-control custom-checkbox">     
       <%= f.check_box :allergies, class: "custom-control-input" %>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Allergies</span>
-    </label>
+      <label class="custom-control-label" for="kid_allergies">Allergies</label>
+    </div>
   </div>
   <div class="col-sm-8 offset-md-3">
     <%= f.text_area :allergies_notes, placeholder: "Alergies, Epipen, etc.",  class: "form-control"%>
@@ -95,11 +89,10 @@
 
 <div class="form-group row">
   <div class="col-sm-6 offset-md-3">
-    <label class="custom-control custom-checkbox">
-      <%= f.check_box :medical_issues, class: "custom-control-input" %>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Other Medical Issues</span>
-    </label>
+      <div class="custom-control custom-checkbox">
+	<%= f.check_box :medical_issues, class: "custom-control-input" %>
+	<label class="custom-control-label" for="kid_medical_issues">Other Medical Issues</label>
+      </div>
   </div>
   <div class="col-sm-8 offset-md-3">
     <%= f.text_area :medical_issues_notes, placeholder: "Bloody Noses, etc.",  class: "form-control"%>
@@ -205,11 +198,10 @@
 
     <div class="form-group row">
       <div class="col-sm-8 offset-md-3">
-	<label class="custom-control custom-checkbox">
+	<div class="custom-control custom-checkbox">
 	  <%= f.check_box :highlight, class: "custom-control-input" %>
-	  <span class="custom-control-indicator"></span>
-	  <span class="custom-control-description">Highlight</span>
-	</label>
+	  <label class="custom-control-label" for="kid_highlight">Highlight</label>
+	</div>
 	<small class="form-text text-muted">Add a highlight when the kid is displayed on other pages</small>
       </div>
     </div>
