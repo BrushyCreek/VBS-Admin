@@ -2,7 +2,7 @@ class UpdateKids < ActiveRecord::Migration[5.1]
   def change
     change_table :kids do |t|
       t.remove :address, :city, :state, :zipcode
-      t.belongs_to :families, index:true
+      t.belongs_to :family, index:true
     end
 
     change_table :families do |t|

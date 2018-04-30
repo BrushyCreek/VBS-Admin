@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20180430180334) do
     t.bigint "group_id"
     t.datetime "note_modified_at"
     t.boolean "special_circumstance"
-    t.bigint "families_id"
-    t.index ["families_id"], name: "index_kids_on_families_id"
+    t.bigint "family_id"
+    t.index ["family_id"], name: "index_kids_on_family_id"
     t.index ["group_id"], name: "index_kids_on_group_id"
   end
 

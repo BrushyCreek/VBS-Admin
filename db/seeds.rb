@@ -20,45 +20,71 @@ t1 = 2.year.ago
 # end
 User.create!(
   name: "Allen Hughes",
-  email: "allen@brushycreekchurch.com",
+  email: "allen@eee.com",
   admin: true,
   password: "password",
   password_confirmation: "password")
-100.times do
-  @invited = ""
-  @lastname = Faker::Name.last_name
-  @alergies = Faker::Boolean.boolean
-  #@alergies_notes = Faker::ChuckNorris.fact
-  @medical = Faker::Boolean.boolean
-  #@medical_issues_notes = Faker::Friends.quote
-  @church_member = Faker::Boolean.boolean
-  if not  @church_member
-    @invited = Faker::LordOfTheRings.character
-  end
-  Kid.create!(
-    first_name: Faker::Name.first_name,
-    last_name: @lastname,
-    birthdate: rand(t2..t1),
-    last_grade_id: grade_ids.sample,
-    gender: genders.sample,
-    address: Faker::Address.street_address,
-    city: Faker::Address.city,
-    state: "SC",
-    zipcode: zipcodes.sample,
-    parent_name: "#{Faker::Name.first_name} #{@lastname}",
-    parent_phone: [Faker::PhoneNumber.area_code,Faker::PhoneNumber.exchange_code,Faker::PhoneNumber.subscriber_number].join.to_i,
-    parent_email: Faker::Internet.email,
-    buddy_request: ["","","",Faker::Name.name].sample,
-    allergies: @alergies,
-    #allergies_notes: @alergies_notes,
-    medical_issues: @medical,
-    #medical_issues_notes: @medical_issues_notes,
-    can_photograph: Faker::Boolean.boolean,
-    tshirt_size_id: rand(0..4),
-    church_member: @church_member,
-    invited_by: @invited
-    
+
+# Build 30 families
+rand(30..40).times do
+  puts "building family"
+  @fam = Family.create!(
+      address: Faker::Address.street_address,
+      city: Faker::Address.city,
+      state: "SC",
+      zipcode: zipcodes.sample
   )
+  # puts "Building head"
+  # @fam.create_head!(
+  #   first_name: Faker::Name.first_name,
+  #   last_name: Faker::Name.last_name,
+  #   phone: [Faker::PhoneNumber.area_code,
+  #           Faker::PhoneNumber.exchange_code,
+  #           Faker::PhoneNumber.subscriber_number].join.to_i,
+  #   email: Faker::Internet.email
+  # )
+
+  rand(1..2).times do
+    puts "building guardian"
+    @fam.guardians.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      phone: [Faker::PhoneNumber.area_code,
+              Faker::PhoneNumber.exchange_code,
+              Faker::PhoneNumber.subscriber_number].join,
+      email: Faker::Internet.email
+    )
+  end
+  
+  rand(1..4).times do
+    puts "Building kid"
+    @invited = ""
+    @lastname = Faker::Name.last_name
+    @alergies = Faker::Boolean.boolean
+    #@alergies_notes = Faker::ChuckNorris.fact
+    @medical = Faker::Boolean.boolean
+    #@medical_issues_notes = Faker::Friends.quote
+    @church_member = Faker::Boolean.boolean
+    if not  @church_member
+      @invited = Faker::LordOfTheRings.character
+    end
+    @fam.kids.create!(
+      first_name: Faker::Name.first_name,
+      last_name: @lastname,
+      birthdate: rand(t2..t1),
+      last_grade_id: grade_ids.sample,
+      gender: genders.sample,
+      buddy_request: ["","","",Faker::Name.name].sample,
+      allergies: @alergies,
+      #allergies_notes: @alergies_notes,
+      medical_issues: @medical,
+      #medical_issues_notes: @medical_issues_notes,
+      can_photograph: Faker::Boolean.boolean,
+      tshirt_size_id: rand(0..4),
+      church_member: @church_member,
+      invited_by: @invited
+    )
+  end
 end
 
 
