@@ -34,21 +34,24 @@ rand(30..40).times do
       state: "SC",
       zipcode: zipcodes.sample
   )
-  # puts "Building head"
-  # @fam.create_head!(
-  #   first_name: Faker::Name.first_name,
-  #   last_name: Faker::Name.last_name,
-  #   phone: [Faker::PhoneNumber.area_code,
-  #           Faker::PhoneNumber.exchange_code,
-  #           Faker::PhoneNumber.subscriber_number].join.to_i,
-  #   email: Faker::Internet.email
-  # )
+  puts "Building head"
+  @fam.guardians.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    is_head: true,
+    phone: [Faker::PhoneNumber.area_code,
+            Faker::PhoneNumber.exchange_code,
+            Faker::PhoneNumber.subscriber_number].join.to_i,
+    email: Faker::Internet.email
+  )
+
 
   rand(1..2).times do
     puts "building guardian"
     @fam.guardians.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
+      is_head: false,
       phone: [Faker::PhoneNumber.area_code,
               Faker::PhoneNumber.exchange_code,
               Faker::PhoneNumber.subscriber_number].join,

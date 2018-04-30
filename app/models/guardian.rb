@@ -1,6 +1,6 @@
 class Guardian < ApplicationRecord
-  belongs_to :relationship, polymorphic: true
-
+  belongs_to :family
+  
 #  validates :address, :city, :zipcode 
 #  validates :state 
   validates :first_name, presence: true

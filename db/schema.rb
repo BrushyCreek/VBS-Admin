@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430180334) do
+ActiveRecord::Schema.define(version: 20180430210548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20180430180334) do
     t.string "email"
     t.boolean "has_wristband"
     t.datetime "date_of_wrist_band"
-    t.string "relationship_type"
-    t.bigint "relationship_id"
+    t.bigint "family_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["relationship_type", "relationship_id"], name: "index_guardians_on_relationship_type_and_relationship_id"
+    t.boolean "is_head"
+    t.index ["family_id"], name: "index_guardians_on_family_id"
   end
 
   create_table "kids", force: :cascade do |t|
