@@ -2,6 +2,7 @@ class Kid < ApplicationRecord
   include PgSearch
   
   belongs_to :group, optional: true
+  belongs_to :family
 
   pg_search_scope :search_for, against: %i(first_name last_name)
   pg_search_scope :search_grades, against: %i(last_grade_id)
@@ -12,18 +13,6 @@ class Kid < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   validates :birthdate, presence: true
-
-  validates :gender, presence: true
-  
-  validates :address, :city, :zipcode, presence: true
-  validates :state, presence: true
-  validates :parent_name, presence: true
-  
-  VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :parent_email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
-
-  #TODO: we will need to make sure this is a valid phone number
-  validates :parent_phone, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
