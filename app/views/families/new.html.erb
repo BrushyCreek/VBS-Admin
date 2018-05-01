@@ -1,0 +1,17 @@
+<% content_for :title do %>
+New Registration
+<% end %>
+
+<div class="container">
+  <h1>Register Your Family </h1>
+  <%#= render partial: "errors", locals: {family: @family} %>
+  <%= form_for @family do |f| %>
+  <%= render partial: "new_family_form", locals: {family: @family, f: f, edit: 0} %>
+  <br>
+  <div class="">
+    <div class="">
+      <%= f.submit "Register", data: {"diable-with":"Saving..."}, class: "btn btn-primary"%>
+    </div>
+  </div>
+  <% end %>
+

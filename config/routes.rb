@@ -52,10 +52,21 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :families do
+        collection do
+        end
+      end
+
+      resources :guardian do
+        collection do
+        end
+      end
+      
       root to: 'kids#index', as: :authenticated_root
     end
   
 
+    #TODO: set up signed out root to lead to registration form
     root to: redirect('users/sign_in')
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

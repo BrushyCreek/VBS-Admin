@@ -43,7 +43,7 @@
 <div class="form-group row">
   <div class="col-sm-3 offset-md-3">
       <div class="custom-control custom-checkbox">
-	<%= f.check_box :church_member, class: "custom-control-input" %>
+	<%= f.check_box :church_member, class: "custom-control-input", checked: true %>
 	<label class="custom-control-label" for="kid_church_member">Regualr Attendee</label>
       </div>
   </div>
@@ -96,96 +96,6 @@
   </div>
   <div class="col-sm-8 offset-md-3">
     <%= f.text_area :medical_issues_notes, placeholder: "Bloody Noses, etc.",  class: "form-control"%>
-  </div>
-</div>
-
-<hr>
-<h3>Parent/Guardian Info</h3>
-<hr>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Name</label>
-  <div class="col-sm-8">
-    <%= f.text_field :parent_name, class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Email</label>
-  <div class="col-sm-8">
-    <%= f.text_field :parent_email,type: "eamil", class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Phone Number</label>
-  <div class="col-sm-8">
-    <%= f.text_field :parent_phone, type: "tel", class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="row">
-    <label class="col-sm-3 text-sm-right col-form-label">Address</label>
-    <div class="col-sm-8">
-      <%= f.text_field :address, class: "form-control" %>
-      <small class="form-text text-muted">Street</small>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3 offset-md-3">
-      <%= f.text_field :city, class: "form-control" %>
-      <small class="form-text text-muted">City</small>
-    </div>
-    <div class="col-2">
-      <%= f.select :state, CS.states(:us),{}, class: "custom-select w-100"%>
-      <small class="form-text text-muted">State</small>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :zipcode, class: "form-control" %>
-      <small class="form-text text-muted">Zipcode</small>
-    </div>
-  </div>
-</div>
-
-<hr>
-<h3>Pickup/Emergency Contacts</h3>
-<p>Additonal people we can contact in an emergency. They are also authorized to sign your child out.</p>
-<hr>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Contact 1</label>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_1_name, class: "form-control" %>
-    <small class="from-text text-muted">Name</small>
-  </div>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_1_phone, type: "tel", class: "form-control" %>
-    <small class="from-text text-muted">Phone Number</small>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Contact 2</label>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_2_name, class: "form-control" %>
-    <small class="from-text text-muted">Name</small>
-  </div>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_2_phone, type: "tel", class: "form-control" %>
-    <small class="from-text text-muted">Phone Number</small>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Contact 3</label>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_3_name, class: "form-control" %>
-    <small class="from-text text-muted">Name</small>
-  </div>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_3_phone, type: "tel", class: "form-control" %>
-    <small class="from-text text-muted">Phone Number</small>
   </div>
 </div>
 

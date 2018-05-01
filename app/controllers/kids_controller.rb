@@ -62,6 +62,7 @@ class KidsController < ApplicationController
   def show
     @kid = Kid.find(params[:id])
   end
+  
   #These methods are for working with kids from the registration perspective
   def register
     #Call render the fancy registration form
@@ -87,13 +88,6 @@ class KidsController < ApplicationController
                                 :birthdate,
                                 :last_grade_id,
                                 :gender,
-                                :address,
-                                :city,
-                                :state,
-                                :zipcode,
-                                :parent_name,
-                                :parent_email,
-                                :parent_phone,
                                 :church_member,
                                 :invited_by,
                                 :tshirt_size_id,
@@ -103,16 +97,12 @@ class KidsController < ApplicationController
                                 :medical_issues_notes,
                                 :buddy_request,
                                 :notes,
-                                :pickupper_1_name,
-                                :pickupper_1_phone,
-                                :pickupper_2_name,
-                                :pickupper_2_phone,
-                                :pickupper_3_name,
-                                :pickupper_3_phone,
                                 :highlight,
                                 :can_photograph,
                                 :group_id,
+                                :family_id,
+                                :special_circumstance,
                                 :term,
                                 :grade)
-  end
+  end 
 end

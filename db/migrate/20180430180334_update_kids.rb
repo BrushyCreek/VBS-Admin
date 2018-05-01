@@ -5,7 +5,7 @@ class UpdateKids < ActiveRecord::Migration[5.1]
       t.belongs_to :family, index:true
     end
 
-    change_table :families do |t|
+    change_table :guardians do |t|
       t.string "address"
       t.string "city"
       t.string "state"

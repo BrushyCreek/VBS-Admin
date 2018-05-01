@@ -18,10 +18,6 @@ ActiveRecord::Schema.define(version: 20180430210548) do
   create_table "families", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.integer "zipcode"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -41,6 +37,10 @@ ActiveRecord::Schema.define(version: 20180430210548) do
     t.bigint "family_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
     t.boolean "is_head"
     t.index ["family_id"], name: "index_guardians_on_family_id"
   end
