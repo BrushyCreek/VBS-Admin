@@ -1,0 +1,21 @@
+<div class="container: w-75">
+  <div class="row justify-content-center">
+    <div class="col">
+      <h1>Registrations</h1>
+    </div>
+    <div class="col-6">
+      <%= form_tag(search_families_path, method: :get, class: "input-group") do %>
+	<%= text_field_tag :term, params[:term], placeholder: "Search for...", class: "form-control" %>
+	<span class="input-group-btn">
+	  <%= button_tag 'Search', class: "btn btn-secondary" %>
+	</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xl-12">
+    <% @fams.each do |fam| %>
+      <div onclick="window.location='<%= register_new_family_kid_path(fam)%>';" style='cursor: pointer;'>
+      </div>
+    <% end %>
+  </div>
+</div>

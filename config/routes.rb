@@ -39,9 +39,7 @@ Rails.application.routes.draw do
       end
       
       resources :kids do
-        get 'register', on: :new
         collection do
-          post 'confirm'
           get 'print_all_kids'
         end
       end
@@ -53,8 +51,22 @@ Rails.application.routes.draw do
       end
 
       resources :families do
+        get 'register', on: :new
+
         collection do
+          get 'search'
+          post 'confirm'
+          get 'print_all'
         end
+        
+        resources :kids, controller: 'family_kids' do
+          get 'register', on: :new
+          
+          collection do
+            post 'confirm'
+          end
+        end
+        
       end
 
       resources :guardian do
@@ -66,7 +78,9 @@ Rails.application.routes.draw do
     end
   
 
-    #TODO: set up signed out root to lead to registration form
-    root to: redirect('users/sign_in')
+
+    get '/admin', to: redirect('users/sign_in')
+    
+    root to: 'families#pub_register'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

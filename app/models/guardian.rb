@@ -1,9 +1,13 @@
 class Guardian < ApplicationRecord
+  include PgSearch
+  
   belongs_to :family
 
   scope :head, -> {where(is_head: true)} #guardians.head returns the objects with is_head set true
   scope :contacts, -> {where(is_head: false)} #guardians.contacts returns the objects with is_head set false
-  
+
+  pg_search_scope :search_for, :against => [:first_name, :last_name]
+
 #  validates :first_name, presence: true
 #  validates :last_name, presence: true
   

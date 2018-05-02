@@ -63,23 +63,6 @@ class KidsController < ApplicationController
     @kid = Kid.find(params[:id])
   end
   
-  #These methods are for working with kids from the registration perspective
-  def register
-    #Call render the fancy registration form
-    @kid = Kid.new
-    render layout: "public"
-  end
-  
-  def confirm
-    @kid = Kid.create(kid_params)
-    if @kid.save
-      render layout: "public"
-    else
-      flash.now[:warning] = "something went wrong"
-      render 'register'
-    end
-  end
-  
   private
   
   def kid_params

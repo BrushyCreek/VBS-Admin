@@ -1,4 +1,5 @@
 class FamiliesController < ApplicationController
+  before_action :authenticate_user!, except: [:pub_register, :pub_confirm]
 
   def new
     @family = Family.new
@@ -16,10 +17,47 @@ class FamiliesController < ApplicationController
     end
   end
 
+  def search
+    if params[:term]
+      guardians = Guardian.search_for(params[:term])
+      guardians.each do |guardian|
+        @fams << guardian.family
+      end
+    else
+      @fams = Family.all
+    end
+    
+    render layout: "public"
+  end
+
+  def register
+    @family = Family.new
+    @family.kids.build
+    @family.guardians.build(is_head: true)
+    2.times { @family.guardians.build(is_head: false) }
+
+    render layout: "public"
+  end
   
+  def confirm
+
+    render layout: "public"
+  end
+
+  def pub_register
+
+    render layout: "public"
+  end
+
+  def pub_confirm
+
+    render layout: "public"
+  end
+
+
   private
 
-  
+
   def family_params
     params.require(:family).permit(guardians_attributes: [:id,
                                                           :address,

@@ -1,4 +1,5 @@
 class Family < ApplicationRecord
+  
   has_many :guardians, dependent: :destroy
   has_many :kids
   accepts_nested_attributes_for :kids, allow_destroy: true, reject_if: :all_blank
