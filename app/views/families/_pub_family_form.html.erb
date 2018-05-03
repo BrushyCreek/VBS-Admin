@@ -1,29 +1,54 @@
 <fieldset>
-  <h4>Contact Info</h4>
   <%= f.fields_for :guardians do |ff| %>
     <% if ff.object.is_head == true %>
-      <label>Your name:</label>
-      <%= ff.text_field :first_name, :placeholder => "First" %>
-      <%= ff.text_field :last_name, :placeholder => "Last" %>
-    </br>
-    <label>Your phone number:</label>
-    <%= ff.text_field :phone %>
-    </br>
-    <%= ff.text_field :address, :placeholder => "Address" %>
-    <%= ff.text_field :city, :placeholder => "City" %>
-    <%= ff.text_field :state , :placeholder => "State" %>
-    <%= ff.text_field :zipcode , :placeholder => "zipcode" %>
-    <%= ff.hidden_field :is_head, :value => true %>
-    </br>
-    <h4>Pickup/Emergency Contacts</h4>
-    <p>Additonal people we can contact in an emergency. They are also authorized to sign your child out.</p>
-  <% else %>
-    <label>Contact name:</label>
-    <%= ff.text_field :first_name, :placeholder => "Last" %>
-    <%= ff.text_field :last_name, :placeholder => "Last" %>
-    <%= ff.hidden_field :is_head, :value => false %>
-    </br>
+      <hr>
+      <h3>Your Contact Info</h3>
+      <hr>
+      <div class="form-group row">
+	<label class="col-sm-3 text-sm-right col-form-label">Name</label>
+	<div class="col-sm-4">
+	  <%= ff.text_field :first_name, class: "form-control" %>
+	  <small class="form-text text-muted">First</small>
+	</div>
+	<div class="col-sm-4">
+	  <%= ff.text_field :last_name, class: "form-control" %>
+	  <small class="form-text text-muted">Last</small>
+	</div>
+      </div>
+      <div class="form-group row">
+	<label class="col-sm-3 text-sm-right col-form-label">Phone</label>
+	<div class="col-sm-4">
+	  <%= ff.text_field :phone, class: "form-control" %>
+	</div>
+      </div>
+	<%= ff.text_field :address, :placeholder => "Address" %>
+	<%= ff.text_field :city, :placeholder => "City" %>
+	<%= ff.text_field :state , :placeholder => "State" %>
+	<%= ff.text_field :zipcode , :placeholder => "zipcode" %>
+	<%= ff.hidden_field :is_head, :value => true %>
+	<hr>
+	<h4>Pickup/Emergency Contacts</h4>
+	<p>Additonal people we can contact in an emergency. They are also authorized to sign your child out.</p>
+      <% else %>
+	      <div class="form-group row">
+	<label class="col-sm-3 text-sm-right col-form-label">Contact Name</label>
+	<div class="col-sm-4">
+	  <%= ff.text_field :first_name, class: "form-control" %>
+	  <small class="form-text text-muted">First</small>
+	</div>
+	<div class="col-sm-4">
+	  <%= ff.text_field :last_name, class: "form-control" %>
+	  <small class="form-text text-muted">Last</small>
+	</div>
+      </div>
+      <div class="form-group row">
+	<label class="col-sm-3 text-sm-right col-form-label">Phone</label>
+	<div class="col-sm-4">
+	  <%= ff.text_field :phone, class: "form-control" %>
+	</div>
+      </div>
+      <hr>
+      <% end %>
   <% end %>
-<% end %>
-    
+  
 </fieldset>
