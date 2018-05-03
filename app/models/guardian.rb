@@ -3,7 +3,7 @@ class Guardian < ApplicationRecord
   
   belongs_to :family
 
-  scope :head, -> {where(is_head: true)} #guardians.head returns the objects with is_head set true
+  scope :head, -> {where(is_head: true).first} #guardians.head returns the objects with is_head set true
   scope :contacts, -> {where(is_head: false)} #guardians.contacts returns the objects with is_head set false
 
   pg_search_scope :search_for, :against => [:first_name, :last_name]
@@ -15,5 +15,9 @@ class Guardian < ApplicationRecord
 #  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
 
   #TODO: we will need to make sure this is a valid phone number
- # validates :phone, presence: true
+  # validates :phone, presence: true
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

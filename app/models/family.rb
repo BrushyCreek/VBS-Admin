@@ -6,5 +6,13 @@ class Family < ApplicationRecord
   accepts_nested_attributes_for :guardians, allow_destroy: true, reject_if: :all_blank
 
   #  validates :address, :city, :zipcode 
-  #  validates :state 
+  #  validates :state
+
+  def head
+    guardians.head
+  end
+
+  def contacts
+    guardians.contacts
+  end
 end

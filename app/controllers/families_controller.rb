@@ -13,11 +13,13 @@ class FamiliesController < ApplicationController
     if @family.save
       redirect_to @family
     else
+      flash[:warning] = "Somethig went wrong"
       render :new
     end
   end
 
   def search
+    @fams = []
     if params[:term]
       guardians = Guardian.search_for(params[:term])
       guardians.each do |guardian|
@@ -27,7 +29,6 @@ class FamiliesController < ApplicationController
       @fams = Family.all
     end
     
-    render layout: "public"
   end
 
   def register
@@ -40,6 +41,12 @@ class FamiliesController < ApplicationController
   end
   
   def confirm
+    @family = Family.new(family_params)
+    if @family.save
+      redirect_to @family
+    else
+      render :new
+    end
 
     render layout: "public"
   end

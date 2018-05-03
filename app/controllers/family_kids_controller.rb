@@ -1,5 +1,6 @@
 class FamilyKidsController < ApplicationController
-  def add_registration
+  
+  def register
     # This should be used if a parent has already registered and needs to add a kid
     fam = Family.find(params[:family_id])
     @kid = fam.kids.build
@@ -13,7 +14,7 @@ class FamilyKidsController < ApplicationController
       render layout: "public"
     else
       flash.now[:warning] = "something went wrong"
-      render 'add_registration'
+      render 'register'
     end
   end
 
