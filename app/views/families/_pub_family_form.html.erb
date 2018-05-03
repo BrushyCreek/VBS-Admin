@@ -18,17 +18,12 @@
     <h4>Pickup/Emergency Contacts</h4>
     <p>Additonal people we can contact in an emergency. They are also authorized to sign your child out.</p>
   <% else %>
-    <label>Contact Name:</label>
+    <label>Contact name:</label>
     <%= ff.text_field :first_name, :placeholder => "Last" %>
     <%= ff.text_field :last_name, :placeholder => "Last" %>
     <%= ff.hidden_field :is_head, :value => false %>
     </br>
   <% end %>
 <% end %>
-
-<%= f.fields_for :kids do |ff| %>
-  <%= render partial: "kids/kid_form", locals: {f:ff, admin: admin} %>
-<% end %>
-  
-  
+    
 </fieldset>

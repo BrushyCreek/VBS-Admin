@@ -53,9 +53,14 @@ class FamiliesController < ApplicationController
 
   def pub_register
     if (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? Time.now
+      @family = Family.new
+      @family.kids.build
+      @family.guardians.build(is_head: true)
+      2.times { @family.guardians.build(is_head: false) }
+      
       render layout: 'public'
     else
-      redirect_to controller: 'pages', action: 'home' and return
+      redirect_to root_path and return
     end
 
   end
