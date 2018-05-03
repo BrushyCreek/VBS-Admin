@@ -10,16 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426050707) do
+ActiveRecord::Schema.define(version: 20180430210548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "families", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.integer "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "guardians", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "email"
+    t.boolean "has_wristband"
+    t.datetime "date_of_wrist_band"
+    t.bigint "family_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "zipcode"
+    t.boolean "is_head"
+    t.index ["family_id"], name: "index_guardians_on_family_id"
   end
 
   create_table "kids", force: :cascade do |t|
@@ -30,13 +53,6 @@ ActiveRecord::Schema.define(version: 20180426050707) do
     t.datetime "updated_at", null: false
     t.integer "last_grade_id"
     t.string "gender"
-    t.string "address"
-    t.string "city"
-    t.string "state"
-    t.integer "zipcode"
-    t.string "parent_name"
-    t.string "parent_email"
-    t.string "parent_phone"
     t.boolean "church_member"
     t.string "invited_by"
     t.integer "tshirt_size_id"
@@ -46,15 +62,13 @@ ActiveRecord::Schema.define(version: 20180426050707) do
     t.text "medical_issues_notes"
     t.string "buddy_request"
     t.text "notes"
-    t.string "pickupper_1_name"
-    t.string "pickupper_1_phone"
-    t.string "pickupper_2_name"
-    t.string "pickupper_2_phone"
-    t.string "pickupper_3_name"
-    t.string "pickupper_3_phone"
     t.boolean "highlight", default: false
     t.boolean "can_photograph"
     t.bigint "group_id"
+    t.datetime "note_modified_at"
+    t.boolean "special_circumstance"
+    t.bigint "family_id"
+    t.index ["family_id"], name: "index_kids_on_family_id"
     t.index ["group_id"], name: "index_kids_on_group_id"
   end
 

@@ -2,28 +2,19 @@ class Kid < ApplicationRecord
   include PgSearch
   
   belongs_to :group, optional: true
+  belongs_to :family
 
   pg_search_scope :search_for, against: %i(first_name last_name)
   pg_search_scope :search_grades, against: %i(last_grade_id)
   
   scope :sort_by_last_name, -> { order( last_name: :asc ) }
   scope :sort_by_grade, -> { order( last_grade_id: :asc ) }
-  
-  validates :first_name, :last_name, presence: true
 
-  validates :birthdate, presence: true
+  before_save :update_notes_modified_at
 
-  validates :gender, presence: true
-  
-  validates :address, :city, :zipcode, presence: true
-  validates :state, presence: true
-  validates :parent_name, presence: true
-  
-  VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :parent_email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
+  # validates :first_name, :last_name, presence: true
 
-  #TODO: we will need to make sure this is a valid phone number
-  validates :parent_phone, presence: true
+  # validates :birthdate, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
@@ -46,5 +37,13 @@ class Kid < ApplicationRecord
     lg = self.last_grade_id
     return "#{Kid.grade_types.at(lg)}"
   end
+
+  private
+
+  def update_notes_modified_at
+    #checks t see if the notes field has changed since the last time it saved and updates the modified at field is so
+    self.note_modified_at = Time.now if notes_changed?
+  end
+  
 end
 

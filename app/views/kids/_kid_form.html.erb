@@ -15,13 +15,13 @@
 
 <div class="form-group row">
   <div class="col-sm-8 offset-md-3">
-    <div class="custom-control custom-radio">
-      <%= f.radio_button :gender, :male, class: "custom-control-input" %>
-      <label class="custom-control-label" for="kid_gender_male">Male</label>
+    <div class="form-check">
+      <%= f.radio_button :gender, :male, class: "form-check-input" %>
+      <%= f.label :gender, "Male", value: "male", class: "form-check-label" %>
     </div>
-    <div class="custom-control custom-radio">
-      <%= f.radio_button :gender, :female, class: "custom-control-input" %>
-      <label class="custom-control-label" for="kid_gender_female">Female</label>
+    <div class="form-check">
+      <%= f.radio_button :gender, :female, class: "form-check-input" %>
+      <%= f.label :gender, "Female", value: "female", class: "form-check-label" %>
     </div>
   </div>
 </div>
@@ -42,9 +42,9 @@
 
 <div class="form-group row">
   <div class="col-sm-3 offset-md-3">
-      <div class="custom-control custom-checkbox">
-	<%= f.check_box :church_member, class: "custom-control-input" %>
-	<label class="custom-control-label" for="kid_church_member">Regualr Attendee</label>
+      <div class="form-check">
+	<%= f.check_box :church_member, class: "form-check-input", checked: true %>
+	<%= f.label :church_member, "Regular Attendee", class: "form-check-label" %>
       </div>
   </div>
 </div>
@@ -67,19 +67,29 @@
 
 <div class="form-group row">
   <div class="col-sm-8 offset-3">
-    <div class="custom-control custom-checkbox">
-      <%= f.check_box :can_photograph, checked: true, class: "custom-control-input" %>
-      <label class="custom-control-label" for="kid_can_photograph">Can be photographed</label>
+    <div class="form-check">
+      <%= f.check_box :can_photograph, class: "form-check-input", checked: true %>
+      <%= f.label :can_photograph, "Can be photographed", class: "form-check-label" %>
     </div>
     <small class="form-text text-muted">Is your child allowed to be inclueded in photographs or videos relating to VBS.</small>
     </div>
 </div>
 
 <div class="form-group row">
-  <div class="col-sm-8 offset-md-3">  
-    <div class="custom-control custom-checkbox">     
-      <%= f.check_box :allergies, class: "custom-control-input" %>
-      <label class="custom-control-label" for="kid_allergies">Allergies</label>
+  <div class="col-sm-8 offset-3">
+    <div class="form-check">
+      <%= f.check_box :special_circumstance, class: "form-check-input" %>
+      <%= f.label :special_circumstance, "Any other circumstances that we should we be aware", class: "form-check-label" %>
+    </div>
+    <small class="form-text text-muted">We will get in touch before VBS to discus this with you.</small>    
+    </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-sm-8 offset-md-3">
+    <div class="form-check">
+      <%= f.check_box :allergies, class: "form-check-input" %>
+      <%= f.label :allergies, "Allerigies", class: "form-check-label" %>
     </div>
   </div>
   <div class="col-sm-8 offset-md-3">
@@ -89,135 +99,16 @@
 
 <div class="form-group row">
   <div class="col-sm-6 offset-md-3">
-      <div class="custom-control custom-checkbox">
-	<%= f.check_box :medical_issues, class: "custom-control-input" %>
-	<label class="custom-control-label" for="kid_medical_issues">Other Medical Issues</label>
-      </div>
+    <div class="form-check">
+      <%= f.check_box :medical_issues, class: "form-check-input" %>
+      <%= f.label :medical_issues, "Other Medical Issues", class: "form-check-label" %>
+    </div>
   </div>
   <div class="col-sm-8 offset-md-3">
     <%= f.text_area :medical_issues_notes, placeholder: "Bloody Noses, etc.",  class: "form-control"%>
   </div>
 </div>
 
-<hr>
-<h3>Parent/Guardian Info</h3>
-<hr>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Name</label>
-  <div class="col-sm-8">
-    <%= f.text_field :parent_name, class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Email</label>
-  <div class="col-sm-8">
-    <%= f.text_field :parent_email,type: "eamil", class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Phone Number</label>
-  <div class="col-sm-8">
-    <%= f.text_field :parent_phone, type: "tel", class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="row">
-    <label class="col-sm-3 text-sm-right col-form-label">Address</label>
-    <div class="col-sm-8">
-      <%= f.text_field :address, class: "form-control" %>
-      <small class="form-text text-muted">Street</small>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-3 offset-md-3">
-      <%= f.text_field :city, class: "form-control" %>
-      <small class="form-text text-muted">City</small>
-    </div>
-    <div class="col-2">
-      <%= f.select :state, CS.states(:us),{}, class: "custom-select w-100"%>
-      <small class="form-text text-muted">State</small>
-    </div>
-    <div class="col-3">
-      <%= f.text_field :zipcode, class: "form-control" %>
-      <small class="form-text text-muted">Zipcode</small>
-    </div>
-  </div>
-</div>
-
-<hr>
-<h3>Pickup/Emergency Contacts</h3>
-<p>Additonal people we can contact in an emergency. They are also authorized to sign your child out.</p>
-<hr>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Contact 1</label>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_1_name, class: "form-control" %>
-    <small class="from-text text-muted">Name</small>
-  </div>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_1_phone, type: "tel", class: "form-control" %>
-    <small class="from-text text-muted">Phone Number</small>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Contact 2</label>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_2_name, class: "form-control" %>
-    <small class="from-text text-muted">Name</small>
-  </div>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_2_phone, type: "tel", class: "form-control" %>
-    <small class="from-text text-muted">Phone Number</small>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Contact 3</label>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_3_name, class: "form-control" %>
-    <small class="from-text text-muted">Name</small>
-  </div>
-  <div class="col-sm-4">
-    <%= f.text_field :pickupper_3_phone, type: "tel", class: "form-control" %>
-    <small class="from-text text-muted">Phone Number</small>
-  </div>
-</div>
-
-<% if edit == 1 %>
-<div id="admin-kid-form" class="jumbotron">
-  <div class="container">
-    <hr>
-    <h3>Admin Only</h3>
-    <hr>
-
-    <div class="form-group row">
-      <div class="col-sm-8 offset-md-3">
-	<div class="custom-control custom-checkbox">
-	  <%= f.check_box :highlight, class: "custom-control-input" %>
-	  <label class="custom-control-label" for="kid_highlight">Highlight</label>
-	</div>
-	<small class="form-text text-muted">Add a highlight when the kid is displayed on other pages</small>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label class="col-sm-3 text-sm-right col-form-label">Notes</label>
-      <div class="col-sm-8">
-	<%= f.text_area :notes, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-sm-3 text-sm-right col-form-label">Assign to class</label>
-      <div class="col-sm-8">
-	<%= f.collection_select :group_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {include_blank: 'Unassigned'}, class: "custom-select"%>
-      </div>
-    </div>
-  </div>
-</div>
+<% if admin == 1 %>
+  <%= render partial: "kids/kid_form_admin", locals: {f: f} %>
 <% end %>
