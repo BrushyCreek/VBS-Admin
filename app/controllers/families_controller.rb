@@ -52,8 +52,12 @@ class FamiliesController < ApplicationController
   end
 
   def pub_register
+    if (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? Time.now
+      render layout: 'public'
+    else
+      redirect_to controller: 'pages', action: 'home' and return
+    end
 
-    render layout: "public"
   end
 
   def pub_confirm
