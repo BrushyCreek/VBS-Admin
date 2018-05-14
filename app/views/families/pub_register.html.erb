@@ -10,9 +10,7 @@ New Registration
   <%= render partial: "pub_family_form", locals: {fam: @family, f: f, admin: 0} %>
   <div id="kids">
     <%= f.fields_for :kids do |ff| %>
-      <div class="kid_form">
 	<%= render partial: "kids/kid_form", locals: {f:ff, admin: 0} %>
-      </div>
     <% end %>
   </div>
   

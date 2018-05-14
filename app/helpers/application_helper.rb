@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def add_object_button(name, source, tagert)
-    button_tag(name, type: "button", class: "add-source")
+    button_tag(name, type: "button", class: "add-source", id: "add_kid")
    #.replace(/index_to_replace_with_js/g, new Date().getTime()));
   end
 
