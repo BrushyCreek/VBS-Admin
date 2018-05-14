@@ -22,7 +22,31 @@ module ApplicationHelper
   end
 
   def grade_types
-
     ["Pre-K", "4k", "5k", "1st", "2nd", "3rd", "4th", "5th", "6th"]
+  end
+
+  def js(data)
+    if data.respond_to? :to_json
+      data.to_json
+    else
+      data.instect.to_json
+    end
+  end
+
+  def add_object_link(name, form, object, partial, where)
+    #    options = {:parent => true}.merge(options)
+    html = form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff|
+        render partial: "kids/kid_form", locals: {f:ff, admin: 0}
+    end
+    content_tag(:div, html, id: "kid_form_template", style: "display: none")
+    link_to name, ' ',  onclick: %{Element.insert.('#{where}', '#{html}'.replace(/index_to_replace_with_js/g, new Date().getTime()));}   
+  end
+  #render(:partial => partial, :locals => { :form => form, :object => thing})
+
+  def add_form_template(form, object, partial)
+    html = form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff|
+      render partial: "kids/kid_form", locals: {f:ff, admin: 0}
+    end
+    content_tag(:div, html, id: "kid_form_template", style: "display: none")
   end
 end

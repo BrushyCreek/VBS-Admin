@@ -1,0 +1,5 @@
+
+<% form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff| %>
+  <%= render partial: "kids/kid_form", locals: {f:ff, admin: 0} %>
+<% end %>
+

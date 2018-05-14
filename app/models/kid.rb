@@ -38,6 +38,14 @@ class Kid < ApplicationRecord
     return "#{Kid.grade_types.at(lg)}"
   end
 
+  def template
+    @template
+  end
+
+  def template=(val)
+    @template = val
+  end
+
   private
 
   def update_notes_modified_at

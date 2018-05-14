@@ -6,15 +6,22 @@ New Registration
   <h1>Register Your Family </h1>
   <%#= render partial: "errors", locals: {family: @family} %>
   <%= form_for @family do |f| %>
-    <%= render partial: "pub_family_form", locals: {fam: @family, f: f, admin: 0} %>
+    
+  <%= render partial: "pub_family_form", locals: {fam: @family, f: f, admin: 0} %>
+  <div id="kids">
     <%= f.fields_for :kids do |ff| %>
-      <%= render partial: "kids/kid_form", locals: {f:ff, admin: 0} %>
+      <div class="kid_form">
+	<%= render partial: "kids/kid_form", locals: {f:ff, admin: 0} %>
+      </div>
     <% end %>
-    <br>
-    <div class="">
-      <div class="">
-      <%= f.submit "Register", data: {"diable-with":"Saving..."}, class: "btn btn-primary"%>
-    </div>
   </div>
+  
+  <%#= add_object_link("Add Child", f, @family.kids.build, "kids/register_another_kid", "#kids") %>
+  <%= add_form_template(f, @family.kids.build, "kids/register_another_kid") %>
+  
+  <br>
+  <%= f.submit "Register", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
   <% end %>
+
+</div>
 

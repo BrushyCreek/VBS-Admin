@@ -27,7 +27,9 @@
 <% end %>
 
 <%= f.fields_for :kids do |ff| %>
-  <%= render partial: "kids/kid_form", locals: {f:ff, admin: admin} %>
+  <div class="kid_form">
+    <%= render partial: "kids/kid_form", locals: {f:ff, admin: admin} %>
+  </div>
 <% end %>
   
   

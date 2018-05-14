@@ -55,6 +55,7 @@ class FamiliesController < ApplicationController
     if (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? Time.now
       @family = Family.new
       @family.kids.build
+#      @family.kids.build(template: true)
       @family.guardians.build(is_head: true)
       2.times { @family.guardians.build(is_head: false) }
       
