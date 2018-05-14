@@ -34,14 +34,14 @@ module ApplicationHelper
   end
 
   def add_object_button(name, source, tagert)
-    button_tag(name, type: "button, class: "add-source")
+    button_tag(name, type: "button", class: "add-source")
    #.replace(/index_to_replace_with_js/g, new Date().getTime()));
   end
 
-  def add_form_template(form, object, partial)
+  def add_form_template(form, object, partial, id)
     html = form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff|
       render partial: "kids/kid_form", locals: {f:ff, admin: 0}
     end
-    content_tag(:div, html, id: "kid_form_template", style: "display: none")
+    content_tag(:div, html, id: id, style: "display: none")
   end
 end

@@ -67,8 +67,12 @@ class FamiliesController < ApplicationController
   end
 
   def pub_confirm
-
-    render layout: "public"
+    @family = Family.new(family_params)
+    if @family.save
+      redirect_to confirm_page_path
+    else
+      render :new
+    end
   end
 
 
