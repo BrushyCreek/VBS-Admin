@@ -33,15 +33,10 @@ module ApplicationHelper
     end
   end
 
-  def add_object_link(name, form, object, partial, where)
-    #    options = {:parent => true}.merge(options)
-    html = form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff|
-        render partial: "kids/kid_form", locals: {f:ff, admin: 0}
-    end
-    content_tag(:div, html, id: "kid_form_template", style: "display: none")
-    link_to name, ' ',  onclick: %{Element.insert.('#{where}', '#{html}'.replace(/index_to_replace_with_js/g, new Date().getTime()));}   
+  def add_object_button(name, source, tagert)
+    button_tag(name, type: "button, class: "add-source")
+   #.replace(/index_to_replace_with_js/g, new Date().getTime()));
   end
-  #render(:partial => partial, :locals => { :form => form, :object => thing})
 
   def add_form_template(form, object, partial)
     html = form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff|

@@ -16,7 +16,7 @@ New Registration
     <% end %>
   </div>
   
-  <%#= add_object_link("Add Child", f, @family.kids.build, "kids/register_another_kid", "#kids") %>
+  <%= add_object_button("Add Child", "kid_form_template", "kids") %>
   <%= add_form_template(f, @family.kids.build, "kids/register_another_kid") %>
   
   <br>
