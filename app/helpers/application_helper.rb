@@ -42,6 +42,6 @@ module ApplicationHelper
     html = form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff|
       render partial: "kids/kid_form", locals: {f:ff, admin: 0}
     end
-    content_tag(:div, html, id: id, style: "display: none")
+    content_tag(:script, html, id: id)
   end
 end

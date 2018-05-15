@@ -73,50 +73,50 @@ Kids Inbox
 	
 	<tbody>
 	  <% @kids.sort_by_last_name.each do |kid| %>
-	  <% if kid.highlight %>	
-	  <tr class="table-warning">
-	  <% else %>
-	  <tr>
-	  <% end %>
-	  <td class="text-right">
-	    <% unless kid.can_photograph %>
-	      <i class="fa fa-camera text-danger"></i>
-	    <% end %>
-	  </td>
-	  <td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %>
-	    <% unless kid.buddy_request.empty? %>
-	    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-	    <% end %>
-	  </td>
-	    <td><%= find_age(kid.birthdate) %></td>
-	    <td><%= kid.grade %></td>
-	    <td>
-	      <% if kid.group.present? %>
-	      <%= kid.group.name %>
+	    <% if kid.highlight %>	
+	      <tr class="table-warning">
 	      <% else %>
-	      --
-	      <% end %>
-	    </td>
-	    <td>
-	      <% if kid.notes.present? %>
-	      <a tabindex="0" data-toggle="popover" data-trigger="focus"  data-content="<%= kid.notes %>">
-		<i class="fa fa-comment" aria-hidden="true"></i>
-	      </a>
-	      <% end %>
-	    </td>
-	    <td>
-	      <% if kid.allergies %>
-	      <span class="badge badge-warning">Allergies</span>
-	      <% end %>
-	      <% if kid.medical_issues %>
-	      <span class="badge badge-info">Other</span>
-	      <% else %>
-	      <% end %>
-	    </td>
+		<tr>
+		<% end %>
+		<td class="text-right">
+		  <% unless kid.can_photograph %>
+		    <i class="fa fa-camera text-danger"></i>
+		  <% end %>
+		</td>
+		<td onclick="window.location='<%= kid_path(kid)%>';" style='cursor: pointer;'><%= "#{kid.first_name} #{kid.last_name}" %>
+		    <% unless kid.buddy_request.empty? %>
+		      <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+		    <% end %>
+		</td>
+		<td><%#= kid.age %></td>
+		<td><%= kid.grade %></td>
+		<td>
+		  <% if kid.group.present? %>
+		    <%= kid.group.name %>
+		  <% else %>
+		    --
+		<% end %>
+		</td>
+		<td>
+		  <% if kid.notes.present? %>
+		    <a tabindex="0" data-toggle="popover" data-trigger="focus"  data-content="<%= kid.notes %>">
+		      <i class="fa fa-comment" aria-hidden="true"></i>
+		    </a>
+		  <% end %>
+		</td>
+		<td>
+		  <% if kid.allergies %>
+		    <span class="badge badge-warning">Allergies</span>
+		  <% end %>
+		  <% if kid.medical_issues %>
+		    <span class="badge badge-info">Other</span>
+		  <% else %>
+		  <% end %>
+		</td>
     </div>
     <td><%= link_to "Edit", edit_kid_path(kid) %></td>
     </tr>
-    <% end %>
+  <% end %>
     </tbody>
     </table>
     </div>

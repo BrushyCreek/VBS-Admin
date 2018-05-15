@@ -110,6 +110,7 @@ class FamiliesController < ApplicationController
                                                      :notes,
                                                      :highlight,
                                                      :can_photograph,
+                                                     :family_id,
                                                      :group_id,
                                                      :special_circumstance,
                                                      :_destroy])
