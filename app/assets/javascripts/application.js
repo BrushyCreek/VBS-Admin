@@ -17,3 +17,18 @@
 //= require turbolinks
 //= require dragster
 
+document.addEventListener("turbolinks:load", function() {
+    var showotherToggles = document.querySelectorAll("[data-toggle='showother']");
+    console.log(showotherToggles);
+    for (var i = 0; i < showotherToggles.length; i++) {
+	var current = showotherToggles[i]
+	current.addEventListener("click", function(event) {
+	    console.log("clicked something");
+	    var targetId = event.currentTarget.dataset.toggle-target;
+	    console.log(targetId);
+	    var target = document.getElementById(targetId);
+	    // target.setAttribute("style", "");
+	}, false);
+    }
+});
+
