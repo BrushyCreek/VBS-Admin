@@ -24,10 +24,8 @@ document.addEventListener("turbolinks:load", function() {
 	var current = showotherToggles[i]
 	current.addEventListener("click", function(event) {
 	    console.log("clicked something");
-	    var targetId = event.currentTarget.dataset.toggle-target;
-	    console.log(targetId);
-	    var target = document.getElementById(targetId);
-	    // target.setAttribute("style", "");
+	    var target = document.getElementById(event.currentTarget.dataset.toggleTarget);
+	    target.setAttribute("style", "");
 	}, false);
     }
 });
