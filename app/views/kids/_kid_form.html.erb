@@ -3,8 +3,18 @@
   <div class="row">
     <h3>Child Info</h3>
     <% if deleteable == 1 %>
-      <%= f.check_box :_destroy %>
+      <div class="form-group row">
+	<div class="col-sm-12 offset-md-3">
+	  <div class="form-check pretty p-default">
+	    <%= f.check_box :_destroy, class: "form-check-input", checked: false %>
+	    <div class="state">
+	      <%= f.label :_destroy, "Remove Child From Registration", class: "form-check-label" %>
+	      </div>
+	  </div>
+	</div>
+      </div>
     <% end %>
+  </div>
     </div>
   <hr>
   <div class="form-group row">
