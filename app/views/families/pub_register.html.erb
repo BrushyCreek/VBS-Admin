@@ -2,7 +2,7 @@
 New Registration
 <% end %>
 
-<div class="container">
+<div class="container pb-5">
   <h1>Register Your Family </h1>
   <%#= render partial: "errors", locals: {family: @family} %>
   <%= form_for @family do |f| %>
@@ -10,7 +10,7 @@ New Registration
   <%= render partial: "pub_family_form", locals: {fam: @family, f: f, admin: 0} %>
   <div id="kids">
     <%= f.fields_for :kids do |ff| %>
-	<%= render partial: "kids/kid_form", locals: {f:ff, admin: 0, deleteable: 0} %>
+      <%= render partial: "kids/kid_form", locals: {f:ff, admin: 0, deleteable: 0} %>
     <% end %>
   </div>
   
@@ -20,6 +20,5 @@ New Registration
   <br>
   <%= f.submit "Register", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
   <% end %>
-
 </div>
 

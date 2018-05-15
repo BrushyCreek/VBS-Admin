@@ -1,21 +1,23 @@
 <div class="kids-form">
   <hr>
-  <div class="row">
-    <h3>Child Info</h3>
+  <div class="form-group row">
+    <h3 class="col-sm-11">Child Info</h3>
     <% if deleteable == 1 %>
-      <div class="form-group row">
-	<div class="col-sm-12 offset-md-3">
-	  <div class="form-check pretty p-default">
-	    <%= f.check_box :_destroy, class: "form-check-input", checked: false %>
-	    <div class="state">
-	      <%= f.label :_destroy, "Remove Child From Registration", class: "form-check-label" %>
-	      </div>
+      <div class="col-sm-1">
+	<div class="form-check pretty p-icon p-toggle p-plain p-bigger">
+	  <%= f.check_box :_destroy, class: "form-check-input", checked: false %>
+	  <div class="state p-on">
+	    <%#= f.label :_destroy, "Will not be", class: "form-check-label" %>
+	    <i class="icon fas fa-times"></i>
+	  </div>
+	  <div class="state p-off p-danger-o">
+	    <%#= f.label :_destroy, "delete", class: "form-check-label" %>
+	    <i class="icon fas fa-times"></i>
 	  </div>
 	</div>
       </div>
-    <% end %>
+      <% end %>
   </div>
-    </div>
   <hr>
   <div class="form-group row">
     <label class="col-sm-3 text-sm-right col-form-label">Name</label>
