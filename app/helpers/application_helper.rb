@@ -40,7 +40,7 @@ module ApplicationHelper
 
   def add_form_template(form, object, partial, id)
     html = form.fields_for :kids, object, :child_index => "index_to_replace_with_js" do |ff|
-      render partial: "kids/kid_form", locals: {f:ff, admin: 0}
+      render partial: "kids/kid_form", locals: {f: ff, admin: 0, deleteable: 1}
     end
     content_tag(:script, html, id: id)
   end
