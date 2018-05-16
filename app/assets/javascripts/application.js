@@ -15,4 +15,18 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require_tree .
+//= require dragster
+
+document.addEventListener("turbolinks:load", function() {
+    document.getElementById("kids").addEventListener("click", function(event) {
+	if(event.target.dataset.toggle == "showother") {
+	    console.log(event.target);
+	    event.target.closest(".form-check").setAttribute("style", "display: none");
+    	    var targetId = event.target.dataset.toggleTarget;
+    	    var target = document.getElementById(targetId);
+    	    target.setAttribute("style", "");
+	    console.log(event);
+	}
+    }, false)
+});
+

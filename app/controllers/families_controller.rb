@@ -55,6 +55,7 @@ class FamiliesController < ApplicationController
     if (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? Time.now
       @family = Family.new
       @family.kids.build
+#      @family.kids.build(template: true)
       @family.guardians.build(is_head: true)
       2.times { @family.guardians.build(is_head: false) }
       
@@ -66,8 +67,12 @@ class FamiliesController < ApplicationController
   end
 
   def pub_confirm
-
-    render layout: "public"
+    @family = Family.new(family_params)
+    if @family.save
+      redirect_to confirm_page_path
+    else
+      render :new
+    end
   end
 
 
@@ -105,6 +110,7 @@ class FamiliesController < ApplicationController
                                                      :notes,
                                                      :highlight,
                                                      :can_photograph,
+                                                     :family_id,
                                                      :group_id,
                                                      :special_circumstance,
                                                      :_destroy])

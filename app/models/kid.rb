@@ -2,7 +2,7 @@ class Kid < ApplicationRecord
   include PgSearch
   
   belongs_to :group, optional: true
-  belongs_to :family
+  belongs_to :family, inverse_of: :kids
 
   pg_search_scope :search_for, against: %i(first_name last_name)
   pg_search_scope :search_grades, against: %i(last_grade_id)
@@ -36,6 +36,13 @@ class Kid < ApplicationRecord
   def grade
     lg = self.last_grade_id
     return "#{Kid.grade_types.at(lg)}"
+  end
+
+  def age
+    
+    now = Time.now.utc.to_date
+    byebug
+    now.year - self.birthdate.year - ((now.month > self.birthdate.month || (now.month == self.birthdate.month && now.day >= self.birthdate.day)) ? 0 : 1)
   end
 
   private

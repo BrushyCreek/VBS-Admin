@@ -78,12 +78,16 @@ Rails.application.routes.draw do
   end
 
   get '/info', to: 'pages#info', as: 'info_page'
+  get '/confirmation', to: 'pages#confirm', as: 'confirm_page'
   get '/comming_soon', to: 'pages#comming_soon', as: 'comming_soon_page'
+  post '/families', to: 'families#pub_confirm', as: 'public_confirmation_page'
 
 
   get '/admin', to: redirect('users/sign_in', status: 302)
-  root to: 'families#pub_register', constraints: HomeRouteConstraint.new { |time| (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? time }
-  root to: 'pages#info', constraints: HomeRouteConstraint.new { |time| time > PUBLIC_REGISTRATION_END }
+  root to: 'families#pub_register',
+       constraints: HomeRouteConstraint.new { |time| (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? time }
+  root to: 'pages#info',
+       constraints: HomeRouteConstraint.new { |time| time > PUBLIC_REGISTRATION_END }
   root to: 'pages#comming_soon'
 
     

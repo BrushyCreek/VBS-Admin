@@ -1,114 +1,133 @@
-<hr>
-<h3>Child Info</h3>
-<hr>
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Name</label>
-  <div class="col-sm-4">
-    <%= f.text_field :first_name, class: "form-control" %>
-    <small class="form-text text-muted">First Name</small>
+<div class="kids-form">
+  <hr>
+  <div class="form-group row">
+    <h3 class="col-sm-11">Child Info</h3>
+    <% if deleteable == 1 %>
+      <div class="col-sm-1">
+	<div class="form-check pretty p-icon p-toggle p-plain p-bigger">
+	  <%= f.check_box :_destroy, class: "form-check-input", checked: false %>
+	  <div class="state p-on">
+	    <%#= f.label :_destroy, "Will not be", class: "form-check-label" %>
+	    <i class="icon fas fa-times"></i>
+	  </div>
+	  <div class="state p-off p-danger-o">
+	    <%#= f.label :_destroy, "delete", class: "form-check-label" %>
+	    <i class="icon fas fa-times"></i>
+	  </div>
+	</div>
+      </div>
+      <% end %>
   </div>
-  <div class="col-sm-4">
-    <%= f.text_field :last_name, class: "form-control" %>
-    <small class="form-text text-muted">Last Name</small>
-  </div>
-</div>
-
-<div class="form-group row">
-  <div class="col-sm-8 offset-md-3">
-    <div class="form-check">
-      <%= f.radio_button :gender, :male, class: "form-check-input" %>
-      <%= f.label :gender, "Male", value: "male", class: "form-check-label" %>
+  <hr>
+  <div class="form-group row">
+    <label class="col-sm-3 text-sm-right col-form-label">Name</label>
+    <div class="col-sm-4">
+      <%= f.text_field :first_name, class: "form-control" %>
+      <small class="form-text text-muted">First Name</small>
     </div>
-    <div class="form-check">
-      <%= f.radio_button :gender, :female, class: "form-check-input" %>
-      <%= f.label :gender, "Female", value: "female", class: "form-check-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :last_name, class: "form-control" %>
+      <small class="form-text text-muted">Last Name</small>
     </div>
   </div>
-</div>
 
-<div class="form-group row">
-  <label class="col-md-3 text-sm-right col-form-label">Birthday</label>
-  <div class="col-sm-8">
-    <%= f.date_select :birthdate, { :start_year => 2004, :end_year => 2017, :prompt => { day: 'Day', month: 'Month', year: 'Year' }, :use_short_month => true, :order => [:day, :month, :year]}, class: "custom-select col-sm-3" %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-md-3 text-sm-right col-form-label">Last Grade Completed</label>
-  <div class="col-sm-8">
-    <%= f.select :last_grade_id, grade_types.map.with_index{ |s, i| [s, i]}, {}, {class: "custom-select"}  %>
-  </div>
-</div>
-
-<div class="form-group row">
-  <div class="col-sm-3 offset-md-3">
+  <div class="form-group row">
+    <div class="col-sm-8 offset-md-3">
       <div class="form-check">
-	<%= f.check_box :church_member, class: "form-check-input", checked: true %>
-	<%= f.label :church_member, "Regular Attendee", class: "form-check-label" %>
+	<%= f.radio_button :gender, :male, class: "form-check-input" %>
+	<%= f.label :gender, "Male", value: "male", class: "form-check-label" %>
+      </div>
+      <div class="form-check">
+	<%= f.radio_button :gender, :female, class: "form-check-input" %>
+	<%= f.label :gender, "Female", value: "female", class: "form-check-label" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-3 text-sm-right col-form-label">Birthday</label>
+    <div class="col-sm-8">
+      <%= f.date_select :birthdate, { :start_year => 2004, :end_year => 2017, :prompt => { day: 'Day', month: 'Month', year: 'Year' }, :use_short_month => true, :order => [:day, :month, :year]}, class: "custom-select col-sm-3" %>
       </div>
   </div>
-</div>
 
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Invited By</label>
-  <div class="col-sm-8 ">
-    <%= f.text_field :invited_by, class: "form-control" %>
-    <small class="form-text text-muted">If you were invited by a member of Brushy Creek please give their name.</small>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label class="col-sm-3 text-sm-right col-form-label">Class Buddy</label>
-  <div class="col-sm-8">
-    <%= f.text_field :buddy_request, class: "form-control" %>
-    <small class="form-text text-muted">If you would like your child to be in a class woth a specific friend please give their name and we make every effort to place them together..</small>
-  </div>
-</div>
-
-<div class="form-group row">
-  <div class="col-sm-8 offset-3">
-    <div class="form-check">
-      <%= f.check_box :can_photograph, class: "form-check-input", checked: true %>
-      <%= f.label :can_photograph, "Can be photographed", class: "form-check-label" %>
-    </div>
-    <small class="form-text text-muted">Is your child allowed to be inclueded in photographs or videos relating to VBS.</small>
-    </div>
-</div>
-
-<div class="form-group row">
-  <div class="col-sm-8 offset-3">
-    <div class="form-check">
-      <%= f.check_box :special_circumstance, class: "form-check-input" %>
-      <%= f.label :special_circumstance, "Any other circumstances that we should we be aware", class: "form-check-label" %>
-    </div>
-    <small class="form-text text-muted">We will get in touch before VBS to discus this with you.</small>    
-    </div>
-</div>
-
-<div class="form-group row">
-  <div class="col-sm-8 offset-md-3">
-    <div class="form-check">
-      <%= f.check_box :allergies, class: "form-check-input" %>
-      <%= f.label :allergies, "Allerigies", class: "form-check-label" %>
+  <div class="form-group row">
+    <label class="col-md-3 text-sm-right col-form-label">Last Grade Completed</label>
+    <div class="col-sm-8">
+      <%= f.select :last_grade_id, grade_types.map.with_index{ |s, i| [s, i]}, {}, {class: "custom-select"}  %>
     </div>
   </div>
-  <div class="col-sm-8 offset-md-3">
-    <%= f.text_area :allergies_notes, placeholder: "Alergies, Epipen, etc.",  class: "form-control"%>
-  </div>
-</div>
 
-<div class="form-group row">
-  <div class="col-sm-6 offset-md-3">
-    <div class="form-check">
-      <%= f.check_box :medical_issues, class: "form-check-input" %>
-      <%= f.label :medical_issues, "Other Medical Issues", class: "form-check-label" %>
+  <div class="form-group row">
+    <label class="col-sm-3 text-sm-right col-form-label">Class Buddy</label>
+    <div class="col-sm-8">
+      <%= f.text_field :buddy_request, class: "form-control" %>
+      <small class="form-text text-muted">If you would like your child to be in a class woth a specific friend please give their name and we make every effort to place them together..</small>
     </div>
   </div>
-  <div class="col-sm-8 offset-md-3">
-    <%= f.text_area :medical_issues_notes, placeholder: "Bloody Noses, etc.",  class: "form-control"%>
-  </div>
-</div>
 
-<% if admin == 1 %>
-  <%= render partial: "kids/kid_form_admin", locals: {f: f} %>
-<% end %>
+  <div class="form-group row">
+    <div class="col-sm-3 offset-md-3">
+      <div class="form-check">
+	<%= f.check_box :church_member, class: "form-check-input", checked: true, data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[invited_by]" } %>
+	<%= f.label :church_member, "Regular Attendee", class: "form-check-label"%>
+      </div>
+    </div>
+  </div>
+
+  <div id= "<%= f.object_name %>[invited_by]" class="form-group row" style="display: none">
+    <label class="col-sm-3 text-sm-right col-form-label">Invited By</label>
+    <div class="col-sm-8 ">
+      <%= f.text_field :invited_by, id: "#{:invited_by}",  class: "form-control"%>
+      <small class="form-text text-muted">If you were invited by a member of Brushy Creek please give their name.</small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-8 offset-3">
+      <div class="form-check">
+	<%= f.check_box :can_photograph, class: "form-check-input", checked: true %>
+	<%= f.label :can_photograph, "Can be photographed", class: "form-check-label" %>
+      </div>
+      <small class="form-text text-muted">Is your child allowed to be inclueded in photographs or videos relating to VBS.</small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-8 offset-md-3">
+      <div class="form-check">
+	<%= f.check_box :allergies, class: "form-check-input", data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[allergies_notes]" } %>
+	<%= f.label :allergies, "Allerigies", class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-sm-8 offset-md-3" id="<%= f.object_name %>[allergies_notes]" style="display: none">
+      <%= f.text_area :allergies_notes, placeholder: "Alergies, Epipen, etc.",  class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-6 offset-md-3">
+      <div class="form-check">
+	<%= f.check_box :medical_issues, class: "form-check-input", data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[medical_issues_notes]" } %>
+	<%= f.label :medical_issues, "Other Medical Issues", class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="col-sm-8 offset-md-3" id="<%= f.object_name %>[medical_issues_notes]" style="display: none">
+      <%= f.text_area :medical_issues_notes, placeholder: "Bloody Noses, etc.",  class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-8 offset-3">
+      <div class="form-check">
+	<%= f.check_box :special_circumstance, class: "form-check-input" %>
+	<%= f.label :special_circumstance, "Any other circumstances that we should we be aware", class: "form-check-label" %>
+      </div>
+      <small class="form-text text-muted">We will get in touch before VBS to discus this with you.</small>    
+    </div>
+  </div>
+
+  <% if admin == 1 %>
+    <%= render partial: "kids/kid_form_admin", locals: {f: f} %>
+  <% end %>
+</div>
