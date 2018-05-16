@@ -1,0 +1,58 @@
+<div class="w-100">
+  <div class="">
+    <h3> Parents/Guradians:</h3>
+  </div>
+  <div class="parents">
+    <% @kid.family.guardians.each do |g| %>
+      <div>
+	<div class="bg-light p-1">
+	  <% if g.is_head? %>
+	    <i class="fas fa-angle-double-right pr-1 text-success"></i>
+	    <% end %>
+	    <strong><%= g.full_name %></strong> <span><%= link_to("Edit", edit_guardian_path(g.id)) %></span>
+	</div>
+	<address>
+	  <% unless g.address.blank? %>
+	    <%= g.address%>
+	    <br>
+	    <%= g.city %><%=g.state %><%=g.zipcode%>
+	    <br>
+	  <% end %>
+	  <abbr title="Phone">P:</abbr>
+	  <%= g.phone %>
+	  <br>
+	  <% unless g.email.blank? %>
+	    <abbr title="Email">E:</abbr>
+	    <%= g.email %>
+	  <% end %>
+	</address>
+	<hr>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="w-100">
+  <div>
+    <h3>Other Kids</h3>
+  </div>
+  <div class="parents">
+    <% @kid.family.kids.each do |k| %>
+      <% unless k == @kid %>
+	<div>
+	  <div class="bg-light p-1">
+	    <strong><%= k.full_name %></strong> <span><%= link_to("View", kid_path(k.id)) %></span>
+	  </div>
+	  <p>
+	    Age: <%= k.age %>
+	    <br>
+	    Last grade: <%= k.grade %>
+	    <% unless k.group_id.blank? %>
+	      <br>
+	      Class: <%= k.group.name_grade %>
+	  <% end %>
+	  </p>
+	  <hr>
+	</div>
+      <% end %>
+    <% end %>
+</div>	

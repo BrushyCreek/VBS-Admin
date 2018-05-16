@@ -69,7 +69,7 @@ Rails.application.routes.draw do
       
     end
 
-    resources :guardian do
+    resources :guardians do
       collection do
       end
     end

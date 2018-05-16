@@ -5,7 +5,7 @@ Edit <%= @kid.first_name %>'s Registration
 <div class="container">
   <%= render partial: "errors", locals: {kid: @kid} %>
   <%= form_for @kid do |f| %>
-  <%= render partial: "kid_form", locals: {kid: @kid, edit: 1, f: f} %>
+  <%= render partial: "kid_form", locals: {kid: @kid, admin: 1, f: f} %>
   <br>
   <div class="row">
     <div class="col-sm-6 offset-3">
