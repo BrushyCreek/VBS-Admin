@@ -18,15 +18,15 @@
 //= require dragster
 
 document.addEventListener("turbolinks:load", function() {
-    var showotherToggles = document.querySelectorAll("[data-toggle='showother']");
-    console.log(showotherToggles);
-    for (var i = 0; i < showotherToggles.length; i++) {
-	var current = showotherToggles[i]
-	current.addEventListener("click", function(event) {
-	    console.log("clicked something");
-	    var target = document.getElementById(event.currentTarget.dataset.toggleTarget);
-	    target.setAttribute("style", "");
-	}, false);
-    }
+    document.getElementById("kids").addEventListener("click", function(event) {
+	if(event.target.dataset.toggle == "showother") {
+	    console.log(event.target);
+	    event.target.closest(".form-check").setAttribute("style", "display: none");
+    	    var targetId = event.target.dataset.toggleTarget;
+    	    var target = document.getElementById(targetId);
+    	    target.setAttribute("style", "");
+	    console.log(event);
+	}
+    }, false)
 });
 
