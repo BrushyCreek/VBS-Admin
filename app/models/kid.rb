@@ -41,7 +41,6 @@ class Kid < ApplicationRecord
   def age
     
     now = Time.now.utc.to_date
-    byebug
     now.year - self.birthdate.year - ((now.month > self.birthdate.month || (now.month == self.birthdate.month && now.day >= self.birthdate.day)) ? 0 : 1)
   end
 

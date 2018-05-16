@@ -29,7 +29,6 @@ class KidsController < ApplicationController
   
   def edit
     @kid = Kid.find(params[:id])
-    byebug
   end
 
   def destroy
