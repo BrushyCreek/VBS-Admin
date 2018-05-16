@@ -18,7 +18,7 @@
 //= require dragster
 
 document.addEventListener("turbolinks:load", function() {
-    document.getElementById("kids").addEventListener("click", function(event) {
+    document.body.addEventListener("click", function(event) {
 	if(event.target.dataset.toggle == "showother") {
 	    //console.log(event.target);
 	    event.target.closest(".form-check").setAttribute("style", "display: none");
