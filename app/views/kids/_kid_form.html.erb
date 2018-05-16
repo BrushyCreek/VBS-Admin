@@ -2,21 +2,6 @@
   <hr>
   <div class="form-group row">
     <h3 class="col-sm-11">Child Info</h3>
-    <% if deleteable == 1 %>
-      <div class="col-sm-1">
-	<div class="form-check pretty p-icon p-toggle p-plain p-bigger">
-	  <%= f.check_box :_destroy, class: "form-check-input", checked: false %>
-	  <div class="state p-on">
-	    <%#= f.label :_destroy, "Will not be", class: "form-check-label" %>
-	    <i class="icon fas fa-times"></i>
-	  </div>
-	  <div class="state p-off p-danger-o">
-	    <%#= f.label :_destroy, "delete", class: "form-check-label" %>
-	    <i class="icon fas fa-times"></i>
-	  </div>
-	</div>
-      </div>
-      <% end %>
   </div>
   <hr>
   <div class="form-group row">
@@ -69,13 +54,20 @@
   <div class="form-group row">
     <div class="col-sm-3 offset-md-3">
       <div class="form-check">
-	<%= f.check_box :church_member, class: "form-check-input", checked: true, data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[invited_by]" } %>
+	<% if admin == 1 %>
+	  <%= f.check_box :church_member, class: "form-check-input" %>	  
+	<% else %>
+	  <%= f.check_box :church_member, class: "form-check-input", data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[invited_by]" } %>
+	  <% end %>
 	<%= f.label :church_member, "Regular Attendee", class: "form-check-label"%>
       </div>
     </div>
   </div>
-
-  <div id= "<%= f.object_name %>[invited_by]" class="form-group row" style="display: none">
+  <% if admin == 1 %>
+    <div id= "<%= f.object_name %>[invited_by]" class="form-group row">
+  <% else %>
+    <div id= "<%= f.object_name %>[invited_by]" class="form-group row" style="display: none">
+    <% end %>
     <label class="col-sm-3 text-sm-right col-form-label">Invited By</label>
     <div class="col-sm-8 ">
       <%= f.text_field :invited_by, id: "#{:invited_by}",  class: "form-control"%>
@@ -96,11 +88,19 @@
   <div class="form-group row">
     <div class="col-sm-8 offset-md-3">
       <div class="form-check">
-	<%= f.check_box :allergies, class: "form-check-input", data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[allergies_notes]" } %>
+	<% if admin == 1 %>
+	  <%= f.check_box :allergies, class: "form-check-input" %>
+	<% else %>
+	  <%= f.check_box :allergies, class: "form-check-input", data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[allergies_notes]" } %>
+	  <% end %>
 	<%= f.label :allergies, "Allerigies", class: "form-check-label" %>
       </div>
     </div>
-    <div class="col-sm-8 offset-md-3" id="<%= f.object_name %>[allergies_notes]" style="display: none">
+    <% if admin == 1 %>
+      <div class="col-sm-8 offset-md-3">
+      <% else %>
+	<div class="col-sm-8 offset-md-3" id="<%= f.object_name %>[allergies_notes]" style="display: none">
+	  <% end %>
       <%= f.text_area :allergies_notes, placeholder: "Alergies, Epipen, etc.",  class: "form-control"%>
     </div>
   </div>
@@ -108,11 +108,19 @@
   <div class="form-group row">
     <div class="col-sm-6 offset-md-3">
       <div class="form-check">
+	<% if admin == 1 %>
+	<%= f.check_box :medical_issues, class: "form-check-input" %>
+      <% else %>
 	<%= f.check_box :medical_issues, class: "form-check-input", data: { "toggle" => "showother", "toggle-Target" => "#{f.object_name}[medical_issues_notes]" } %>
+	<% end %>
 	<%= f.label :medical_issues, "Other Medical Issues", class: "form-check-label" %>
       </div>
     </div>
-    <div class="col-sm-8 offset-md-3" id="<%= f.object_name %>[medical_issues_notes]" style="display: none">
+    <% if admin == 1 %>
+      <div class="col-sm-8 offset-md-3">
+      <% else %>
+	<div class="col-sm-8 offset-md-3" id="<%= f.object_name %>[medical_issues_notes]" style="display: none">
+	<% end %>
       <%= f.text_area :medical_issues_notes, placeholder: "Bloody Noses, etc.",  class: "form-control"%>
     </div>
   </div>
