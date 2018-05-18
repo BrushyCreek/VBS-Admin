@@ -69,7 +69,7 @@ class FamiliesController < ApplicationController
   def pub_confirm
     @family = Family.new(family_params)
     if @family.save
-      RegistrationMailer.with(family: @family).welcome_email.deliver_now
+      RegistrationMailer.welcome_email(@family.id).deliver_later
       
       redirect_to confirm_page_path
     else
