@@ -5,7 +5,7 @@ New Registration
 <div class="container py-5">
   <h1>Register Your Family </h1>
   <%#= render partial: "errors", locals: {family: @family} %>
-  <%= form_for @family do |f| %>
+  <%= form_for @family, url: {action: 'pub_confirm'} do |f| %>
     
   <%= render partial: "pub_family_form", locals: {fam: @family, f: f, admin: 0} %>
   <div id="kids"class="bg-white border p-3">

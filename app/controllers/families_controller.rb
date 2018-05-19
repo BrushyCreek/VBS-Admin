@@ -73,7 +73,7 @@ class FamiliesController < ApplicationController
       
       redirect_to confirm_page_path
     else
-      render :new
+      render :pub_register, layout: 'public'
     end
   end
 
