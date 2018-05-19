@@ -80,7 +80,7 @@ Rails.application.routes.draw do
   #get '/info', to: 'pages#info', as: 'info_page'
   get '/confirmation', to: 'pages#confirm', as: 'confirm_page'
   #get '/comming_soon', to: 'pages#comming_soon', as: 'comming_soon_page'
-  post '/families', to: 'families#pub_confirm', as: 'public_confirmation_page'
+  post '/confirm', to: 'families#pub_confirm', as: 'public_confirmation_page'
   get  '/register', to: 'families#pub_register', as: 'public_registration_page'
 
 
