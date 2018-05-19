@@ -6,7 +6,7 @@ class Family < ApplicationRecord
   accepts_nested_attributes_for :guardians, allow_destroy: true, reject_if: :all_blank
 
   validates :kids, presence: true
-  #  validates :state
+  validates :guardians, presence: true
 
   def head
     guardians.head

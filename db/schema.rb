@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430210548) do
+ActiveRecord::Schema.define(version: 20180519144742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180430210548) do
     t.string "city"
     t.string "state"
     t.integer "zipcode"
-    t.boolean "is_head"
+    t.boolean "head"
     t.index ["family_id"], name: "index_guardians_on_family_id"
   end
 

@@ -6,9 +6,9 @@
     <% @kid.family.guardians.each do |g| %>
       <div>
 	<div class="bg-light p-1">
-	  <% if g.is_head? %>
+	  <% if g.head? %>
 	    <i class="fas fa-angle-double-right pr-1 text-success"></i>
-	    <% end %>
+	  <% end %>
 	    <strong><%= g.full_name %></strong> <span><%= link_to("Edit", edit_guardian_path(g.id)) %></span>
 	</div>
 	<address>

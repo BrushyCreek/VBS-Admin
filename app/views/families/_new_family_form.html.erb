@@ -1,7 +1,7 @@
 <fieldset>
   <h4>Contact Info</h4>
   <%= f.fields_for :guardians do |ff| %>
-    <% if ff.object.is_head == true %>
+    <% if ff.object.head? %>
       <label>Your name:</label>
       <%= ff.text_field :first_name, :placeholder => "First" %>
       <%= ff.text_field :last_name, :placeholder => "Last" %>
@@ -13,7 +13,7 @@
     <%= ff.text_field :city, :placeholder => "City" %>
     <%= ff.text_field :state , :placeholder => "State" %>
     <%= ff.text_field :zipcode , :placeholder => "zipcode" %>
-    <%= ff.hidden_field :is_head, :value => true %>
+    <%= ff.hidden_field :head, :value => true %>
     </br>
     <h4>Pickup/Emergency Contacts</h4>
     <p>Additonal people we can contact in an emergency. They are also authorized to sign your child out.</p>
@@ -21,7 +21,7 @@
     <label>Contact Name:</label>
     <%= ff.text_field :first_name, :placeholder => "Last" %>
     <%= ff.text_field :last_name, :placeholder => "Last" %>
-    <%= ff.hidden_field :is_head, :value => false %>
+    <%= ff.hidden_field :head, :value => false %>
     </br>
   <% end %>
 <% end %>
