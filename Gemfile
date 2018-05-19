@@ -26,6 +26,8 @@ gem 'pg_search'
 # Use prawn for pdf creation
 gem 'prawn-rails'
 
+gem 'inline_svg'
+
 gem 'redis'
 gem 'sidekiq'
 

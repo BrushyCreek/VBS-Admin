@@ -12,7 +12,7 @@ class Kid < ApplicationRecord
 
   before_save :update_notes_modified_at
 
-  # validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, presence: true
 
   # validates :birthdate, presence: true
 
