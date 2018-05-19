@@ -13,7 +13,8 @@ class Guardian < ApplicationRecord
   validates :first_name, :last_name, presence: true
   
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
+  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX },
+            unless: Proc.new { |a| a.is_head == nil }
 
   #TODO: we will need to make sure this is a valid phone number
   # validates :phone, presence: true

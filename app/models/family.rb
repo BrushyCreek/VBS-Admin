@@ -5,7 +5,7 @@ class Family < ApplicationRecord
   accepts_nested_attributes_for :kids, allow_destroy: true, reject_if: lambda { |attributes| attributes['first_name'].blank? && attributes['last_name'].blank? } 
   accepts_nested_attributes_for :guardians, allow_destroy: true, reject_if: :all_blank
 
-  #  validates :address, :city, :zipcode 
+  validates :kids, presence: true
   #  validates :state
 
   def head
