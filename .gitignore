@@ -15,6 +15,7 @@
 .DS_Store
 /node_modules
 /yarn-error.log
+*.rdb
 
 .byebug_history
 Procfile~
