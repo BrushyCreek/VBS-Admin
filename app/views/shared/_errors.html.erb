@@ -1,5 +1,9 @@
 <% if object.errors.any? %>
   <div class="alert alert-danger" role="alert">
-    <strong>Several issues were found.</strong> Please correct the hightlighted fields and resubmit.
+    <% if object.errors.count > 1 %>
+      <strong>Several issues were found.</strong> Please correct the hightlighted fields and resubmit.
+    <% else %>
+      <strong>An issue was found.</strong> Please correct the hightlighted field and resubmit.
+    <% end %>
   </div>
 <% end %>

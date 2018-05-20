@@ -1,35 +1,24 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title></title>
-    <%= csrf_meta_tags %>
+<% content_for :page_style do %>
+  <%= stylesheet_link_tag 'info', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag    'info', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
-  </head>
+<body class="text-center">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+    </header>
 
-  <body class="text-center">
+    <main role="main" class="inner cover">
+      <div class="image-block mb-5">
+	<%= image_tag 'IWTB-logo.png', class: 'w-100' %>
+      </div>
+      <%= link_to "Begin Registration", public_registration_page_path, type: "button", class: "btn btn-lg btn-secondary" %>
+    </main>
 
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-      </header>
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+	<%= link_to "Brushy Creek Baptist Church", "https://brushycreekchurch.com" %>
+      </div>
+    </footer> 
+  </div>
+</body>
 
-      <main role="main" class="inner cover">
-	<div class="image-block mb-5">
-	  <%= image_tag 'IWTB-logo.png', class: 'w-100' %>
-	</div>
-	<%= link_to "Begin Registration", public_registration_page_path, type: "button", class: "btn btn-lg btn-secondary" %>
-      </main>
-
-      <footer class="mastfoot mt-auto">
-	<div class="inner">
-	  <%= link_to "Brushy Creek Baptist Church", "https://brushycreekchurch.com" %>
-        </div>
-      </footer> 
-    </div>
-  </body>
-</html>

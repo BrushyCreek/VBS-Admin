@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def info
-    render layout: false
+    render layout: 'public'
   end
 
   def comming_soon
