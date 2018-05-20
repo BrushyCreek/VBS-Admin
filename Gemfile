@@ -26,6 +26,10 @@ gem 'pg_search'
 # Use prawn for pdf creation
 gem 'prawn-rails'
 
+gem 'inline_svg'
+
+gem 'redis'
+gem 'sidekiq'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

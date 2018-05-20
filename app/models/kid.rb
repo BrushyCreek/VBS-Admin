@@ -12,9 +12,9 @@ class Kid < ApplicationRecord
 
   before_save :update_notes_modified_at
 
-  # validates :first_name, :last_name, presence: true
-
-  # validates :birthdate, presence: true
+  validates :first_name, :last_name, presence: true
+  validates :gender, presence: true
+  validates :birthdate, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
@@ -47,7 +47,7 @@ class Kid < ApplicationRecord
   private
 
   def update_notes_modified_at
-    #checks t see if the notes field has changed since the last time it saved and updates the modified at field is so
+    #checks to see if the notes field has changed since the last time it saved and updates the modified field
     self.note_modified_at = Time.now if notes_changed?
   end
   

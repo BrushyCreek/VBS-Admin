@@ -4,8 +4,8 @@ class FamiliesController < ApplicationController
   def new
     @family = Family.new
     @family.kids.build
-    @family.guardians.build(is_head: true)
-    2.times { @family.guardians.build(is_head: false) }    
+    @family.guardians.build(head: true)
+    2.times { @family.guardians.build(head: false) }    
   end
 
   def create
@@ -34,8 +34,8 @@ class FamiliesController < ApplicationController
   def register
     @family = Family.new
     @family.kids.build
-    @family.guardians.build(is_head: true)
-    2.times { @family.guardians.build(is_head: false) }
+    @family.guardians.build(head: true)
+    2.times { @family.guardians.build(head: false) }
 
     render layout: "public"
   end
@@ -56,8 +56,8 @@ class FamiliesController < ApplicationController
       @family = Family.new
       @family.kids.build
 #      @family.kids.build(template: true)
-      @family.guardians.build(is_head: true)
-      2.times { @family.guardians.build(is_head: false) }
+      @family.guardians.build(head: true)
+      2.times { @family.guardians.build(head: false) }
       
       render layout: 'public'
     else
@@ -69,9 +69,11 @@ class FamiliesController < ApplicationController
   def pub_confirm
     @family = Family.new(family_params)
     if @family.save
+      RegistrationMailer.welcome_email(@family.id).deliver_later
+      
       redirect_to confirm_page_path
     else
-      render :new
+      render :pub_register, layout: 'public'
     end
   end
 
@@ -91,7 +93,7 @@ class FamiliesController < ApplicationController
                                                           :email,
                                                           :has_wristband,
                                                           :family_id,
-                                                          :is_head,
+                                                          :head,
                                                           :_destroy],
                                    kids_attributes: [:id,
                                                      :first_name,

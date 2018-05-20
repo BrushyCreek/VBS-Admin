@@ -1,24 +1,23 @@
 <% content_for :title do %>
-New Registration
+  New Registration
 <% end %>
 
-<div class="container pb-5">
-  <h1>Register Your Family </h1>
-  <%#= render partial: "errors", locals: {family: @family} %>
-  <%= form_for @family do |f| %>
-    
-  <%= render partial: "pub_family_form", locals: {fam: @family, f: f, admin: 0} %>
-  <div id="kids">
-    <%= f.fields_for :kids do |ff| %>
-      <%= render partial: "kids/kid_form", locals: {f:ff, form_name: ff.object_name, admin: 0, deleteable: 0} %>
+<body class="bg-light">
+  <div class="container py-5">
+    <h1>Register Your Family </h1>
+    <%= render partial: "shared/errors", locals: {object: @family} %>
+    <%= form_for @family, url: {action: 'pub_confirm'}  do |f| %>
+      
+    <%= render partial: "pub_family_form", locals: {fam: @family, f: f, admin: 0} %>
+    <div id="kids"class="bg-white border p-3">
+      <%= f.fields_for :kids do |ff| %>
+      <%= render partial: "kids/kid_form", locals: {f:ff, form_name: ff.object_name, admin: 0, deleteable: 0} %>    <% end %>
+    </div>
+    <%= add_form_template(f, @family.kids.build, "kids/register_another_kid", "kid_form_template") %>
+    <br>
+    <%= add_object_button("Add another child", "kid_form_template", "kids") %>
+    <%= f.submit "Complete registration", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
     <% end %>
   </div>
-  
-  <%= add_object_button("Add Child", "kid_form_template", "kids") %>
-  <%= add_form_template(f, @family.kids.build, "kids/register_another_kid", "kid_form_template") %>
-  
-  <br>
-  <%= f.submit "Register", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
-  <% end %>
-</div>
+</body>
 

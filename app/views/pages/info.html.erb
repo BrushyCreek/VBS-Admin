@@ -1,1 +1,24 @@
-<h2> Registration is closed</h2>p
+<% content_for :page_style do %>
+  <%= stylesheet_link_tag 'info', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<body class="text-center">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+    </header>
+
+    <main role="main" class="inner cover">
+      <div class="image-block mb-5">
+	<%= image_tag 'IWTB-logo.png', class: 'w-100' %>
+      </div>
+      <%= link_to "Begin Registration", public_registration_page_path, type: "button", class: "btn btn-lg btn-secondary" %>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+	<%= link_to "Brushy Creek Baptist Church", "https://brushycreekchurch.com" %>
+      </div>
+    </footer> 
+  </div>
+</body>
+

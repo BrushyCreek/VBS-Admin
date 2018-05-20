@@ -1,1 +1,22 @@
-<h1> Thank you for regisitering </h1>
+<% content_for :page_style do %>
+  <%= stylesheet_link_tag 'info', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
+<body class="text-center">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+    </header>
+    <main role="main" class="inner cover">
+      <div class="image-block mb-5">
+	<%= image_tag 'IWTB-logo.png', class: 'w-100' %>
+      </div>
+      <h3 class="my-3">Thank you for registering!</h3>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+	<%= link_to "Brushy Creek Baptist Church", "https://brushycreekchurch.com" %>
+      </div>
+    </footer> 
+  </div>
+</body>
