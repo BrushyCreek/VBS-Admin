@@ -1,0 +1,15 @@
+<% content_for :title do %>
+  New Registration
+<% end %>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <%= render partial: "shared/errors", locals: {object: @kid} %>
+    <%= form_for @kid, url: {action: 'confirm'}  do |f| %>
+      <%= render partial: "kids/kid_form", locals: {f:f, form_name: f.object_name, admin: 0, deleteable: 0} %>
+      <%= f.hidden_field :family_id, value: @kid.family_id %>
+
+    <%= f.submit "Complete registration", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
+    <% end %>
+  </div>
+</body>

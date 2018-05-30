@@ -19,16 +19,16 @@ class FamiliesController < ApplicationController
   end
 
   def search
-    @fams = []
+    fams_pre = []
     if params[:term]
       guardians = Guardian.search_for(params[:term])
       guardians.each do |guardian|
-        @fams << guardian.family
+        fams_pre << guardian.family
       end
+      @fams = fams_pre.uniq
     else
       @fams = Family.all
     end
-    
   end
 
   def register
