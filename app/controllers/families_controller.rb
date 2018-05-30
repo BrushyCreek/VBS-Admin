@@ -1,6 +1,19 @@
 class FamiliesController < ApplicationController
   before_action :authenticate_user!, except: [:pub_register, :pub_confirm]
 
+  def index
+    if params[:term]
+      fams_pre = []
+      guardians = Guardian.search_for(params[:term])
+      guardians.each do |guardian|
+        fams_pre << guardian.family
+      end
+      @fams = fams_pre.uniq
+    else
+      @fams = Family.all
+    end
+  end
+  
   def new
     @family = Family.new
     @family.kids.build
