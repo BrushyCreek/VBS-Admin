@@ -13,7 +13,11 @@ class FamiliesController < ApplicationController
       @fams = Family.all
     end
   end
-  
+
+  def show
+    @family = Family.find(params[:id])
+  end
+
   def new
     @family = Family.new
     @family.kids.build
