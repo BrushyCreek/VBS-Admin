@@ -1,0 +1,50 @@
+<% if i.even? %>
+  <% rowbg = 'bg-light' %>
+<% else %>
+  <% rowbg = '' %>
+<% end %>
+<div class="w-100 <%#= rowbg %> row py-3 border-bottom">
+  <div class="col-md-4 col-sm-12 row border-right border-secondary pr-3">
+    <div class="mr-3 col-md col-sm-6">
+      <strong class="my-1"><i class="fas fa-angle-double-right pr-1 text-success"></i><%= f.head.full_name %></strong>
+      <address>
+	<% unless f.head.address.blank? %>
+	  <%= f.head.address%>
+	  <br>
+	  <%= f.head.city %> <%=f.head.state %>, <%=f.head.zipcode%>
+	  <br>
+	<% end %>
+	<abbr title="Phone">P:</abbr>
+	<%= f.head.phone %>
+	<br>
+	<% unless f.head.email.blank? %>
+	  <abbr title="Email">E:</abbr>
+	  <%= f.head..email %>
+	<% end %>
+      </address>
+    </div>
+    <div class="col">
+      <% f.guardians.each do |g| %>
+	<% unless g.head? %>
+	  <strong><%= g.full_name %></strong>
+	<% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="mx-3 col row">
+    <% f.kids.each do |k| %>
+      <div class="mx-3 col-lg-4 col-md col-sm-6">
+	<strong><%= k.full_name %></strong> 
+	<p>
+	  Age: <%= k.age %>
+	  <br>
+	  Last grade: <%= k.grade %>
+	  <% unless k.group_id.blank? %>
+	    <br>
+	    Class: <%= k.group.name_grade %>
+	  <% end %>
+	</p>
+      </div>
+    <% end %>
+  </div>
+</div>

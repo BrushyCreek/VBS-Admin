@@ -5,31 +5,21 @@ Families Index
 
 <div class="container w-100">
   
-  <div class="row justify-content-center">
-    <div class="col">
-      <h1>Familes</h1>
-    </div>
-    <div class="col-6">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Familes</h1>
+    <div>
       <%= form_tag(families_path, method: :get, class: "input-group") do %>
-      <%= text_field_tag :term, params[:term], placeholder: "Search for...", class: "form-control" %>
-      <span class="input-group-btn">
-        <%= button_tag 'Search', class: "btn btn-secondary" %>
-      </span>
-      <% end %>
-    </div>
-  </div>
-  
-  <div class="row justify-content-center mt-4">
-    
-    <div class="col-lg-12 mb-3 ml-4">
-      <a class="btn btn-primary btn-sm" href="<%= new_family_path %>">Add New</a>
-    </div>
-    <div class="col-xl-12">
-      <% @fams.each do |family| %>
-	<div>
-	  <%= family.head.full_name %>
+	<%= text_field_tag :term, params[:term], placeholder: "Search for...", class: "form-control" %>
+	<div class="input-group-append">
+          <%= button_tag 'Search', class: "btn btn-secondary" %>
 	</div>
       <% end %>
     </div>
   </div>
+  <a class="btn btn-primary btn-sm my-3" href="<%= new_family_path %>">Add New</a>
+  <div class="">
+    <% @fams.each.with_index do |family, index| %>
+      <%= render partial: 'family_line', locals: {f: family, i: index} %>
+    <% end %>
+    </div>
 </div>
