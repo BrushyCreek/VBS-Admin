@@ -74,7 +74,7 @@ Kids Inbox
 	
 	<tbody>
 	  <% @kids.sort_by_last_name.each do |kid| %>
-	    <% if kid.highlight %>	
+	    <% if kid.highlight || kid.special_circumstance %>	
 	      <tr class="table-warning">
 	      <% else %>
 		<tr>

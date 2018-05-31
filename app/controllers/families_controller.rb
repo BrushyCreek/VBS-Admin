@@ -28,7 +28,8 @@ class FamiliesController < ApplicationController
   def create
     @family = Family.new(family_params)
     if @family.save
-      redirect_to @family
+      flash[:success] = "Family created"
+      redirect_to :index
     else
       flash[:warning] = "Somethig went wrong"
       render :new
