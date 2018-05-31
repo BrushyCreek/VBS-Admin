@@ -13,8 +13,7 @@ class FamilyKidsController < ApplicationController
     if @kid.save
       render layout: "public"
     else
-      flash.now[:warning] = "something went wrong"
-      render 'register'
+      render :register, layout: 'public'
     end
   end
 
