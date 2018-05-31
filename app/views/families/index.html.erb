@@ -3,7 +3,7 @@ Families Index
 <% end %>
 
 
-<div class="container w-100">
+<div class="container-fluid">
   
   <div class="d-flex justify-content-between align-items-center">
     <h1>Familes</h1>
@@ -16,8 +16,8 @@ Families Index
       <% end %>
     </div>
   </div>
-  <a class="btn btn-primary btn-sm my-3" href="<%= new_family_path %>">Add New</a>
-  <div class="">
+  <a class="btn btn-primary btn-sm my-3" href="<%= new_family_path %>">Add New Family</a>
+  <div class="border-top">
     <% @fams.each.with_index do |family, index| %>
       <%= render partial: 'family_line', locals: {f: family, i: index} %>
     <% end %>
