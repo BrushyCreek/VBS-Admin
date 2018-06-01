@@ -11,7 +11,7 @@ class FamilyKidsController < ApplicationController
   def confirm
     @kid = Kid.create(kid_params)
     if @kid.save
-      render layout: "public"
+      redirect_to family_confirmation_path(@kid.family_id)
     else
       render :register, layout: 'public'
     end

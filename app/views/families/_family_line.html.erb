@@ -3,6 +3,7 @@
 <% else %>
   <% rowbg = '' %>
 <% end %>
+
 <div class="<%= rowbg %> py-3 border-bottom">
   <div class="float-right pr-3">
     <a class="btn btn-primary btn-sm align-middle" href="<%= edit_family_path(f.id) %>">Edit</a>
@@ -20,7 +21,9 @@
       <div class="col">
 	<% f.guardians.each do |g| %>
 	  <% unless g.head? %>
-	    <strong><%= g.full_name %></strong>
+	    <p>
+	      <strong><%= g.full_name %></strong>
+	    </p>
 	  <% end %>
 	<% end %>
       </div>   

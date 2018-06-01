@@ -31,7 +31,7 @@ class FamiliesController < ApplicationController
       flash[:success] = "Family created"
       redirect_to :index
     else
-      flash[:warning] = "Somethig went wrong"
+      flash[:warning] = "Something went wrong"
       render :new
     end
   end
@@ -61,19 +61,26 @@ class FamiliesController < ApplicationController
   def confirm
     @family = Family.new(family_params)
     if @family.save
-      redirect_to @family
+      
+      redirect_to family_confirmation_path(@family.id)
     else
-      render :new
+      render :register
     end
+  end
 
-    render layout: "public"
+  def confirmation
+    @family_id = params[:family_id]
+    render 'pages/confirm', layout: 'public'
+  end
+
+  def review
+    @family = Family.find(params[:f family_id])
   end
 
   def pub_register
     if (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? Time.now
       @family = Family.new
       @family.kids.build
-#      @family.kids.build(template: true)
       @family.guardians.build(head: true)
       2.times { @family.guardians.build(head: false) }
       
@@ -81,7 +88,6 @@ class FamiliesController < ApplicationController
     else
       redirect_to root_path and return
     end
-
   end
 
   def pub_confirm
@@ -97,7 +103,6 @@ class FamiliesController < ApplicationController
 
 
   private
-
 
   def family_params
     params.require(:family).permit(guardians_attributes: [:id,

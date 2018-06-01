@@ -52,6 +52,8 @@ Rails.application.routes.draw do
 
     resources :families do
       get 'register', on: :new
+      get 'review'
+      get 'confirmation'
 
       collection do
         get 'search'
