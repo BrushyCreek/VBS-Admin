@@ -55,26 +55,20 @@ class FamiliesController < ApplicationController
     @family.guardians.build(head: true)
     2.times { @family.guardians.build(head: false) }
 
-    render layout: "public"
+    render "inperson_register", layout: "public"
   end
   
   def confirm
     @family = Family.new(family_params)
     if @family.save
-      
-      redirect_to family_confirmation_path(@family.id)
+      render 'pages/confirm', layout: 'public' and return      
     else
       render :register
     end
   end
 
-  def confirmation
-    @family_id = params[:family_id]
-    render 'pages/confirm', layout: 'public'
-  end
-
   def review
-    @family = Family.find(params[:f family_id])
+    @family = Family.find(params[:family_id])
   end
 
   def pub_register

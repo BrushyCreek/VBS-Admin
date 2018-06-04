@@ -1,10 +1,13 @@
 <div class="container-fluid w-75">
   <div>
-    <%= @family.head.full_name %>
+    <h1><%= @family.head.full_name %></h1>
   </div>
+  <hr>
   <% @family.kids.each do | kid | %>
-    <div class="py-3">
-      <%= kid.full_name %>
-    </div>
+    <h3><%= kid.full_name %></h3>
+    <%= form_with(model: kid, local: false) do |f| %>
+      <%= f.collection_select :group_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {include_blank: 'Unassigned'}, class: "custom-select"%>	
+	<%= f.submit "Save", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
+      <% end %>
   <% end %>
 </div>

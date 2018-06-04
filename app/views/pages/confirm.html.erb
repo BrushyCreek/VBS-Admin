@@ -9,7 +9,7 @@
     <main role="main" class="inner cover">
       <div class="image-block mb-5">
 	<% if user_signed_in? %>
-	  <%= link_to image_tag( 'IWTB-logo.png', class: 'w-100'), family_review_path(@family_id) %>	 
+	  <%= link_to image_tag( 'IWTB-logo.png', class: 'w-100'), family_review_path(@family.id) %>	 
 	<% else %>
 	  <%= image_tag( 'IWTB-logo.png', class: 'w-100') %>
 	<% end %>

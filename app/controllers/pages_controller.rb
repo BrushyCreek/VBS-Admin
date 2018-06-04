@@ -13,7 +13,6 @@ class PagesController < ApplicationController
   end
 
   def confirm
-    @family_id = session[family_id]
     render layout: 'public'
   end
   
