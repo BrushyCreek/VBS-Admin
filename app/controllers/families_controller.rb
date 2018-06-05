@@ -89,7 +89,7 @@ class FamiliesController < ApplicationController
     if @family.save
       RegistrationMailer.welcome_email(@family.id).deliver_later
       
-      redirect_to confirm_page_path
+      render 'pages/confirm', layout: 'public' and return
     else
       render :pub_register, layout: 'public'
     end
