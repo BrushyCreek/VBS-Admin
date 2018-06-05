@@ -10,13 +10,15 @@
   </div>
   <hr>
   <br>
-  <div class="w-75 float-left" stlye="height: 80vh; overflow: scroll;">
-    <div id="groups-div" class="row">
-      <% @groups.sort_by_grade.sort_by_name.each do | group | %>
-      <%= render partial: "group_index_card", locals: {group: group} %>
-      <% end %>
+  <% unless @groups.blank? %>
+    <div class="w-75 float-left" stlye="height: 80vh; overflow: scroll;">
+      <div id="groups-div" class="row">
+	<% @groups.sort_by_grade.sort_by_name.each do | group | %>
+	  <%= render partial: "group_index_card", locals: {group: group} %>
+	<% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="w-25" style="height: 80vh; right:0; overflow: scroll; position: fixed;">
     <div class=" bg-faded">
       <h4>Unassigned</h4>

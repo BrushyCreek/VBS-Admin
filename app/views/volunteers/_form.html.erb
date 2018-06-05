@@ -38,9 +38,11 @@
        <%= f.radio_button :leader_type, :none, class: "custom-control-input" %>
        <label class="custom-control-label" for="volunteer_leader_type_none">Unassigned</label>
      </div>
-</div>
-<div class="form-group">
-  <%= f.collection_select :leader_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {prompt: 'Select assignment', include_blank: 'Unassigned'}, class: "custom-select"%>
   </div>
+  <% unless Group.all.blank? %>
+    <div class="form-group">
+      <%= f.collection_select :leader_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {prompt: 'Select assignment', include_blank: 'Unassigned'}, class: "custom-select"%>
+      </div>
+  <% end %>
 <%= f.submit "Save", date: {"disable-with": "Saving..."}, class: "btn btn-primary" %>
 <% end %>
