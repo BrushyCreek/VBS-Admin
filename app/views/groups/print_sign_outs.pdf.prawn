@@ -16,19 +16,11 @@ prawn_document() do |pdf|
         pdf.text kid.full_name, :style => :bold
         pdf.indent(10) do
           pdf.move_down 5
-          pdf.text "  #{kid.parent_name} _________"
           pdf.move_down 5
-	  if kid.pickupper_1_name.present?
-            pdf.text "  #{kid.pickupper_1_name} _________"
+	  kid.family.guardians.each do | g |
+            pdf.text "  #{g.full_name} _________"
             pdf.move_down 5
 	  end
-	  if kid.pickupper_2_name.present?
-            pdf.text "  #{kid.pickupper_2_name} _________"
-            pdf.move_down 5
-          end
-	  if kid.pickupper_3_name.present?
-            pdf.text "  #{kid.pickupper_3_name} _________"
-          end
         end
         pdf.move_down 10
       end
