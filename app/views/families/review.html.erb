@@ -32,9 +32,10 @@
   </div>
   <hr>
   <% @family.kids.each do | kid | %>
-    <div class="row w-100">
-      <div class="col-4">
-	<div>
+    <div>
+      <div class="row">
+	
+	<div class="col-4">
 	  <div class="bg-light p-1">
 	    <strong><%= kid.full_name %></strong>
 	  </div>
@@ -43,15 +44,20 @@
 	    <br>
 	    Last grade: <%= kid.grade %>
 	  </p>
-	  <hr>
+
+	</div>
+	<div class="col">
+	  <%= form_with(model: kid, local: false) do |f| %>
+	    <div class="input-group">
+	      <%= f.collection_select :group_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade_count, {include_blank: 'Unassigned'}, class: "custom-select" %>
+		<div class="input-group-append">
+		  <%= f.submit "Assign", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>
+		  </div>
+	    </div>
+	  <% end %>
 	</div>
       </div>
-      <div class="col-8"
-      <%= form_with(model: kid, local: false) do |f| %>
-	<%= f.collection_select :group_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {include_blank: 'Unassigned'}, class: "custom-select" %>	
-	  <%= f.submit "Save", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
-	  <% end %>
+      <hr>
     </div>
-    </div>
-    <% end %>
+  <% end %>
 </div>

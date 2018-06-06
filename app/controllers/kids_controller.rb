@@ -39,13 +39,20 @@ class KidsController < ApplicationController
 
   def update
     @kid = Kid.find(params[:id])
-    if @kid.update_attributes(kid_params)
-      flash[:success] = "<strong>#{@kid.first_name} #{@kid.last_name}</strong> was successfuly updated"
-      redirect_to kids_path
-    else
-      flash.now[:warning] = "Something went wrong"
-      render 'edit'
-    end
+    respond_to do | format |
+      if @kid.update_attributes(kid_params)
+        format.html {
+          flash[:success] = "<strong>#{@kid.first_name} #{@kid.last_name}</strong> was successfuly updated"
+          redirect_to kids_path
+        }
+        format.js
+      else
+        format.html {
+          flash.now[:warning] = "Something went wrong"
+          render 'edit'
+        }
+      end
+    end 
   end
   
   def create
