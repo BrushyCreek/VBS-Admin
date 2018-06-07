@@ -58,6 +58,7 @@ Rails.application.routes.draw do
         get 'search'
         post 'confirm'
         get 'print_all'
+        get 'email_list'
       end
       
       resources :kids, controller: 'family_kids' do

@@ -49,6 +49,16 @@ class FamiliesController < ApplicationController
     end
   end
 
+  def email_list
+    @fams = Family.all
+    fams_string = ""
+    @fams.each do | fam |
+      fams_string << "#{fam.head.full_name} <#{fam.head.email}> \n"
+    end
+    send_data fams_string, filename: 'guardians-email.txt'
+  end
+  
+
   def register
     @family = Family.new
     @family.kids.build
