@@ -53,7 +53,7 @@ class FamiliesController < ApplicationController
     @fams = Family.all
     fams_string = ""
     @fams.each do | fam |
-      fams_string << "#{fam.head.full_name} <#{fam.head.email}> \n"
+      fams_string << "#{fam.head.full_name}\t<#{fam.head.email}> \n"
     end
     send_data fams_string, filename: 'guardians-email.txt'
   end
