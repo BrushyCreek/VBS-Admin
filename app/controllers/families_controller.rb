@@ -51,7 +51,7 @@ class FamiliesController < ApplicationController
 
   def email_list
     @fams = Family.all
-    fams_string = ""
+    fams_string = "Full Name\tEmail\n"
     @fams.each do | fam |
       fams_string << "#{fam.head.full_name}\t<#{fam.head.email}> \n"
     end
