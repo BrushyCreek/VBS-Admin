@@ -6,6 +6,7 @@ class Guardian < ApplicationRecord
   scope :head, -> {where(head: true).first} #guardians.head returns the objects with head set true
   scope :contacts, -> {where(head: false)} #guardians.contacts returns the objects with head set false
 
+  scope :sort_last_name, -> {order('last_name ASC')}
   pg_search_scope :search_for, :against => [:first_name, :last_name]
 
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i

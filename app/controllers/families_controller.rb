@@ -58,6 +58,14 @@ class FamiliesController < ApplicationController
     send_data fams_string, filename: 'guardians-email.txt'
   end
   
+  def parent_list
+    @guardians = Guardian.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+      end
+    end
+  end
 
   def register
     @family = Family.new

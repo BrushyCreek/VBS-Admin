@@ -17,6 +17,7 @@ Families Index
     </div>
   </div>
   <a class="btn btn-primary btn-sm my-3" href="<%= new_family_path %>">Add New Family</a>
+  <a class="btn btn-primary btn-sm my-3" href="<%= parent_list_families_path(format: :pdf) %>">Print Parent List</a>
   <div class="border-top">
     <% @fams.each.with_index do |family, index| %>
       <%= render partial: 'family_line', locals: {f: family, i: index} %>
