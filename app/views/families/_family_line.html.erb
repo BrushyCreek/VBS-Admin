@@ -6,7 +6,8 @@
 
 <div class="<%= rowbg %> py-3 border-bottom">
   <div class="float-right pr-3">
-    <a class="btn btn-primary btn-sm align-middle" href="<%= family_path(f.id) %>">View</a>
+    <% byebug %>
+    <a class="btn btn-primary btn-sm align-middle" href="<%= kid_path(f.kids.first.id) %>">View</a>
   </div>
   <div class="row">
     
