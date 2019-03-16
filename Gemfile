@@ -16,7 +16,7 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', github: "rails/sass-rails"
 
 # Use Bootstrap for default styles
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 
 # Use Sprockets, a dependencie for Bootstrap
 gem 'sprockets-rails', '~> 3.2.0'
