@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_19_144742) do
+ActiveRecord::Schema.define(version: 2019_03_20_152955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2018_05_19_144742) do
     t.datetime "updated_at", null: false
     t.string "leader_type"
     t.bigint "leader_id"
+    t.boolean "validated"
     t.index ["leader_type", "leader_id"], name: "index_volunteers_on_leader_type_and_leader_id"
   end
 
