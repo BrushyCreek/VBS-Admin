@@ -35,6 +35,10 @@
        <label class="custom-control-label" for="volunteer_leader_type_location">Station</label>
      </div>
      <div class="custom-control custom-checkbox">
+       <%= f.radio_button :leader_type, :Team, class: "custom-control-input" %>
+       <label class="custom-control-label" for="volunteer_leader_type_team">Team</label>
+     </div>
+     <div class="custom-control custom-checkbox">
        <%= f.radio_button :leader_type, :none, class: "custom-control-input" %>
        <label class="custom-control-label" for="volunteer_leader_type_none">Unassigned</label>
      </div>
