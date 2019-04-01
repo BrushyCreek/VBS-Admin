@@ -32,7 +32,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.create(volunteer_params)
     if @volunteer.save
-      flash[:success] = "<strong>#{@volunteer.first_name} #{@volunteer.last_name}</strong> was successfully added"
+      flash[:success] = "<strong>#{@volunteer.full_name}</strong> was successfully added"
       redirect_to volunteers_path
     else
       flash.now[:warning] = "Something went wrong"
@@ -43,7 +43,7 @@ class VolunteersController < ApplicationController
   def update
     @volunteer = Volunteer.find(params[:id])
     if @volunteer.update_attributes(volunteer_params)
-      flash[:success] = "<strong>#{@volunteer.first_name} #{@volunteer.last_name}</strong> was successfully updated"
+      flash[:success] = "<strong>#{@volunteer.full_name}</strong> was successfully updated"
       redirect_to volunteers_path
     else
       flash.now[:warning] = "Something went wrong"
