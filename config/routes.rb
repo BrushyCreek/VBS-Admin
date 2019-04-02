@@ -88,11 +88,7 @@ Rails.application.routes.draw do
 
   get '/admin', to: redirect('users/sign_in', status: 302)
   #root to: 'families#pub_register', constraints: HomeRouteConstraint.new { |time| (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? time }
-  root to: 'pages#info',
-       constraints: HomeRouteConstraint.new { |time| time < PUBLIC_REGISTRATION_END }
-  
-  root to: 'pages#comming_soon'
-
+  root to: 'pages#info'
     
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

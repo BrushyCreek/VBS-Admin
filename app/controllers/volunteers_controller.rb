@@ -51,7 +51,21 @@ class VolunteersController < ApplicationController
     end
   end
   
+  def pub_register
+    @volunteer = Volunteer.new
+    render layout: 'public'
+  end
 
+  def pub_confirm
+    @volunteer = Volunteer.create(volunteer_params)
+    if @volunteer.save
+      RegistrationMailer.volunteer_welcome(@vounteer.id).deliver_later
+      render 'pages/volunteer_confirm', layout: 'public' and return
+    else
+      render :pub_register, layout: 'public'
+    end
+  end
+  
   private
   def volunteer_params
     params.require(:volunteer).permit(:first_name,
@@ -60,6 +74,8 @@ class VolunteersController < ApplicationController
                                       :phone,
                                       :notes,
                                       :leader_type,
-                                      :leader_id)
+                                      :leader_id,
+                                      :validated,
+                                      :notes)
   end
 end
