@@ -1,0 +1,34 @@
+<% content_for :title do %>
+Volunteer Registration
+<% end %>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <h1>Volunteer Registration</h1>
+    <%= render partial: "shared/errors", locals: {object: @volunteer} %>
+    <%= form_for @volunteer, url: {action: 'pub_confirm'}  do |f| %>
+
+    <div class="form-inline">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="form-inline">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="form-inline">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="form-inline">
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
+ 
+    <%= f.submit "Complete registration", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
+    <% end %>
+  </div>
+</body>
