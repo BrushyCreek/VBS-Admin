@@ -85,6 +85,9 @@ Rails.application.routes.draw do
   post '/confirm', to: 'families#pub_confirm', as: 'public_confirmation_page'
   get  '/register', to: 'families#pub_register', as: 'public_registration_page'
 
+  get '/volunteer_register', to: 'volunteers#pub_register', as: 'volunteer_registration_page'
+  post '/volunteer_confirm', to: 'volunteers#pub_confirm', as: 'volunteer_confirmation_page'
+
 
   get '/admin', to: redirect('users/sign_in', status: 302)
   #root to: 'families#pub_register', constraints: HomeRouteConstraint.new { |time| (PUBLIC_REGISTRATION_START..PUBLIC_REGISTRATION_END).cover? time }

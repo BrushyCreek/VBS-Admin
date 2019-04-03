@@ -1,4 +1,5 @@
 class VolunteersController < ApplicationController
+  before_action :authenticate_user!, except: [:pub_register, :pub_confirm]
   def index
     if params[:term]
       @volunteers = Volunteer.search_for(params[:term])
