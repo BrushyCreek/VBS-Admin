@@ -1,0 +1,51 @@
+<% content_for :title do %>
+Volunteer Registration
+<% end %>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <h1>Volunteer Registration</h1>
+    <%= render partial: "shared/errors", locals: {object: @volunteer} %>
+    <%= form_for @volunteer, url: {action: 'pub_confirm'}  do |f| %>
+      
+    <div class="form-row"> 
+      <div class="form-group col-md-6">
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name, class: "form-control" %>
+      </div>
+       
+      <div class="form-group col-md-6">
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+	<%= f.label :email %>
+	<%= f.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-6">
+	<%= f.label :phone %>
+	<%= f.text_field :phone, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :notes %>
+      <%= f.text_area :notes, class: "form-control", placeholder: "If you would like to serve in a specific area you can request it here. We will make every effort to honor requests."  %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+	<%= f.check_box :need_nursary, class: "form-check-input" %>
+	<%= f.label :need_nursary, class: "form-check-label" %>
+	<small class="form-text text-muted">If you have children who will need to be in the nursary during VBS</small>
+      </div>
+    </div>
+    
+    <%= f.submit "Complete registration", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
+    <% end %>
+  </div>
+</body>

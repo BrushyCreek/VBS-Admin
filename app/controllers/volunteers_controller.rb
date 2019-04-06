@@ -1,4 +1,5 @@
 class VolunteersController < ApplicationController
+  before_action :authenticate_user!, except: [:pub_register, :pub_confirm]
   def index
     if params[:term]
       @volunteers = Volunteer.search_for(params[:term])
@@ -32,7 +33,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.create(volunteer_params)
     if @volunteer.save
-      flash[:success] = "<strong>#{@volunteer.first_name} #{@volunteer.last_name}</strong> was successfully added"
+      flash[:success] = "<strong>#{@volunteer.full_name}</strong> was successfully added"
       redirect_to volunteers_path
     else
       flash.now[:warning] = "Something went wrong"
@@ -43,7 +44,7 @@ class VolunteersController < ApplicationController
   def update
     @volunteer = Volunteer.find(params[:id])
     if @volunteer.update_attributes(volunteer_params)
-      flash[:success] = "<strong>#{@volunteer.first_name} #{@volunteer.last_name}</strong> was successfully updated"
+      flash[:success] = "<strong>#{@volunteer.full_name}</strong> was successfully updated"
       redirect_to volunteers_path
     else
       flash.now[:warning] = "Something went wrong"
@@ -51,7 +52,21 @@ class VolunteersController < ApplicationController
     end
   end
   
+  def pub_register
+    @volunteer = Volunteer.new
+    render layout: 'public'
+  end
 
+  def pub_confirm
+    @volunteer = Volunteer.create(volunteer_params)
+    if @volunteer.save
+      #RegistrationMailer.volunteer_welcome(@vounteer.id).deliver_later
+      render 'pages/confirm', layout: 'public' and return
+    else
+      render :pub_register, layout: 'public'
+    end
+  end
+  
   private
   def volunteer_params
     params.require(:volunteer).permit(:first_name,
@@ -60,6 +75,8 @@ class VolunteersController < ApplicationController
                                       :phone,
                                       :notes,
                                       :leader_type,
-                                      :leader_id)
+                                      :leader_id,
+                                      :validated,
+                                      :notes)
   end
 end

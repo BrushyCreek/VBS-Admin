@@ -1,4 +1,9 @@
 <%= form_for @volunteer do | f | %>
+<div class="form-group">
+  <%= f.check_box :validated %>
+  <%= f.label :validated %>
+</div>
+
 <div class="form-inline">
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
@@ -24,25 +29,30 @@
   <%= f.text_area :notes %>
 </div>
 
-  <div class="custom-controls-stacked">
-    <legend>Assignment</legend>
-     <div class="custom-control custom-checkbox">
-       <%= f.radio_button :leader_type, :Group, class: "custom-control-input" %>
-       <label class="custom-control-label" for="volunteer_leader_type_group">Class</label>
-     </div>
-     <div class="custom-control custom-checkbox">
-       <%= f.radio_button :leader_type, :Location, class: "custom-control-input" %>
-       <label class="custom-control-label" for="volunteer_leader_type_location">Station</label>
-     </div>
-     <div class="custom-control custom-checkbox">
-       <%= f.radio_button :leader_type, :none, class: "custom-control-input" %>
-       <label class="custom-control-label" for="volunteer_leader_type_none">Unassigned</label>
-     </div>
+
+<div class="custom-controls-stacked">
+  <legend>Assignment</legend>
+  <div class="custom-control custom-checkbox">
+    <%= f.radio_button :leader_type, :Group, class: "custom-control-input" %>
+    <label class="custom-control-label" for="volunteer_leader_type_group">Class</label>
   </div>
-  <% unless Group.all.blank? %>
-    <div class="form-group">
-      <%= f.collection_select :leader_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {prompt: 'Select assignment', include_blank: 'Unassigned'}, class: "custom-select"%>
-      </div>
-  <% end %>
+  <div class="custom-control custom-checkbox">
+    <%= f.radio_button :leader_type, :Location, class: "custom-control-input" %>
+    <label class="custom-control-label" for="volunteer_leader_type_location">Station</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <%= f.radio_button :leader_type, :Team, class: "custom-control-input" %>
+    <label class="custom-control-label" for="volunteer_leader_type_team">Team</label>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <%= f.radio_button :leader_type, :none, class: "custom-control-input" %>
+    <label class="custom-control-label" for="volunteer_leader_type_none">Unassigned</label>
+  </div>
+</div>
+<% unless Group.all.blank? %>
+  <div class="form-group">
+    <%= f.collection_select :leader_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade, {prompt: 'Select assignment', include_blank: 'Unassigned'}, class: "custom-select"%>
+    </div>
+<% end %>
 <%= f.submit "Save", date: {"disable-with": "Saving..."}, class: "btn btn-primary" %>
 <% end %>

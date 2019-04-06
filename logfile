@@ -1,0 +1,35 @@
+2018-06-05 20:43:42.493 EDT [5469] LOG:  listening on IPv6 address "::1", port 5432
+2018-06-05 20:43:42.493 EDT [5469] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-06-05 20:43:42.493 EDT [5469] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-06-05 20:43:42.526 EDT [5470] LOG:  database system was shut down at 2018-06-04 15:38:52 EDT
+2018-06-05 20:43:42.536 EDT [5469] LOG:  database system is ready to accept connections
+2018-06-07 15:06:18.350 EDT [13959] FATAL:  lock file "postmaster.pid" already exists
+2018-06-07 15:06:18.350 EDT [13959] HINT:  Is another postmaster (PID 5469) running in data directory "/usr/local/var/postgres"?
+2018-06-10 09:28:22.791 EDT [5469] LOG:  received fast shutdown request
+2018-06-10 09:28:22.792 EDT [5469] LOG:  aborting any active transactions
+2018-06-10 09:28:22.794 EDT [5469] LOG:  worker process: logical replication launcher (PID 5476) exited with exit code 1
+2018-06-10 09:28:22.794 EDT [5471] LOG:  shutting down
+2018-06-10 09:28:22.806 EDT [5469] LOG:  database system is shut down
+2018-06-10 15:45:08.666 EDT [31868] LOG:  listening on IPv6 address "::1", port 5432
+2018-06-10 15:45:08.667 EDT [31868] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-06-10 15:45:08.668 EDT [31868] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-06-10 15:45:08.692 EDT [31869] LOG:  database system was shut down at 2018-06-10 09:28:22 EDT
+2018-06-10 15:45:08.698 EDT [31868] LOG:  database system is ready to accept connections
+2018-06-17 20:35:04.079 EDT [31868] LOG:  received smart shutdown request
+2018-06-17 20:35:04.080 EDT [31868] LOG:  worker process: logical replication launcher (PID 31875) exited with exit code 1
+2018-06-17 20:35:04.080 EDT [31870] LOG:  shutting down
+2018-06-17 20:35:04.091 EDT [31868] LOG:  database system is shut down
+2018-06-24 08:25:40.352 EDT [17984] LOG:  listening on IPv6 address "::1", port 5432
+2018-06-24 08:25:40.352 EDT [17984] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2018-06-24 08:25:40.353 EDT [17984] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2018-06-24 08:25:40.385 EDT [17985] LOG:  database system was shut down at 2018-06-17 20:35:04 EDT
+2018-06-24 08:25:40.392 EDT [17984] LOG:  database system is ready to accept connections
+2019-04-02 14:39:50.939 EDT [50777] LOG:  listening on IPv6 address "::1", port 5432
+2019-04-02 14:39:50.939 EDT [50777] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-04-02 14:39:50.941 EDT [50777] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-04-02 14:39:50.966 EDT [50778] LOG:  database system was interrupted; last known up at 2018-06-24 08:30:40 EDT
+2019-04-02 14:39:51.187 EDT [50778] LOG:  database system was not properly shut down; automatic recovery in progress
+2019-04-02 14:39:51.193 EDT [50778] LOG:  redo starts at 0/16F5E68
+2019-04-02 14:39:51.193 EDT [50778] LOG:  invalid record length at 0/16F5F48: wanted 24, got 0
+2019-04-02 14:39:51.193 EDT [50778] LOG:  redo done at 0/16F5F10
+2019-04-02 14:39:51.204 EDT [50777] LOG:  database system is ready to accept connections

@@ -1,6 +1,7 @@
 # README
 
-* Ruby version:	2.4.4
+* Ruby version:	2.6
 
 * System dependencies
-	- Rails ~> 5.1.6
+	- Rails 5.2.2
+	- PostgreSQL 11.2
