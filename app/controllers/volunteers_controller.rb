@@ -60,8 +60,8 @@ class VolunteersController < ApplicationController
   def pub_confirm
     @volunteer = Volunteer.create(volunteer_params)
     if @volunteer.save
-      RegistrationMailer.volunteer_welcome(@vounteer.id).deliver_later
-      render 'pages/volunteer_confirm', layout: 'public' and return
+      #RegistrationMailer.volunteer_welcome(@vounteer.id).deliver_later
+      render 'pages/confirm', layout: 'public' and return
     else
       render :pub_register, layout: 'public'
     end
