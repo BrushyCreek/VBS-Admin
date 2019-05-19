@@ -65,7 +65,11 @@
 		  <% else %>
 		    <td>--</td>
 		  <% end %>
-		  <td></td> <!-- PLaceholder for Notes column-->
+		  <td><% if volunteer.notes %>
+		      <%= volunteer.notes %>
+		    <% else %>
+		      " "
+		  <% end %></td> <!-- PLaceholder for Notes column-->
 		  <td><%= "#{volunteer.phone}" %></td>
 		    <td><%= "#{volunteer.email}" %></td>
 		      <td><%= link_to "Edit", edit_volunteer_path(volunteer) %></td>
