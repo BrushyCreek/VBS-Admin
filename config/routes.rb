@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     end
     
     resources :volunteers do
+      collection do
+        get 'email_list'
+      end
     end
     
     resources :groups do

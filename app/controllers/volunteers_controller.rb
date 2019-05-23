@@ -29,7 +29,16 @@ class VolunteersController < ApplicationController
       format.html
     end
   end
-  
+
+  def email_list
+    @vols = Volunteer.all
+    vols_string = "Email Address, First Name, Last Name\n"
+    @vols.each do | v |
+      vols_string << "#{v.email},#{v.first_name},#{v.last_name} \n"
+    end
+    send_data vols_string, filename: 'volunteer-email.csv'
+  end
+
   def create
     @volunteer = Volunteer.create(volunteer_params)
     if @volunteer.save
