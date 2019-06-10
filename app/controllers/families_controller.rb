@@ -81,7 +81,7 @@ class FamiliesController < ApplicationController
     if @family.save
       render 'pages/confirm', layout: 'public' and return      
     else
-      render :register
+      render 'inperson_register', layout: 'public'
     end
   end
 
