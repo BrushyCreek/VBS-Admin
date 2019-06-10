@@ -2,7 +2,7 @@ prawn_document() do |pdf|
   pdf.font "Courier"
   @groups.sort_by_grade.sort_by_name.each do |group|
     pdf.float do
-      pdf.formatted_text [ { :text => "Class Signouts: ", :size => 15}, { :text => "#{group.name.upcase}", :size => 15, :styles => [:bold]} ]
+      pdf.formatted_text [ { :text => "Class Signouts: ", :size => 15}, { :text => "#{group.name_grade}", :size => 15, :styles => [:bold]} ]
     end
     pdf.move_down 3
     pdf.text "#{DateTime.now.strftime("%B %d, %Y")}", :size => 8, :align => :right
