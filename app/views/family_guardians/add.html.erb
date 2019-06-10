@@ -1,0 +1,36 @@
+<% content_for :title do %>
+  Edit Guardian
+<% end %>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <h1>Guardian </h1>
+    <%= render partial: "shared/errors", locals: {object: @g} %>
+    <%= form_for @g, url: {action: 'create'}  do |ff| %>
+           <div class="row">
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :first_name, 'First name' %> 
+	  <%= ff.text_field :first_name, class: "form-control" %>
+	</div>
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :last_name, 'Last name' %> 
+	  <%= ff.text_field :last_name, class: "form-control" %>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :phone, 'Phone' %> 
+	  <%= ff.text_field :phone, class: "form-control" %>
+	</div>
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :email do %>
+	    Email
+	<% end %>
+	<%= ff.text_field :email, class: "form-control" %>
+	</div>
+      </div>
+      <%= ff.hidden_field :family_id, value: @g.family_id %>
+    <%= ff.submit "Complete", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
+    <% end %>
+  </div>
+</body>

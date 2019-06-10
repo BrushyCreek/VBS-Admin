@@ -1,0 +1,54 @@
+<% content_for :title do %>
+  Edit Guardian
+<% end %>
+
+<body class="bg-light">
+  <div class="container py-5">
+    <h1>Edit Guardian</h1>
+    <%= render partial: "shared/errors", locals: {object: @guardian} %>
+    <%= form_for @guardian, url: {action: 'update'}  do |ff| %>
+           <div class="row">
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :first_name, 'First name' %> 
+	  <%= ff.text_field :first_name, class: "form-control" %>
+	</div>
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :last_name, 'Last name' %> 
+	  <%= ff.text_field :last_name, class: "form-control" %>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :phone, 'Phone' %> 
+	  <%= ff.text_field :phone, class: "form-control" %>
+	</div>
+	<div class="col-md-6 mb-3">
+	  <%= ff.label :email do %>
+	    Email
+	<% end %>
+	<%= ff.text_field :email, class: "form-control" %>
+	</div>
+      </div>
+      <div class="mb-3">
+	<%= ff.label :address, 'Address' %> 
+	<%= ff.text_field :address, class: "form-control" %>
+      </div>
+      <div class="row">
+	<div class="col-md-5 mb-3">
+	  <%= ff.label :City, 'City' %> 
+	  <%= ff.text_field :city, class: "form-control" %>
+	</div>
+	<div class="col-md-4 mb-3">
+	  <%= ff.label :State, 'State' %> 
+	  <%= ff.text_field :state , class: "form-control" %>
+	</div>
+	<div class="col-md-3 mb-3">
+	  <%= ff.label :zipcode, 'Zipcode' %> 
+	  <%= ff.text_field :zipcode , class: "form-control" %>
+	</div>
+      </div>
+ 
+    <%= ff.submit "Complete", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>    
+    <% end %>
+  </div>
+</body>

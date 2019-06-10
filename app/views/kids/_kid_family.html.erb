@@ -1,6 +1,7 @@
 <div class="w-100">
   <div class="">
-    <h3> Parents/Guradians:</h3>
+    <h3> Parents/Guardians:</h3>
+    <%= link_to("Add", add_new_family_guardian_path(@kid.family.id)) %>
   </div>
   <div class="parents">
     <% @kid.family.guardians.each do |g| %>

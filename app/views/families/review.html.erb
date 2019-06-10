@@ -51,7 +51,7 @@
 	    <div class="input-group">
 	      <%= f.collection_select :group_id, Group.sort_by_grade.sort_by_name.all, :id, :name_grade_count, {include_blank: 'Unassigned'}, class: "custom-select" %>
 		<div class="input-group-append">
-		  <%= f.submit "Assign", data: {"diable-with":"Saving..."}, class: "btn btn-primary" %>
+		  <%= f.submit "Assign", data: {disable_with:"Saving..."}, class: "btn btn-primary" %>
 		  </div>
 	    </div>
 	  <% end %>

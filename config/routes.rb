@@ -72,6 +72,14 @@ Rails.application.routes.draw do
           post 'confirm'
         end
       end
+
+      resources :guardians, controller: 'family_guardians' do
+        get 'add', on: :new
+        
+        collection do
+          post 'create'
+        end
+      end
       
     end
 
